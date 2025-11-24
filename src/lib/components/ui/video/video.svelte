@@ -109,9 +109,7 @@
 		showControls = true;
 		clearTimeout(controlsTimeout);
 		controlsTimeout = setTimeout(() => {
-			if (isPlaying) {
-				showControls = false;
-			}
+            showControls = false;
 		}, 2500);
 	}
 
