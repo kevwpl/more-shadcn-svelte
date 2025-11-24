@@ -2,12 +2,18 @@
     import { writable } from "svelte/store";
     import { setImageZoomContext, type ZoomImageData } from "./ctx";
     import { fade } from "svelte/transition";
-    import { onMount, onDestroy } from "svelte";
+    import {onMount, onDestroy, type Snippet} from "svelte";
     import { Button } from "$lib/components/ui/button";
     import { X, ChevronLeft, ChevronRight } from "lucide-svelte"; // Added navigation icons
     import { cn } from "$lib/utils";
 
-    let { class: className, children } = $props();
+    let {
+        class: className,
+        children
+    } : {
+        class?: string;
+        children?: Snippet;
+    }= $props();
 
     // Internal states
     const registeredImagesStore = writable<ZoomImageData[]>([]); // All images registered by triggers
