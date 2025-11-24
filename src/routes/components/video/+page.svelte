@@ -13,10 +13,16 @@ import * as DocPage from "$lib/components/feature/doc-page";
         <DocPage.Example>
             <DocPage.Preview>
                 <div class="flex justify-center w-full p-12">
-                    <Video src="/content/pluribus_trailer.mp4"/>
+                    <Video src="/content/pluribus_trailer.mp4" poster="/content/pluribus_thumbnail.jpg"/>
                 </div>
             </DocPage.Preview>
-            <DocPage.Code code={`<Video src="/content/video.mp4"/>`} />
+            <DocPage.Code code={`<Video
+    src="/content/video.mp4"
+    poster="/content/thumbnail.jpg"
+    autoplay
+    muted
+    loop
+/>`} />
         </DocPage.Example>
 
         <DocPage.Heading>Installation</DocPage.Heading>
