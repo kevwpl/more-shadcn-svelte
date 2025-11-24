@@ -23,7 +23,6 @@
 		"@sveltejs/kit": "^2.48.5",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
 		"@tailwindcss/vite": "^4.1.17",
-        "@floating-ui/dom": "^1.7.4",
 		"bits-ui": "^2.14.4",
 		"clsx": "^2.1.1",
 		"isomorphic-dompurify": "^2.32.0",
@@ -44,6 +43,7 @@
 		"vite": "^7.2.2"
 	},
 	"dependencies": {
+		"@floating-ui/dom": "^1.7.4",
 		"@kevwpl/svelte-o-phone": "^0.0.10",
 		"libphonenumber-js": "^1.12.29",
 		"lucide-svelte": "^0.554.0",
