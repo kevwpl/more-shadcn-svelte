@@ -8,12 +8,14 @@
         steps = [],
         open = $bindable(false),
         onComplete,
-        children
+        children,
+        padding,
     }: {
         steps: Step[],
         open: boolean,
         onComplete?: () => void,
         children?: Snippet<[any]>
+        padding?: number
     } = $props();
 
     let currentStepIndex = $state(0);
@@ -62,5 +64,6 @@
             placement={currentStep.position}
             onUpdateRect={(rect) => highlightRect = rect}
             contentSnippet={children}
+            padding={padding}
     />
 {/if}

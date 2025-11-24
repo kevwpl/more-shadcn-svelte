@@ -86,7 +86,7 @@
   ];
 </script>
 
-<Walkthrough bind:open={openTour} {steps} />`} />
+<Walkthrough bind:open={openTour} {steps} padding={2}/>`} />
         </DocPage.Example>
 
 
@@ -98,6 +98,7 @@
         <Walkthrough
                 bind:open={openTour}
                 steps={steps}
+                padding={4}
         />
 
         <DocPage.Heading>Customization</DocPage.Heading>

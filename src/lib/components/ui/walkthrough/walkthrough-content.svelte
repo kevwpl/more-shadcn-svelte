@@ -11,12 +11,14 @@
         targetId,
         placement = "bottom",
         onUpdateRect,
-        contentSnippet
+        contentSnippet,
+        padding = 0,
     }: {
         targetId: string,
         placement?: "top" | "bottom" | "left" | "right",
         onUpdateRect: (rect: {top: number, left: number, width: number, height: number}) => void,
-        contentSnippet?: Snippet<[any]>
+        contentSnippet?: Snippet<[any]>,
+        padding?: number,
     } = $props();
 
     const ctx = getWalkthroughContext();
@@ -31,11 +33,17 @@
     function updateSpotlight(el: HTMLElement) {
         const rect = el.getBoundingClientRect();
         // Always send Viewport coordinates (fixed strategy)
+
+        const paddedWidth = rect.width + padding * 2;
+        const paddedHeight = rect.height + padding * 2;
+        const paddedTop = rect.top - padding;
+        const paddedLeft = rect.left - padding;
+
         onUpdateRect({
-            top: rect.top,
-            left: rect.left,
-            width: rect.width,
-            height: rect.height
+            top: paddedTop,
+            left: paddedLeft,
+            width: paddedWidth,
+            height: paddedHeight
         });
     }
 
