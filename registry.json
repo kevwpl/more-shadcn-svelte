@@ -126,6 +126,23 @@
       ]
     },
     {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "title": "Color Picker",
+      "description": "A mobile-first bottom navigation bar.",
+      "registryDependencies": ["button", "button-group", "command", "popover", "input"],
+      "files": [
+        {
+          "path": "src/lib/components/ui/color-picker/color-picker.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/color-picker/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "number-ticker",
       "type": "registry:ui",
       "title": "Number Ticker",

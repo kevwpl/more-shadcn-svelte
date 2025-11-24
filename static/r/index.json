@@ -53,6 +53,20 @@
 		"relativeUrl": "bottom-nav.json"
 	},
 	{
+		"name": "color-picker",
+		"title": "Color Picker",
+		"type": "registry:ui",
+		"description": "A mobile-first bottom navigation bar.",
+		"registryDependencies": [
+			"button",
+			"button-group",
+			"command",
+			"popover",
+			"input"
+		],
+		"relativeUrl": "color-picker.json"
+	},
+	{
 		"name": "number-ticker",
 		"title": "Number Ticker",
 		"type": "registry:ui",

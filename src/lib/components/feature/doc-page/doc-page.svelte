@@ -9,6 +9,6 @@
 
 </script>
 
-<div class={cn("p-5 pt-8 max-w-3xl animate-in fade-in slide-in-from-right-4", className)}>
+<div class={cn("p-5 pt-8 max-w-3xl lg:w-3xl sm:w-xl animate-in fade-in slide-in-from-right-4", className)}>
     {@render children()}
 </div>

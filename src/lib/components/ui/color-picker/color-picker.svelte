@@ -1,0 +1,387 @@
+<!-- $lib/components/ui/color-picker/color-picker.svelte -->
+<script lang="ts">
+    import { cn } from '$lib/utils';
+    import { Button } from '$lib/components/ui/button';
+    import { ChevronDown } from 'lucide-svelte';
+    import * as Popover from "$lib/components/ui/popover";
+    import * as Command from "$lib/components/ui/command";
+    import * as ButtonGroup from "$lib/components/ui/button-group";
+    import { Input } from "$lib/components/ui/input";
+
+    type ColorFormat = 'hex' | 'rgb' | 'hsl' | 'oklch';
+
+    let {
+        value = $bindable('#000000'),
+        class: className,
+        allowOpacity = false,
+        defaultFormat = 'hex',
+        formats = ['hex', 'rgb', 'hsl', 'oklch']
+    }: {
+        value?: string;
+        class?: string;
+        allowOpacity?: boolean;
+        defaultFormat?: ColorFormat;
+        formats?: ColorFormat[];
+    } = $props();
+
+    let h = $state(0);
+    let s = $state(0);
+    let v = $state(0);
+    let a = $state(1);
+    let activeFormat = $state<ColorFormat>(defaultFormat);
+    let isDragging = $state(false);
+
+    let sbRef: HTMLDivElement | undefined = $state();
+    let hueRef: HTMLDivElement | undefined = $state();
+    let alphaRef: HTMLDivElement | undefined = $state();
+    let formatOpen = $state(false);
+
+    $effect(() => {
+        if (!isDragging) {
+            const parsed = parseColor(value);
+            if (parsed) {
+                const currentStr = formatOutput(h,s,v,a, activeFormat);
+                const parsedStr = formatOutput(parsed.h, parsed.s, parsed.v, parsed.a, activeFormat);
+
+                if (currentStr !== parsedStr) {
+                    h = parsed.h; s = parsed.s; v = parsed.v; a = parsed.a;
+                    if (value.startsWith('rgb')) activeFormat = 'rgb';
+                    else if (value.startsWith('hsl')) activeFormat = 'hsl';
+                    else if (value.startsWith('oklch')) activeFormat = 'oklch';
+                    else activeFormat = 'hex';
+                }
+            }
+        }
+    });
+
+    function updateExternal() {
+        value = formatOutput(h, s, v, a, activeFormat);
+    }
+
+    function setFormat(fmt: ColorFormat) {
+        activeFormat = fmt;
+        updateExternal();
+        formatOpen = false;
+    }
+
+    // --- Math & Parsing ---
+
+    function parseColor(str: string) {
+        str = str.trim().toLowerCase();
+        if (str.startsWith('#')) {
+            let hex = str.replace('#', '');
+            let r = 0, g = 0, b = 0, alpha = 1;
+            if (hex.length === 3) {
+                r = parseInt(hex[0] + hex[0], 16); g = parseInt(hex[1] + hex[1], 16); b = parseInt(hex[2] + hex[2], 16);
+            } else if (hex.length === 6) {
+                r = parseInt(hex.substring(0, 2), 16); g = parseInt(hex.substring(2, 4), 16); b = parseInt(hex.substring(4, 6), 16);
+            } else if (hex.length === 8) {
+                r = parseInt(hex.substring(0, 2), 16); g = parseInt(hex.substring(2, 4), 16); b = parseInt(hex.substring(4, 6), 16);
+                alpha = parseInt(hex.substring(6, 8), 16) / 255;
+            }
+            return { ...rgbToHsv(r, g, b), a: alpha };
+        }
+        if (str.startsWith('rgb')) {
+            const values = str.match(/[\d.]+/g)?.map(Number);
+            if (values && values.length >= 3) return { ...rgbToHsv(values[0], values[1], values[2]), a: values[3] ?? 1 };
+        }
+        if (str.startsWith('hsl')) {
+            const values = str.match(/[\d.]+/g)?.map(Number);
+            if (values && values.length >= 3) {
+                const sNorm = values[1] / 100, lNorm = values[2] / 100;
+                let vNorm = lNorm + sNorm * Math.min(lNorm, 1 - lNorm);
+                let sHsv = vNorm === 0 ? 0 : 2 * (1 - lNorm / vNorm);
+                return { h: values[0], s: sHsv * 100, v: vNorm * 100, a: values[3] ?? 1 };
+            }
+        }
+        if (str.startsWith('oklch')) {
+            const values = str.match(/[\d.%]+/g)?.map(s => s.includes('%') ? parseFloat(s) / 100 : parseFloat(s));
+            if (values && values.length >= 3) {
+                const rgb = oklchToRgb(values[0], values[1], values[2]);
+                return { ...rgbToHsv(rgb.r, rgb.g, rgb.b), a: values[3] ?? 1 };
+            }
+        }
+        return null;
+    }
+
+    function formatOutput(h: number, s: number, v: number, a: number, format: ColorFormat): string {
+        if (format === 'hex') return hsvToHex(h, s, v, a);
+        if (format === 'rgb') return hsvToRgbString(h, s, v, a);
+        if (format === 'hsl') return hsvToHslString(h, s, v, a);
+        if (format === 'oklch') return hsvToOklchString(h, s, v, a);
+        return '';
+    }
+
+    // --- Color Conversions ---
+
+    function rgbToHsv(r: number, g: number, b: number) {
+        r /= 255; g /= 255; b /= 255;
+        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+        let h = 0, s = 0, v = max;
+        const d = max - min;
+        s = max === 0 ? 0 : d / max;
+        if (max !== min) {
+            switch (max) {
+                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                case g: h = (b - r) / d + 2; break;
+                case b: h = (r - g) / d + 4; break;
+            }
+            h /= 6;
+        }
+        return { h: h * 360, s: s * 100, v: v * 100 };
+    }
+
+    function hsvToRgb(h: number, s: number, v: number) {
+        let sNorm = s / 100, vNorm = v / 100;
+        let r = 0, g = 0, b = 0;
+        const i = Math.floor(h / 60), f = h / 60 - i, p = vNorm * (1 - sNorm), q = vNorm * (1 - f * sNorm), t = vNorm * (1 - (1 - f) * sNorm);
+        switch (i % 6) {
+            case 0: r = vNorm; g = t; b = p; break;
+            case 1: r = q; g = vNorm; b = p; break;
+            case 2: r = p; g = vNorm; b = t; break;
+            case 3: r = p; g = q; b = vNorm; break;
+            case 4: r = t; g = p; b = vNorm; break;
+            case 5: r = vNorm; g = p; b = q; break;
+        }
+        return { r: Math.round(r * 255), g: Math.round(g * 255), b: Math.round(b * 255) };
+    }
+
+    // OKLCH Logic
+    function hsvToOklchString(h: number, s: number, v: number, a: number) {
+        const rgb = hsvToRgb(h,s,v);
+        const oklch = rgbToOklch(rgb.r, rgb.g, rgb.b);
+        const L = (oklch.l * 100).toFixed(1) + "%";
+        const C = oklch.c.toFixed(3);
+        const H = (oklch.h || 0).toFixed(1);
+
+        if (allowOpacity && a < 1) return `oklch(${L} ${C} ${H} / ${parseFloat(a.toFixed(2))})`;
+        return `oklch(${L} ${C} ${H})`;
+    }
+
+    function rgbToOklch(r: number, g: number, b: number) {
+        r/=255; g/=255; b/=255;
+        r = r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
+        g = g > 0.04045 ? Math.pow((g + 0.055) / 1.055, 2.4) : g / 12.92;
+        b = b > 0.04045 ? Math.pow((b + 0.055) / 1.055, 2.4) : b / 12.92;
+
+        const l = 0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b;
+        const m = 0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b;
+        const s = 0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b;
+
+        const l_ = Math.cbrt(l), m_ = Math.cbrt(m), s_ = Math.cbrt(s);
+
+        const L = 0.2104542553 * l_ + 0.7936177850 * m_ - 0.0040720468 * s_;
+        const A = 1.9779984951 * l_ - 2.4285922050 * m_ + 0.4505937099 * s_;
+        const B = 0.0259040371 * l_ + 0.7827717662 * m_ - 0.8086757660 * s_;
+
+        const C = Math.sqrt(A * A + B * B);
+        let H = (Math.atan2(B, A) * 180) / Math.PI;
+        if (H < 0) H += 360;
+
+        return { l: L, c: C, h: H };
+    }
+
+    function oklchToRgb(l: number, c: number, h: number) {
+        const hRad = h * (Math.PI / 180);
+        const A = c * Math.cos(hRad);
+        const B = c * Math.sin(hRad);
+        const L = l;
+
+        const l_ = L + 0.3963377774 * A + 0.2158037573 * B;
+        const m_ = L - 0.1055613458 * A - 0.0638541728 * B;
+        const s_ = L - 0.0894841775 * A - 1.2914855480 * B;
+
+        const lLin = l_ * l_ * l_;
+        const mLin = m_ * m_ * m_;
+        const sLin = s_ * s_ * s_;
+
+        let r = +4.0767416621 * lLin - 3.3077115913 * mLin + 0.2309699292 * sLin;
+        let g = -1.2684380046 * lLin + 2.6097574011 * mLin - 0.3413193965 * sLin;
+        let b = -0.0041960863 * lLin - 0.7034186147 * mLin + 1.7076147010 * sLin;
+
+        r = r >= 0.0031308 ? 1.055 * Math.pow(r, 1.0 / 2.4) - 0.055 : 12.92 * r;
+        g = g >= 0.0031308 ? 1.055 * Math.pow(g, 1.0 / 2.4) - 0.055 : 12.92 * g;
+        b = b >= 0.0031308 ? 1.055 * Math.pow(b, 1.0 / 2.4) - 0.055 : 12.92 * b;
+
+        r = Math.min(Math.max(0, r), 1) * 255;
+        g = Math.min(Math.max(0, g), 1) * 255;
+        b = Math.min(Math.max(0, b), 1) * 255;
+        return { r, g, b };
+    }
+
+    function hsvToHex(h: number, s: number, v: number, a: number) {
+        const { r, g, b } = hsvToRgb(h, s, v);
+        const toHex = (x: number) => { const hex = x.toString(16); return hex.length === 1 ? '0' + hex : hex; };
+        let hex = `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+        if (allowOpacity && a < 1) hex += toHex(Math.round(a * 255));
+        return hex.toUpperCase();
+    }
+
+    function hsvToRgbString(h: number, s: number, v: number, a: number) {
+        const { r, g, b } = hsvToRgb(h, s, v);
+        if (allowOpacity && a < 1) return `rgba(${r}, ${g}, ${b}, ${parseFloat(a.toFixed(2))})`;
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    function hsvToHslString(h: number, s: number, v: number, a: number) {
+        const sNorm = s / 100, vNorm = v / 100;
+        let l = (2 - sNorm) * vNorm / 2;
+        let sHsl = l && l < 1 ? sNorm * vNorm / (l < 0.5 ? l * 2 : 2 - l * 2) : sNorm;
+        if (allowOpacity && a < 1) return `hsla(${Math.round(h)}, ${Math.round(sHsl * 100)}%, ${Math.round(l * 100)}%, ${parseFloat(a.toFixed(2))})`;
+        return `hsl(${Math.round(h)}, ${Math.round(sHsl * 100)}%, ${Math.round(l * 100)}%)`;
+    }
+
+    // --- Interaction Helpers ---
+
+    function handleDragStart(e: MouseEvent | TouchEvent, fn: (e: MouseEvent | TouchEvent) => void) {
+        isDragging = true;
+        fn(e);
+        const move = (e: MouseEvent | TouchEvent) => fn(e);
+        const stop = () => {
+            isDragging = false;
+            window.removeEventListener('mousemove', move); window.removeEventListener('touchmove', move);
+            window.removeEventListener('mouseup', stop); window.removeEventListener('touchend', stop);
+        };
+        window.addEventListener('mousemove', move); window.addEventListener('touchmove', move);
+        window.addEventListener('mouseup', stop); window.addEventListener('touchend', stop);
+    }
+
+    function handleSbChange(e: MouseEvent | TouchEvent) {
+        if (!sbRef) return;
+        const rect = sbRef.getBoundingClientRect();
+        const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+        const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+        const x = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+        const y = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
+        s = x * 100; v = (1 - y) * 100; updateExternal();
+    }
+
+    function handleHueChange(e: MouseEvent | TouchEvent) {
+        if (!hueRef) return;
+        const rect = hueRef.getBoundingClientRect();
+        const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+        const x = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+        h = x * 360; updateExternal();
+    }
+
+    function handleAlphaChange(e: MouseEvent | TouchEvent) {
+        if (!alphaRef) return;
+        const rect = alphaRef.getBoundingClientRect();
+        const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+        const x = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+        a = Math.round(x * 100) / 100; updateExternal();
+    }
+
+    // --- Inputs ---
+
+    function handleAlphaInput(e: Event & { currentTarget: HTMLInputElement }) {
+        let val = parseInt(e.currentTarget.value);
+        if (isNaN(val)) return;
+        val = Math.max(0, Math.min(100, val));
+        a = val / 100;
+        updateExternal();
+    }
+</script>
+
+<div class={cn("flex w-[350px] flex-col gap-3 p-3 border rounded-lg shadow-sm bg-popover", className)}>
+    <!-- 1. Saturation Box -->
+    <div
+            bind:this={sbRef}
+            class="relative h-56 w-full cursor-crosshair rounded-md shadow-sm overflow-hidden touch-none"
+            style:background-color={`hsl(${h}, 100%, 50%)`}
+            role="slider"
+            aria-label="Saturation and Brightness"
+            aria-valuenow={s}
+            tabindex="0"
+            onmousedown={(e) => handleDragStart(e, handleSbChange)}
+            ontouchstart={(e) => handleDragStart(e, handleSbChange)}
+    >
+        <div class="absolute inset-0 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent pointer-events-none" />
+        <div class="absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow-sm ring-1 ring-black/20 pointer-events-none" style:left={`${s}%`} style:top={`${100 - v}%`} />
+    </div>
+
+    <!-- 2. Mid: Preview + Sliders -->
+    <div class="flex gap-3 items-center">
+        <!-- Static Preview -->
+        <div class="h-8 w-8 shrink-0 rounded-md border shadow-sm relative overflow-hidden mt-1 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==')]">
+            <div class="absolute inset-0" style:background-color={hsvToHex(h,s,v,a)} />
+        </div>
+
+        <div class="flex flex-1 flex-col gap-3 justify-center">
+            <!-- Hue -->
+            <div
+                    bind:this={hueRef}
+                    class="relative h-3 w-full cursor-pointer rounded-full shadow-sm ring-1 ring-black/5 touch-none"
+                    style:background="linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)"
+                    role="slider" aria-valuenow={h} tabindex="0"
+                    onmousedown={(e) => handleDragStart(e, handleHueChange)} ontouchstart={(e) => handleDragStart(e, handleHueChange)}
+            >
+                <div class="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white pointer-events-none" style:left={`${(h / 360) * 100}%`} />
+            </div>
+
+            <!-- Alpha -->
+            {#if allowOpacity}
+                <div
+                        bind:this={alphaRef}
+                        class="relative h-3 w-full cursor-pointer rounded-full shadow-sm ring-1 ring-black/5 touch-none bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==')]"
+                        role="slider" aria-valuenow={a} tabindex="0"
+                        onmousedown={(e) => handleDragStart(e, handleAlphaChange)} ontouchstart={(e) => handleDragStart(e, handleAlphaChange)}
+                >
+                    <div class="absolute inset-0 rounded-full" style:background={`linear-gradient(to right, transparent, ${hsvToHex(h,s,v,1)})`} />
+                    <div class="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white pointer-events-none" style:left={`${a * 100}%`} />
+                </div>
+            {/if}
+        </div>
+    </div>
+
+    <!-- 3. Bottom: Controls -->
+    <ButtonGroup.Root class="w-full">
+        {#if formats.length > 1}
+        <Popover.Root bind:open={formatOpen}>
+            <Popover.Trigger>
+                {#snippet child({ props })}
+                    <Button {...props} variant="outline" class="max-w-[5rem] px-2 text-[10px] justify-between h-9">
+                        {activeFormat.toUpperCase()}
+                        <ChevronDown class="h-3 w-3 opacity-50" />
+                    </Button>
+                {/snippet}
+            </Popover.Trigger>
+            <Popover.Content class="w-[4.5rem] p-0" align="start">
+                <Command.Root>
+                    <Command.List>
+                        <Command.Group>
+                            {#each ['hex', 'rgb', 'hsl', 'oklch'] as fmt}
+                                <Command.Item value={fmt} onSelect={() => setFormat(fmt as ColorFormat)} class="text-[10px] h-7 flex justify-center">
+                                    {fmt.toUpperCase()}
+                                </Command.Item>
+                            {/each}
+                        </Command.Group>
+                    </Command.List>
+                </Command.Root>
+            </Popover.Content>
+        </Popover.Root>
+        {:else}
+            <Button variant="outline" class="max-w-[5rem] px-2 text-[10px] justify-between h-9">
+                {activeFormat.toUpperCase()}
+            </Button>
+        {/if}
+        <Input
+                class="h-9 font-mono text-[10px] uppercase flex-1"
+                value={value}
+                oninput={(e) => {
+                    const parsed = parseColor(e.currentTarget.value);
+                    if (parsed) { h = parsed.h; s = parsed.s; v = parsed.v; a = parsed.a; updateExternal(); }
+                }}
+        />
+
+        {#if allowOpacity}
+            <Input
+                    class="h-9 font-mono text-[10px] text-right max-w-[4.2rem]"
+                    value={Math.round(a * 100) + "%"}
+                    oninput={handleAlphaInput}
+                    maxlength={3}
+            />
+        {/if}
+    </ButtonGroup.Root>
+</div>

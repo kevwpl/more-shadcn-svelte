@@ -32,11 +32,10 @@
     </DocPage.Header>
 
     <DocPage.Content>
-        <!-- 1. Basic Usage -->
         <DocPage.Heading>Basic Usage</DocPage.Heading>
         <DocPage.Example>
-            <DocPage.Preview class="py-10">
-                <div class="max-w-md space-y-4">
+            <DocPage.Preview>
+                <div class="space-y-4">
                     <Label>Pick a date</Label>
                     <DateStrip.Root bind:value={selectedDate}>
                         {#snippet children({ date })}
@@ -56,6 +55,13 @@
   {/snippet}
 </DateStrip.Root>`}/>
         </DocPage.Example>
+
+
+        <DocPage.Heading>Installation</DocPage.Heading>
+        {@const componentName = "date-strip"}
+        <DocPage.Text>Run the following command to install the `{componentName}` components:</DocPage.Text>
+        <DocPage.PM command="execute" args={["shadcn-svelte@latest", "add", "https://more-shadcn.noair.fun/r/" + componentName + ".json"]} />
+
 
         <!-- 2. Disabled Days -->
         <DocPage.Heading>Disabled Days</DocPage.Heading>
@@ -93,7 +99,7 @@
         <DocPage.Text>Combine logic to only allow specific dates from an array.</DocPage.Text>
         <DocPage.Example>
             <DocPage.Preview class="py-10">
-                <div class="max-w-md space-y-4">
+                <div class="space-y-4">
                     <p class="text-sm text-muted-foreground">Only specific dates allowed (Today, tomorrow).</p>
                     <DateStrip.Root
                             bind:value={customDate}
