@@ -267,15 +267,5 @@
 </Stepper.Indicator>`}/>
         </DocPage.Example>
 
-        <!-- INSTALLATION -->
-        <div class="space-y-4 pt-10">
-            <h2 class="font-heading scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">Installation</h2>
-            <div class="rounded-md bg-zinc-950 p-4">
-                <code class="text-white text-sm font-mono block overflow-x-auto">
-                    npx jsrepo add https://your-registry.com/stepper
-                </code>
-            </div>
-        </div>
-
     </DocPage.Content>
 </DocPage.Root>
