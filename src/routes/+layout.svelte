@@ -51,6 +51,7 @@
 				{ href: '/components/color-picker', label: 'Color Picker', icon: Palette },
 				{ href: '/components/date-strip', label: 'Date Strip', icon: Calendar },
 				{ href: '/components/phone-input', label: 'Phone Input', icon: PhoneCall },
+				{ href: '/components/sortable', label: 'Sortable', icon: Move },
 				{ href: '/components/tag-input', label: 'Tag Input', icon: RectangleEllipsis }
 			]
 		},
@@ -77,7 +78,6 @@
 			links: [
 				{ href: '/components/number-ticker', label: 'Number Ticker', icon: ClockArrowUp },
 				{ href: '/components/qr-code', label: 'QR Code', icon: QrCode },
-				{ href: '/components/sortable', label: 'Sortable', icon: Move },
 				{ href: '/components/status-dot', label: 'Status Dot', icon: CircleDot }
 			]
 		}
