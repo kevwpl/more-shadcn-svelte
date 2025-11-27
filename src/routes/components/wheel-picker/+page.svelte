@@ -3,7 +3,6 @@
 	import * as WheelPicker from '$lib/components/ui/wheel-picker';
 	import { Label } from '$lib/components/ui/label';
 
-	// 1. Single Column
 	const frameworks = [
 		'Next.js',
 		'SvelteKit',
@@ -16,7 +15,6 @@
 	];
 	let selectedFramework = $state('SvelteKit');
 
-	// 2. Multi Column (Time)
 	let hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
 	let minutes = Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0'));
 	let ampm = ['AM', 'PM'];
@@ -31,8 +29,6 @@
 	</DocPage.Header>
 
 	<DocPage.Content>
-		<!-- Single Column -->
-		<DocPage.Heading>Basic List</DocPage.Heading>
 		<DocPage.Example>
 			<DocPage.Preview class="py-10">
 				<div class="border rounded-xl overflow-hidden shadow-sm">
@@ -56,27 +52,23 @@
 			/>
 		</DocPage.Example>
 
-		<!-- Multi Column -->
 		<DocPage.Heading>Multi-Column</DocPage.Heading>
 		<DocPage.Example>
 			<DocPage.Preview class="py-10">
 				<div class="border rounded-xl overflow-hidden shadow-sm w-40">
 					<WheelPicker.Root>
-						<!-- Hours -->
 						<WheelPicker.Group bind:value={time.h}>
 							{#each hours as h}
 								<WheelPicker.Item value={h}>{h}</WheelPicker.Item>
 							{/each}
 						</WheelPicker.Group>
 
-						<!-- Minutes -->
 						<WheelPicker.Group bind:value={time.m}>
 							{#each minutes as m}
 								<WheelPicker.Item value={m}>{m}</WheelPicker.Item>
 							{/each}
 						</WheelPicker.Group>
 
-						<!-- AM/PM -->
 						<WheelPicker.Group bind:value={time.p}>
 							{#each ampm as p}
 								<WheelPicker.Item value={p}>{p}</WheelPicker.Item>
