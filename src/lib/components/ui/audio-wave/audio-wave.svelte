@@ -14,36 +14,45 @@
 		barColor?: string;
 		[key: string]: any;
 	} = $props();
+
+	let heights = $state(Array(bars).fill(0.25));
+	let frame: number;
+
+	function lerp(start: number, end: number, factor: number) {
+		return start + (end - start) * factor;
+	}
+
+	$effect(() => {
+		if (heights.length !== bars) {
+			heights = Array(bars).fill(0.25);
+		}
+
+		const animate = () => {
+			const time = performance.now() / 1000;
+
+			heights = heights.map((h, i) => {
+				let target = 0.25;
+
+				if (playing) {
+					const input = (time - i * 0.15) * (Math.PI * 2);
+					const sine = (Math.sin(input) + 1) / 2;
+					target = 0.25 + sine * 0.75;
+				}
+
+				return lerp(h, target, 0.15);
+			});
+
+			frame = requestAnimationFrame(animate);
+		};
+
+		frame = requestAnimationFrame(animate);
+
+		return () => cancelAnimationFrame(frame);
+	});
 </script>
 
-<div class={cn('flex items-end justify-center gap-1 h-8', className)} {...rest}>
-	{#each Array.from({ length: bars }) as _, i}
-		<div
-			class={cn(
-				'w-1 rounded-sm transition-all duration-300 ease-in-out',
-				barColor,
-				playing ? 'animate-audiowave' : 'h-2'
-			)}
-			style="animation-delay: {i * 0.15}s;"
-		></div>
+<div class={cn('flex items-end justify-center gap-0.5 h-8', className)} {...rest}>
+	{#each heights as height, i}
+		<div class={cn('w-1 rounded-sm', barColor)} style="height: {height * 100}%;"></div>
 	{/each}
 </div>
-
-<style>
-	.animate-audiowave {
-		animation-name: audiowave;
-		animation-duration: 1s;
-		animation-timing-function: ease-in-out;
-		animation-iteration-count: infinite;
-	}
-
-	@keyframes audiowave {
-		0%,
-		100% {
-			height: 25%;
-		}
-		50% {
-			height: 100%;
-		}
-	}
-</style>
