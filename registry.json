@@ -172,6 +172,23 @@
       ]
     },
     {
+      "name": "horizontal-scroll",
+      "type": "registry:ui",
+      "title": "Horizontal Scroll",
+      "description": "Converts vertical mouse wheel scrolling into horizontal scrolling.",
+      "registryDependencies": ["button", "button-group", "command", "popover", "input"],
+      "files": [
+        {
+          "path": "src/lib/components/ui/horizontal-scroll/horizontal-scroll.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/horizontal-scroll/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "wheel-picker",
       "type": "registry:ui",
       "title": "Wheel Picker",

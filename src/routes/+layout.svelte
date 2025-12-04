@@ -30,7 +30,8 @@
 		SquareDot,
 		Move,
 		AudioLines,
-		AlignVerticalSpaceAround
+		AlignVerticalSpaceAround,
+		MoveHorizontal
 	} from 'lucide-svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
@@ -62,6 +63,7 @@
 			title: 'Navigation',
 			links: [
 				{ href: '/components/bottom-nav', label: 'Bottom Nav', icon: PanelBottomClose },
+				{ href: '/components/horizontal-scroll', label: 'Horizontal Scroll', icon: MoveHorizontal },
 				{ href: '/components/stepper', label: 'Stepper', icon: ArrowBigRightDash },
 				{ href: '/components/walkthrough', label: 'Walkthrough', icon: Footprints }
 			]

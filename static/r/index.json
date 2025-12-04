@@ -75,6 +75,20 @@
 		"relativeUrl": "color-picker.json"
 	},
 	{
+		"name": "horizontal-scroll",
+		"title": "Horizontal Scroll",
+		"type": "registry:ui",
+		"description": "Converts vertical mouse wheel scrolling into horizontal scrolling.",
+		"registryDependencies": [
+			"button",
+			"button-group",
+			"command",
+			"popover",
+			"input"
+		],
+		"relativeUrl": "horizontal-scroll.json"
+	},
+	{
 		"name": "wheel-picker",
 		"title": "Wheel Picker",
 		"type": "registry:ui",

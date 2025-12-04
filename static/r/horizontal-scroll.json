@@ -1,0 +1,26 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "horizontal-scroll",
+	"title": "Horizontal Scroll",
+	"type": "registry:ui",
+	"description": "Converts vertical mouse wheel scrolling into horizontal scrolling.",
+	"registryDependencies": [
+		"button",
+		"button-group",
+		"command",
+		"popover",
+		"input"
+	],
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { setScrollContext } from './ctx';\n\timport type { Snippet } from 'svelte';\n\timport { onMount } from 'svelte';\n\n\tlet {\n\t\tclass: className,\n\t\tsensitivity = 1.5,\n\t\tdamping = 0.1,\n\t\tchildren\n\t}: {\n\t\tclass?: string;\n\t\tsensitivity?: number;\n\t\tdamping?: number;\n\t\tchildren: Snippet;\n\t} = $props();\n\n\tlet scrollContainer: HTMLDivElement | undefined = $state();\n\n\tlet targetScroll = 0;\n\tlet currentScroll = 0;\n\tlet isAnimating = false;\n\tlet animationFrame: number;\n\n\tonMount(() => {\n\t\treturn () => {\n\t\t\tif (animationFrame) cancelAnimationFrame(animationFrame);\n\t\t};\n\t});\n\n\tfunction update() {\n\t\tif (!scrollContainer) return;\n\n\t\tconst diff = targetScroll - currentScroll;\n\n\t\tif (Math.abs(diff) < 0.5) {\n\t\t\tcurrentScroll = targetScroll;\n\t\t\tscrollContainer.scrollLeft = currentScroll;\n\t\t\tisAnimating = false;\n\t\t\treturn;\n\t\t}\n\n\t\tcurrentScroll += diff * damping;\n\t\tscrollContainer.scrollLeft = currentScroll;\n\n\t\tanimationFrame = requestAnimationFrame(update);\n\t}\n\n\tfunction handleWheel(e: WheelEvent) {\n\t\tif (!scrollContainer) return;\n\t\tif (e.deltaY === 0) return;\n\n\t\tconst maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;\n\t\tif (maxScroll <= 0) return;\n\n\t\te.preventDefault();\n\n\t\tif (!isAnimating) {\n\t\t\tcurrentScroll = scrollContainer.scrollLeft;\n\t\t\ttargetScroll = currentScroll;\n\t\t\tisAnimating = true;\n\t\t\tanimationFrame = requestAnimationFrame(update);\n\t\t}\n\n\t\ttargetScroll += e.deltaY * sensitivity;\n\n\t\ttargetScroll = Math.max(0, Math.min(targetScroll, maxScroll));\n\t}\n\n\tsetScrollContext({\n\t\tscrollLeft: () => {\n\t\t\tif (!scrollContainer) return;\n\t\t\tif (!isAnimating) {\n\t\t\t\tcurrentScroll = scrollContainer.scrollLeft;\n\t\t\t\ttargetScroll = currentScroll;\n\t\t\t\tisAnimating = true;\n\t\t\t\tanimationFrame = requestAnimationFrame(update);\n\t\t\t}\n\t\t\ttargetScroll = Math.max(0, targetScroll - 300);\n\t\t},\n\t\tscrollRight: () => {\n\t\t\tif (!scrollContainer) return;\n\t\t\tconst maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;\n\t\t\tif (!isAnimating) {\n\t\t\t\tcurrentScroll = scrollContainer.scrollLeft;\n\t\t\t\ttargetScroll = currentScroll;\n\t\t\t\tisAnimating = true;\n\t\t\t\tanimationFrame = requestAnimationFrame(update);\n\t\t\t}\n\t\t\ttargetScroll = Math.min(maxScroll, targetScroll + 300);\n\t\t},\n\t\tgetElement: () => scrollContainer\n\t});\n</script>\n\n<div\n\tbind:this={scrollContainer}\n\tonwheel={handleWheel}\n\tclass={cn('flex w-full overflow-x-auto overflow-y-hidden select-none', className)}\n\tstyle=\"scrollbar-width: none; -ms-overflow-style: none;\"\n>\n\t{@render children()}\n</div>\n\n<style>\n\tdiv::-webkit-scrollbar {\n\t\tdisplay: none;\n\t}\n</style>\n",
+			"type": "registry:ui",
+			"target": "horizontal-scroll/horizontal-scroll.svelte"
+		},
+		{
+			"content": "import HorizontalScroll from './horizontal-scroll.svelte';\n\nexport { HorizontalScroll };\n",
+			"type": "registry:ui",
+			"target": "horizontal-scroll/index.ts"
+		}
+	]
+}
