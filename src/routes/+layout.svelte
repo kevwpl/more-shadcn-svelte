@@ -62,6 +62,7 @@
 		{
 			title: 'Navigation',
 			links: [
+				{ href: '/components/big-calendar', label: 'Big Calendar', icon: Calendar },
 				{ href: '/components/bottom-nav', label: 'Bottom Nav', icon: PanelBottomClose },
 				{ href: '/components/horizontal-scroll', label: 'Horizontal Scroll', icon: MoveHorizontal },
 				{ href: '/components/stepper', label: 'Stepper', icon: ArrowBigRightDash },

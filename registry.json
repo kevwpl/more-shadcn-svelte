@@ -379,6 +379,39 @@
       ]
     },
     {
+      "name": "big-calendar",
+      "type": "registry:ui",
+      "title": "Big Calendar",
+      "description": "A full-sized, interactive calendar with month view and event items.",
+      "registryDependencies": ["button", "input", "label"],
+      "files": [
+        {
+          "path": "src/lib/components/ui/big-calendar/big-calendar.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/big-calendar/big-calendar-header.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/big-calendar/big-calendar-grid.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/big-calendar/big-calendar-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/big-calendar/ctx.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/big-calendar/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "phone-input",
       "type": "registry:ui",
       "title": "Phone Input",

@@ -166,6 +166,18 @@
 		"relativeUrl": "number-ticker.json"
 	},
 	{
+		"name": "big-calendar",
+		"title": "Big Calendar",
+		"type": "registry:ui",
+		"description": "A full-sized, interactive calendar with month view and event items.",
+		"registryDependencies": [
+			"button",
+			"input",
+			"label"
+		],
+		"relativeUrl": "big-calendar.json"
+	},
+	{
 		"name": "phone-input",
 		"title": "Phone Input",
 		"type": "registry:ui",
