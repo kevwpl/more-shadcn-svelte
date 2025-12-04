@@ -11,18 +11,20 @@
 		className
 	)}
 >
+	<!-- Center Highlight Pill -->
 	<div
-		class="pointer-events-none absolute left-2 right-2 top-1/2 -translate-y-1/2 h-[32px] rounded-lg bg-muted/10 z-10"
+		class="pointer-events-none absolute left-2 right-2 top-1/2 -translate-y-1/2 h-[32px] rounded-md bg-muted z-1"
 	/>
 
+	<!-- Gradients (Masks top/bottom) -->
 	<div
-		class="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-background to-transparent z-20"
+		class="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-background to-transparent z-2"
 	/>
 	<div
-		class="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent z-20"
+		class="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent z-2"
 	/>
 
-	<div class="flex h-full w-full justify-center px-4 z-0 perspective-container">
+	<div class="flex h-full w-full justify-center px-4 z-2 perspective-container">
 		{@render children()}
 	</div>
 </div>

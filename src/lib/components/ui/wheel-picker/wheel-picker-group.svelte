@@ -32,6 +32,7 @@
 	let lastFrameTime = 0;
 	let animFrame: number;
 	let snapTimeout: ReturnType<typeof setTimeout>;
+	let wheelSnapTimeout: ReturnType<typeof setTimeout>;
 
 	const ctxState = setWheelContext({
 		selectedValue: () => value,
@@ -103,6 +104,7 @@
 		velocity = 0;
 		cancelAnimationFrame(animFrame);
 		clearTimeout(snapTimeout);
+		clearTimeout(wheelSnapTimeout);
 		updateContext();
 		document.body.style.cursor = 'grabbing';
 		document.body.style.userSelect = 'none';
@@ -221,9 +223,25 @@
 	function onWheel(e: WheelEvent) {
 		e.preventDefault();
 		if (isDragging) return;
+
 		const dir = Math.sign(e.deltaY);
-		const nextY = scrollPos - dir * ITEM_HEIGHT;
-		snapTo(nextY);
+		const step = ITEM_HEIGHT;
+		let nextY = scrollPos - dir * step;
+
+		if (!loop) {
+			const min = getMinScroll();
+			const max = getMaxScroll();
+			nextY = Math.max(min, Math.min(max, nextY));
+		}
+
+		setScroll(nextY);
+
+		clearTimeout(wheelSnapTimeout);
+		cancelAnimationFrame(animFrame);
+
+		wheelSnapTimeout = setTimeout(() => {
+			snapToNearest();
+		}, 200);
 	}
 
 	onMount(() => {
@@ -238,6 +256,8 @@
 			window.removeEventListener('mousemove', onMove);
 			window.removeEventListener('mouseup', onUp);
 			cancelAnimationFrame(animFrame);
+			clearTimeout(wheelSnapTimeout);
+			clearTimeout(snapTimeout);
 		};
 	});
 </script>
