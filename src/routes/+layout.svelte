@@ -31,7 +31,8 @@
 		Move,
 		AudioLines,
 		AlignVerticalSpaceAround,
-		MoveHorizontal
+		MoveHorizontal,
+		Mouse
 	} from 'lucide-svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
@@ -54,6 +55,7 @@
 				{ href: '/components/color-picker', label: 'Color Picker', icon: Palette },
 				{ href: '/components/date-strip', label: 'Date Strip', icon: Calendar },
 				{ href: '/components/phone-input', label: 'Phone Input', icon: PhoneCall },
+				{ href: '/components/scrubbable', label: 'Scrubbable', icon: MoveHorizontal },
 				{ href: '/components/sortable', label: 'Sortable', icon: Move },
 				{ href: '/components/tag-input', label: 'Tag Input', icon: RectangleEllipsis },
 				{ href: '/components/wheel-picker', label: 'Wheel Picker', icon: AlignVerticalSpaceAround }
@@ -64,7 +66,7 @@
 			links: [
 				{ href: '/components/big-calendar', label: 'Big Calendar', icon: Calendar },
 				{ href: '/components/bottom-nav', label: 'Bottom Nav', icon: PanelBottomClose },
-				{ href: '/components/horizontal-scroll', label: 'Horizontal Scroll', icon: MoveHorizontal },
+				{ href: '/components/horizontal-scroll', label: 'Horizontal Scroll', icon: Mouse },
 				{ href: '/components/stepper', label: 'Stepper', icon: ArrowBigRightDash },
 				{ href: '/components/walkthrough', label: 'Walkthrough', icon: Footprints }
 			]

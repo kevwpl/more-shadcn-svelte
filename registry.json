@@ -379,6 +379,35 @@
       ]
     },
     {
+      "name": "scrubbable",
+      "type": "registry:ui",
+      "title": "Scrubbable Input",
+      "description": "A drag-to-adjust numeric input, similar to Blender or Unity.",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/lib/components/ui/scrubbable/scrubbable.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/scrubbable/scrubbable-label.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/scrubbable/scrubbable-value.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/scrubbable/ctx.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/scrubbable/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "big-calendar",
       "type": "registry:ui",
       "title": "Big Calendar",
