@@ -5,6 +5,7 @@
 	import * as Kbd from '$lib/components/ui/kbd/index.js';
 	import * as Command from '$lib/components/ui/command/index.js';
 	import { LightSwitch } from '$lib/components/ui/light-switch';
+	import * as StatusDot from '$lib/components/ui/status-dot';
 	import { ModeWatcher, setMode } from 'mode-watcher';
 	import {
 		Rocket,
@@ -36,7 +37,8 @@
 		SquareSplitHorizontal,
 		History,
 		Dock,
-		Expand
+		Expand,
+		SquareArrowDown
 	} from 'lucide-svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
@@ -48,63 +50,84 @@
 	const items = [
 		{
 			title: 'Getting Started',
-			links: [{ href: '/', label: 'Introduction', icon: Rocket }]
+			links: [{ href: '/', label: 'Introduction', icon: Rocket, new: false }]
 		},
 		{
 			title: 'Forms & Inputs',
 			links: [
-				{ href: '/components/autocomplete', label: 'Autocomplete', icon: Book },
-				{ href: '/components/chip', label: 'Chip', icon: RectangleHorizontal },
-				{ href: '/components/choicebox', label: 'Choicebox', icon: SquareDot },
-				{ href: '/components/color-picker', label: 'Color Picker', icon: Palette },
-				{ href: '/components/date-strip', label: 'Date Strip', icon: Calendar },
-				{ href: '/components/hold-button', label: 'Hold Button', icon: Book },
-				{ href: '/components/phone-input', label: 'Phone Input', icon: PhoneCall },
-				{ href: '/components/scrubbable', label: 'Scrubbable', icon: MoveHorizontal },
-				{ href: '/components/tag-input', label: 'Tag Input', icon: RectangleEllipsis },
-				{ href: '/components/wheel-picker', label: 'Wheel Picker', icon: AlignVerticalSpaceAround }
+				{ href: '/components/autocomplete', label: 'Autocomplete', icon: Book, new: false },
+				{ href: '/components/chip', label: 'Chip', icon: RectangleHorizontal, new: false },
+				{ href: '/components/choicebox', label: 'Choicebox', icon: SquareDot, new: false },
+				{ href: '/components/color-picker', label: 'Color Picker', icon: Palette, new: false },
+				{ href: '/components/date-strip', label: 'Date Strip', icon: Calendar, new: false },
+				{
+					href: '/components/hold-button',
+					label: 'Hold Button',
+					icon: SquareArrowDown,
+					new: true
+				},
+				{ href: '/components/phone-input', label: 'Phone Input', icon: PhoneCall, new: false },
+				{ href: '/components/scrubbable', label: 'Scrubbable', icon: MoveHorizontal, new: true },
+				{ href: '/components/tag-input', label: 'Tag Input', icon: RectangleEllipsis, new: false },
+				{
+					href: '/components/wheel-picker',
+					label: 'Wheel Picker',
+					icon: AlignVerticalSpaceAround,
+					new: true
+				}
 			]
 		},
 		{
 			title: 'Navigation',
 			links: [
-				{ href: '/components/bottom-nav', label: 'Bottom Nav', icon: PanelBottomClose },
-				{ href: '/components/dock', label: 'Dock', icon: Dock },
-				{ href: '/components/stepper', label: 'Stepper', icon: ArrowBigRightDash },
-				{ href: '/components/walkthrough', label: 'Walkthrough', icon: Footprints }
+				{ href: '/components/bottom-nav', label: 'Bottom Nav', icon: PanelBottomClose, new: false },
+				{ href: '/components/dock', label: 'Dock', icon: Dock, new: true },
+				{ href: '/components/stepper', label: 'Stepper', icon: ArrowBigRightDash, new: false },
+				{ href: '/components/walkthrough', label: 'Walkthrough', icon: Footprints, new: false }
 			]
 		},
 		{
 			title: 'Visuals & Media',
 			links: [
-				{ href: '/components/audio-wave', label: 'Audio Wave', icon: AudioLines },
+				{ href: '/components/audio-wave', label: 'Audio Wave', icon: AudioLines, new: false },
 				{
 					href: '/components/compare-slider',
 					label: 'Compare Slider',
-					icon: SquareSplitHorizontal
+					icon: SquareSplitHorizontal,
+					new: false
 				},
-				{ href: '/components/cursor', label: 'Cursor', icon: MousePointer2 },
-				{ href: '/components/image-zoom', label: 'Image Zoom', icon: ImagePlus },
-				{ href: '/components/shiny-button', label: 'Shiny Button', icon: Sparkle },
-				{ href: '/components/spotlight-card', label: 'Spotlight Card', icon: Square },
-				{ href: '/components/video', label: 'Video', icon: SquarePlay }
+				{ href: '/components/cursor', label: 'Cursor', icon: MousePointer2, new: false },
+				{ href: '/components/image-zoom', label: 'Image Zoom', icon: ImagePlus, new: false },
+				{ href: '/components/shiny-button', label: 'Shiny Button', icon: Sparkle, new: false },
+				{ href: '/components/spotlight-card', label: 'Spotlight Card', icon: Square, new: false },
+				{ href: '/components/video', label: 'Video', icon: SquarePlay, new: false }
 			]
 		},
 		{
 			title: 'Data Display',
 			links: [
-				{ href: '/components/big-calendar', label: 'Big Calendar', icon: Calendar },
-				{ href: '/components/number-ticker', label: 'Number Ticker', icon: ClockArrowUp },
-				{ href: '/components/qr-code', label: 'QR Code', icon: QrCode },
-				{ href: '/components/status-dot', label: 'Status Dot', icon: CircleDot },
-				{ href: '/components/timeline', label: 'Timeline', icon: History }
+				{ href: '/components/big-calendar', label: 'Big Calendar', icon: Calendar, new: true },
+				{
+					href: '/components/number-ticker',
+					label: 'Number Ticker',
+					icon: ClockArrowUp,
+					new: false
+				},
+				{ href: '/components/qr-code', label: 'QR Code', icon: QrCode, new: false },
+				{ href: '/components/status-dot', label: 'Status Dot', icon: CircleDot, new: false },
+				{ href: '/components/timeline', label: 'Timeline', icon: History, new: true }
 			]
 		},
 		{
 			title: 'Utilities',
 			links: [
-				{ href: '/components/horizontal-scroll', label: 'Horizontal Scroll', icon: Mouse },
-				{ href: '/components/sortable', label: 'Sortable', icon: Move }
+				{
+					href: '/components/horizontal-scroll',
+					label: 'Horizontal Scroll',
+					icon: Mouse,
+					new: true
+				},
+				{ href: '/components/sortable', label: 'Sortable', icon: Move, new: false }
 			]
 		}
 	];
@@ -179,6 +202,13 @@
 												>
 													<Icon class="size-4" />
 													{link.label}
+													{#if link.new}
+														<Badge
+															variant="secondary"
+															class="ml-auto bg-blue-500 dark:bg-blue-600 text-white text-xs scale-80"
+															>NEW</Badge
+														>
+													{/if}
 												</Button>
 											{:else}
 												<Button
@@ -188,6 +218,13 @@
 												>
 													<Icon class="size-4" />
 													{link.label}
+													{#if link.new}
+														<Badge
+															variant="secondary"
+															class="ml-auto bg-blue-500 dark:bg-blue-600 text-white text-xs scale-80"
+															>NEW</Badge
+														>
+													{/if}
 												</Button>
 											{/if}
 										{/each}
