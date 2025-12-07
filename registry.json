@@ -425,6 +425,23 @@
       ]
     },
     {
+      "name": "verify-human",
+      "type": "registry:ui",
+      "title": "Hold Button",
+      "description": "A self-contained heuristic bot protection component. It uses honeypots, velocity checks, and event trust analysis.",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/lib/components/ui/verify-human/verify-human.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/verify-human/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "timeline",
       "type": "registry:ui",
       "title": "Timeline",

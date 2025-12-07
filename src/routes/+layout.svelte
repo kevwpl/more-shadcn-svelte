@@ -38,7 +38,8 @@
 		History,
 		Dock,
 		Expand,
-		SquareArrowDown
+		SquareArrowDown,
+		Fingerprint
 	} from 'lucide-svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
@@ -127,7 +128,8 @@
 					icon: Mouse,
 					new: true
 				},
-				{ href: '/components/sortable', label: 'Sortable', icon: Move, new: false }
+				{ href: '/components/sortable', label: 'Sortable', icon: Move, new: false },
+				{ href: '/components/verify-human', label: 'Verify Human', icon: Fingerprint, new: true }
 			]
 		}
 	];

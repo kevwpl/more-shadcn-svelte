@@ -186,6 +186,14 @@
 		"relativeUrl": "hold-button.json"
 	},
 	{
+		"name": "verify-human",
+		"title": "Hold Button",
+		"type": "registry:ui",
+		"description": "A self-contained heuristic bot protection component. It uses honeypots, velocity checks, and event trust analysis.",
+		"registryDependencies": [],
+		"relativeUrl": "verify-human.json"
+	},
+	{
 		"name": "timeline",
 		"title": "Timeline",
 		"type": "registry:ui",
