@@ -90,7 +90,7 @@
 			<DocPage.Preview>
 				<div class="flex justify-center gap-8 py-10">
 					<div class="flex flex-col items-center gap-2">
-						<HoldButton duration={1000} variant="outline" fillColor="bg-emerald-500/20">
+						<HoldButton duration={1000} variant="outline" fillColor="bg-emerald-500/20" from="left">
 							<Fingerprint class="w-4 h-4 mr-2" />
 							Confirm (1s)
 						</HoldButton>
@@ -111,7 +111,7 @@
 					</div>
 
 					<div class="flex flex-col items-center gap-2">
-						<HoldButton duration={3000} variant="secondary" fillColor="bg-amber-500/20">
+						<HoldButton duration={3000} variant="secondary" fillColor="bg-amber-500/20" from="top">
 							<AlertTriangle class="w-4 h-4 mr-2" />
 							Reset (3s)
 						</HoldButton>
@@ -121,13 +121,13 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<!-- Emerald Fill -->
-<HoldButton variant="outline" fillColor="bg-emerald-500/20" ... />
+<HoldButton variant="outline" fillColor="bg-emerald-500/20" from="left" ... />
 
 <!-- Primary Fill -->
 <HoldButton variant="ghost" fillColor="bg-primary/10" ... />
 
 <!-- Warning Fill -->
-<HoldButton variant="secondary" fillColor="bg-amber-500/20" ... />`}
+<HoldButton variant="secondary" fillColor="bg-amber-500/20" from="top" ... />`}
 			/>
 		</DocPage.Example>
 	</DocPage.Content>

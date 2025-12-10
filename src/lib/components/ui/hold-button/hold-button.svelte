@@ -3,12 +3,15 @@
 	import { Button } from '$lib/components/ui/button';
 	import type { Snippet } from 'svelte';
 
+	type Direction = 'top' | 'bottom' | 'left' | 'right';
+
 	let {
 		duration = 1500,
 		onComplete,
 		class: className,
 		children,
 		fillColor = 'bg-black/10',
+		from = 'bottom',
 		onmousedown,
 		onmouseup,
 		ontouchstart,
@@ -20,6 +23,7 @@
 		class?: string;
 		children: Snippet;
 		fillColor?: string;
+		from?: Direction;
 		onmousedown?: (e: MouseEvent) => void;
 		onmouseup?: (e: MouseEvent) => void;
 		ontouchstart?: (e: TouchEvent) => void;
@@ -55,6 +59,32 @@
 			timer = null;
 		}
 	}
+
+	const transformStyles = $derived.by(() => {
+		switch (from) {
+			case 'top':
+				return {
+					origin: 'origin-top',
+					transform: `scaleY(${isHolding ? 1 : 0})`
+				};
+			case 'left':
+				return {
+					origin: 'origin-left',
+					transform: `scaleX(${isHolding ? 1 : 0})`
+				};
+			case 'right':
+				return {
+					origin: 'origin-right',
+					transform: `scaleX(${isHolding ? 1 : 0})`
+				};
+			case 'bottom':
+			default:
+				return {
+					origin: 'origin-bottom',
+					transform: `scaleY(${isHolding ? 1 : 0})`
+				};
+		}
+	});
 </script>
 
 <Button
@@ -80,8 +110,8 @@
 	{...rest}
 >
 	<div
-		class={cn('absolute inset-0 origin-bottom pointer-events-none z-0', fillColor)}
-		style:transform="scaleY({isHolding ? 1 : 0})"
+		class={cn('absolute inset-0 pointer-events-none z-0', transformStyles.origin, fillColor)}
+		style:transform={transformStyles.transform}
 		style:transition="transform {isHolding ? duration : 100}ms linear"
 	></div>
 
