@@ -185,6 +185,10 @@
         {
           "path": "src/lib/components/ui/horizontal-scroll/index.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/horizontal-scroll/ctx.ts",
+          "type": "registry:ui"
         }
       ]
     },

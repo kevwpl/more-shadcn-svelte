@@ -21,6 +21,11 @@
 			"content": "import HorizontalScroll from './horizontal-scroll.svelte';\n\nexport { HorizontalScroll };\n",
 			"type": "registry:ui",
 			"target": "horizontal-scroll/index.ts"
+		},
+		{
+			"content": "import { getContext, setContext } from 'svelte';\n\nconst SCROLL_KEY = Symbol('horizontal-scroll');\n\ntype ScrollContext = {\n\tscrollLeft: () => void;\n\tscrollRight: () => void;\n\tgetElement: () => HTMLDivElement | undefined;\n};\n\nexport function setScrollContext(props: ScrollContext) {\n\tsetContext(SCROLL_KEY, props);\n}\n\nexport function getScrollContext() {\n\treturn getContext<ScrollContext>(SCROLL_KEY);\n}\n",
+			"type": "registry:ui",
+			"target": "horizontal-scroll/ctx.ts"
 		}
 	]
 }
