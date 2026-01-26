@@ -48,6 +48,7 @@
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
 	import { ScrollArea } from '$lib/components/ui/scroll-area';
+	import { Map } from '@lucide/svelte';
 
 	let { children } = $props();
 
@@ -110,6 +111,7 @@
 				},
 				{ href: '/components/cursor', label: 'Cursor', icon: MousePointer2, new: false },
 				{ href: '/components/image-zoom', label: 'Image Zoom', icon: ImagePlus, new: false },
+				{ href: '/components/map', label: 'Map', icon: Map, new: true },
 				{ href: '/components/shiny-button', label: 'Shiny Button', icon: Sparkle, new: false },
 				{ href: '/components/spotlight-card', label: 'Spotlight Card', icon: Square, new: false },
 				{ href: '/components/video', label: 'Video', icon: SquarePlay, new: false }
