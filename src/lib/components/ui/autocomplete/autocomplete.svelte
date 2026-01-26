@@ -11,6 +11,7 @@
 		options = [],
 		loading = false,
 		placeholder = 'Search...',
+		labelKey,
 		class: className,
 		onSelect,
 		itemSnippet,
@@ -22,6 +23,7 @@
 		options: T[];
 		loading?: boolean;
 		placeholder?: string;
+		labelKey?: keyof T;
 		class?: string;
 		onSelect?: (item: T) => void;
 		itemSnippet: Snippet<[T, boolean]>;
@@ -53,6 +55,13 @@
 
 	function handleSelect(item: T) {
 		selected = item;
+
+		if (labelKey && item && typeof item === 'object') {
+			value = String(item[labelKey]);
+		} else if (typeof item === 'string') {
+			value = item;
+		}
+
 		if (onSelect) onSelect(item);
 		close();
 	}
