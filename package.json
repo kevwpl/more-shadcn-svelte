@@ -45,6 +45,7 @@
 	"dependencies": {
 		"@floating-ui/dom": "^1.7.4",
 		"@kevwpl/svelte-o-phone": "^0.0.10",
+		"@openrouter/sdk": "^0.4.0",
 		"class-variance-authority": "^0.7.1",
 		"libphonenumber-js": "^1.12.29",
 		"lucide-svelte": "^0.554.0",

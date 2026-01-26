@@ -54,7 +54,15 @@
 	const items = [
 		{
 			title: 'Getting Started',
-			links: [{ href: '/', label: 'Introduction', icon: Rocket, new: false }]
+			links: [
+				{ href: '/', label: 'Introduction', icon: Rocket, new: false },
+				{
+					href: '/generate',
+					label: 'Generate',
+					icon: Sparkle,
+					new: true
+				}
+			]
 		},
 		{
 			title: 'Forms & Inputs',
