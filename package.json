@@ -48,7 +48,7 @@
 		"@openrouter/sdk": "^0.4.0",
 		"class-variance-authority": "^0.7.1",
 		"libphonenumber-js": "^1.12.29",
-		"lucide-svelte": "^0.554.0",
+		"lucide-svelte": "^0.563.0",
 		"qrcode-generator": "^2.0.4",
 		"svelte-floating-ui": "^1.6.2",
 		"svelte-motion": "^0.12.2"
