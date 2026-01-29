@@ -18,7 +18,7 @@
 	const sOpen = '<scr' + 'ipt';
 	const sClose = '</scr' + 'ipt>';
 
-	// --- 1. Utilities for Code Processing ---
+	// --- 1. Utilities ---
 
 	function fixRenderTags(code: string): string {
 		return code
@@ -34,11 +34,15 @@
 			.replace(/export\s+type\s+[^;]+;/g, '')
 			.replace(/<[A-Z][a-zA-Z0-9<>,\s]*>(?=\s*\()/g, '')
 			.replace(/\$props<[^>]+>\(\)/g, '$props()')
-			// Strip standard type annotations: ": string", ": number | null", etc.
-			.replace(/:\s*(?:string|number|boolean|any|void|null|undefined|Record<[^>]+>|Array<[^>]+>|\{[^}]*\}|[A-Z][a-zA-Z0-9]*(?:<[^>]+>)?(?:\s*\|\s*(?:string|number|boolean|null|undefined|[A-Z][a-zA-Z0-9]*(?:<[^>]+>)?))*)\s*(?=[,);=\n])/g, '')
-			// Strip return types: "): string {" -> ") {"
-			.replace(/\)\s*:\s*[A-Z][a-zA-Z0-9<>[\]|&\s]*(?=\s*\{)/g, ')');
-		// REMOVED: Aggressive 'as' stripping that broke imports
+			.replace(
+				/:\s*(?:string|number|boolean|any|void|null|undefined|Record<[^>]+>|Array<[^>]+>|\{[^}]*\}|[A-Z][a-zA-Z0-9]*(?:<[^>]+>)?(?:\s*\|\s*(?:string|number|boolean|null|undefined|[A-Z][a-zA-Z0-9]*(?:<[^>]+>)?))*)\s*(?=[,);=\n])/g,
+				''
+			)
+			.replace(/\)\s*:\s*[A-Z][a-zA-Z0-9<>[\]|&\s]*(?=\s*\{)/g, ')')
+			.replace(
+				/\s+as\s+(?:string|number|boolean|any|const|[A-Z][a-zA-Z0-9<>[\]]*)\s*(?=[,);}\]\n])/g,
+				''
+			);
 	}
 
 	function stripTsFileTypes(code: string): string {
@@ -60,7 +64,7 @@
 		].join('\n');
 	}
 
-	// --- 2. Icon Fetching Logic (Parent Side) ---
+	// --- 2. Icon Fetching Logic ---
 
 	const FALLBACK_ICON_SVG =
 		'<rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="1"></circle><circle cx="15" cy="15" r="1"></circle>';
@@ -68,7 +72,6 @@
 	async function fetchIconContent(iconName: string): Promise<string> {
 		const kebab = iconName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 		try {
-			// Fetch raw SVG from unpkg (CORS usually allows this from parent window)
 			const res = await fetch(`https://unpkg.com/lucide-static@0.469.0/icons/${kebab}.svg`);
 			if (!res.ok) throw new Error('Icon not found');
 			const svg = await res.text();
@@ -82,25 +85,24 @@
 
 	async function prepareLucideModule(files: any[], usage: string, compile: any): Promise<string> {
 		const allCode = [usage, ...files.map((f) => f.content)].join('\n');
-		// Robust regex to match imports, handling newlines
 		const importRegex = /import\s+\{([^}]+)\}\s+from\s+['"]lucide-svelte['"]/g;
 
-		const iconsToFetch = new Map<string, string>(); // exportedName -> originalIconName
+		// Map of exportedName -> originalIconName (e.g., "CalendarIcon" -> "Calendar")
+		const iconsToFetch = new Map<string, string>();
 
 		let match;
 		while ((match = importRegex.exec(allCode)) !== null) {
 			const imports = match[1].split(',');
 			for (const imp of imports) {
 				const trimmed = imp.trim();
-				if (!trimmed) continue;
-
 				// Handle "Calendar as CalendarIcon"
-				// We must fetch "Calendar", but export it as "Calendar"
-				// The consumer's code "import { Calendar as CalendarIcon } ..." will handle the renaming.
 				const parts = trimmed.split(/\s+as\s+/);
 				if (parts.length === 2) {
+					// parts[0] is original name (Calendar), parts[1] is alias (CalendarIcon)
+					// We need to export 'Calendar' so the import { Calendar as ... } works
 					iconsToFetch.set(parts[0], parts[0]);
 				} else {
+					// Standard import { Check }
 					iconsToFetch.set(trimmed, trimmed);
 				}
 			}
@@ -138,8 +140,6 @@
 		});
 
 		const results = await Promise.all(iconPromises);
-
-		// Create a barrel file
 		return results.map((r) => `export { default as ${r.name} } from "${r.url}";`).join('\n');
 	}
 
@@ -295,7 +295,7 @@ ${sClose}
 			<div class="flex h-full items-center justify-center bg-background">
 				<span
 					class="animate-pulse text-[10px] font-bold uppercase tracking-widest text-muted-foreground"
-				>Linking Modules...</span
+					>Linking Modules...</span
 				>
 			</div>
 		{/if}
@@ -307,7 +307,9 @@ ${sClose}
 				<p class="px-1 mb-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
 					Implementation Example
 				</p>
-				<Code.Root code={usage} lang="svelte" class="bg-background shadow-inner"></Code.Root>
+				<Code.Root code={usage} lang="svelte" class="bg-background shadow-inner">
+					<Code.CopyButton />
+				</Code.Root>
 			</div>
 		</ScrollArea>
 	</div>

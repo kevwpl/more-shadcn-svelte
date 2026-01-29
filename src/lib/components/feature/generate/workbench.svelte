@@ -54,7 +54,7 @@
 </script>
 
 <div class="flex h-full w-full min-w-0 flex-col overflow-hidden bg-muted/5">
-	<Tabs.Root value="preview" class="flex h-full w-full min-w-0 flex-col overflow-hidden">
+	<Tabs.Root value="preview" class="flex h-full w-full min-w-0 flex-col overflow-hidden gap-0">
 		<WorkbenchHeader {copied} onCopyInstall={handleCopyInstall} />
 		<WorkbenchPreview
 			files={result?.files ?? []}
