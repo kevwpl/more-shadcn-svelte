@@ -302,15 +302,15 @@ ${sClose}
 	</div>
 
 	<div class="h-[33vh] shrink-0 border-t bg-muted/20">
-		<ScrollArea class="h-full w-full">
 			<div class="p-4 pt-3">
 				<p class="px-1 mb-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
 					Implementation Example
 				</p>
+				<ScrollArea class="h-full w-full">
 				<Code.Root code={usage} lang="svelte" class="bg-background shadow-inner">
 					<Code.CopyButton />
 				</Code.Root>
+				</ScrollArea>
 			</div>
-		</ScrollArea>
 	</div>
 </Tabs.Content>
