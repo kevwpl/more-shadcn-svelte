@@ -1,0 +1,40 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "event-card",
+	"title": "Event Card",
+	"type": "registry:ui",
+	"description": "A styled card for agenda items with a dynamic low-opacity background and floating indicator.",
+	"dependencies": [
+		"lucide-svelte@^0.554.0"
+	],
+	"registryDependencies": [
+		"button"
+	],
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { Button } from '$lib/components/ui/button';\n\timport { Check, Loader2 } from 'lucide-svelte';\n\timport type { Snippet } from 'svelte';\n\n\tlet {\n\t\teventColor = '#3b82f6',\n\t\tstatus = 'idle',\n\t\tvariant = 'display',\n\t\tlabel,\n\t\tcompletedLabel = 'Completed',\n\t\tactionLabel = 'Confirm',\n\t\tisDotted = false,\n\t\topacity = 1,\n\t\tonAction,\n\t\tclass: className,\n\t\tchildren\n\t}: {\n\t\teventColor?: string;\n\t\tstatus?: 'idle' | 'loading' | 'completed';\n\t\tvariant?: 'display' | 'action';\n\t\tlabel?: string;\n\t\tcompletedLabel?: string;\n\t\tactionLabel?: string;\n\t\tisDotted?: boolean;\n\t\topacity?: number;\n\t\tonAction?: () => void;\n\t\tclass?: string;\n\t\tchildren: Snippet;\n\t} = $props();\n</script>\n\n<div\n\tclass={cn(\n\t\t'relative flex w-full overflow-hidden rounded-xl border transition-all duration-200',\n\t\tisDotted && 'border-dashed',\n\t\tclassName\n\t)}\n\tstyle=\"opacity: {opacity}; background-color: {eventColor}15; border-color: {eventColor}30;\"\n>\n\t<div\n\t\tclass=\"absolute left-1 top-2 bottom-2 w-1 rounded-full\"\n\t\tstyle=\"background-color: {eventColor}\"\n\t></div>\n\n\t<div class=\"flex w-full items-center justify-between p-4 pl-6\">\n\t\t<div class=\"flex flex-1 flex-col gap-0.5 overflow-hidden\">\n\t\t\t{#if label}\n\t\t\t\t<span\n\t\t\t\t\tclass=\"mb-0.5 text-[10px] font-bold uppercase tracking-wider\"\n\t\t\t\t\tstyle=\"color: {eventColor}\"\n\t\t\t\t>\n\t\t\t\t\t{label}\n\t\t\t\t</span>\n\t\t\t{/if}\n\t\t\t{@render children()}\n\t\t</div>\n\n\t\t{#if variant === 'action'}\n\t\t\t<div class=\"ml-4 flex shrink-0 items-center\">\n\t\t\t\t<Button\n\t\t\t\t\tsize=\"sm\"\n\t\t\t\t\tvariant=\"default\"\n\t\t\t\t\tdisabled={status === 'loading' || status === 'completed'}\n\t\t\t\t\tonclick={onAction}\n\t\t\t\t\tclass=\"min-w-[90px] gap-2\"\n\t\t\t\t>\n\t\t\t\t\t{#if status === 'loading'}\n\t\t\t\t\t\t<Loader2 class=\"h-3.5 w-3.5 animate-spin\" />\n\t\t\t\t\t{:else if status === 'completed'}\n\t\t\t\t\t\t<Check class=\"h-3.5 w-3.5\" />\n\t\t\t\t\t\t{completedLabel}\n\t\t\t\t\t{:else}\n\t\t\t\t\t\t{actionLabel}\n\t\t\t\t\t{/if}\n\t\t\t\t</Button>\n\t\t\t</div>\n\t\t{/if}\n\t</div>\n</div>\n",
+			"type": "registry:ui",
+			"target": "event-card/event-card.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport type { Snippet } from 'svelte';\n\n\tlet { class: className, children }: { class?: string; children: Snippet } = $props();\n</script>\n\n<h3 class={cn('truncate text-base leading-tight', className)}>\n\t{@render children()}\n</h3>\n",
+			"type": "registry:ui",
+			"target": "event-card/event-title.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { Clock } from 'lucide-svelte';\n\n\tlet {\n\t\tstartTime,\n\t\tendTime,\n\t\tclass: className\n\t}: {\n\t\tstartTime: string;\n\t\tendTime?: string;\n\t\tclass?: string;\n\t} = $props();\n</script>\n\n<div class={cn('flex items-center gap-1.5 text-xs text-muted-foreground', className)}>\n\t<Clock class=\"h-3 w-3\" />\n\t<span\n\t\t>{startTime}{#if endTime}\n\t\t\t&nbsp— {endTime}{/if}</span\n\t>\n</div>\n",
+			"type": "registry:ui",
+			"target": "event-card/event-time.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { MapPin } from 'lucide-svelte';\n\timport type { Snippet } from 'svelte';\n\n\tlet { class: className, children }: { class?: string; children: Snippet } = $props();\n</script>\n\n<div class={cn('flex items-center gap-1.5 text-xs text-muted-foreground', className)}>\n\t<MapPin class=\"h-3 w-3\" />\n\t<span class=\"truncate\">{@render children()}</span>\n</div>\n",
+			"type": "registry:ui",
+			"target": "event-card/event-location.svelte"
+		},
+		{
+			"content": "import Root from './event-card.svelte';\nimport Title from './event-title.svelte';\nimport Time from './event-time.svelte';\nimport Location from './event-location.svelte';\n\nexport {\n\tRoot,\n\tTitle,\n\tTime,\n\tLocation,\n\tRoot as EventCard,\n\tTitle as EventTitle,\n\tTime as EventTime,\n\tLocation as EventLocation\n};\n",
+			"type": "registry:ui",
+			"target": "event-card/index.ts"
+		}
+	]
+}

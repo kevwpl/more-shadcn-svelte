@@ -42,7 +42,8 @@
 		Fingerprint,
 		SquareChevronDown,
 		Radio,
-		CircleGauge
+		CircleGauge,
+		Calendars
 	} from 'lucide-svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
@@ -119,6 +120,7 @@
 			title: 'Data Display',
 			links: [
 				{ href: '/components/big-calendar', label: 'Big Calendar', icon: Calendar, new: false },
+				{ href: '/components/event-card', label: 'Event Card', icon: Calendars, new: true },
 				{
 					href: '/components/number-ticker',
 					label: 'Number Ticker',
