@@ -5,7 +5,7 @@
 	import { Switch } from '$lib/components/ui/switch';
 	import { Label } from '$lib/components/ui/label';
 	import { Calendar, ChevronLeft, ChevronRight, Ban, Clock } from 'lucide-svelte';
-	import * as Dialog from '$lib/components/ui/dialog/index.js';
+	import * as Dialog from '$lib/components/ui/dialog';
 	import { Input } from '$lib/components/ui/input';
 
 	const today = new Date();
