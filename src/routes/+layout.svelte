@@ -43,7 +43,9 @@
 		SquareChevronDown,
 		Radio,
 		CircleGauge,
-		Calendars
+		Calendars,
+		Highlighter,
+		NotebookPen
 	} from 'lucide-svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
@@ -71,6 +73,8 @@
 					icon: SquareChevronDown,
 					new: true
 				},
+				// IN WORKS
+				// { href: '/components/editor', label: 'Editor', icon: NotebookPen, new: true },
 				{
 					href: '/components/hold-button',
 					label: 'Hold Button',
@@ -121,6 +125,7 @@
 			links: [
 				{ href: '/components/big-calendar', label: 'Big Calendar', icon: Calendar, new: false },
 				{ href: '/components/event-card', label: 'Event Card', icon: Calendars, new: true },
+				{ href: '/components/markdown', label: 'Markdown', icon: Highlighter, new: true },
 				{
 					href: '/components/number-ticker',
 					label: 'Number Ticker',

@@ -462,6 +462,24 @@
       ]
     },
     {
+      "name": "markdown",
+      "type": "registry:ui",
+      "title": "Markdown",
+      "description": "Render user-generated content, blog posts, or comments with optimized typography and safety.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/lib/components/ui/markdown/markdown.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/markdown/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "number-ticker",
       "type": "registry:ui",
       "title": "Number Ticker",

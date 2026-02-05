@@ -5,34 +5,25 @@
 
 	let { class: className, children }: { class?: string; children?: Snippet } = $props();
 
-	function setDraggable(e: MouseEvent | TouchEvent) {
-		const item = (e.target as HTMLElement).closest('[data-sortable-id]') as HTMLElement;
-		if (item) item.draggable = true;
-	}
-
-	function unsetDraggable(e: MouseEvent | TouchEvent) {
-		const item = (e.target as HTMLElement).closest('[data-sortable-id]') as HTMLElement;
-		if (item) item.draggable = false;
+	function setDraggable(e: MouseEvent, state: boolean) {
+		const target = e.currentTarget as HTMLElement;
+		const item =
+			target.closest('div[draggable="false"]') || target.closest('div[draggable="true"]');
+		if (item instanceof HTMLElement) {
+			item.draggable = state;
+		}
 	}
 </script>
 
 <div
-	class={cn(
-		'cursor-grab active:cursor-grabbing text-muted-foreground hover:text-foreground touch-none',
-		className
-	)}
-	onmousedown={setDraggable}
-	onmouseup={unsetDraggable}
-	onmouseleave={unsetDraggable}
-	ontouchstart={setDraggable}
-	ontouchend={unsetDraggable}
-	role="button"
-	tabindex="0"
-	aria-label="Drag to reorder"
+	class={cn('cursor-grab active:cursor-grabbing p-1 touch-none', className)}
+	onmousedown={(e) => setDraggable(e, true)}
+	onmouseup={(e) => setDraggable(e, false)}
+	onmouseleave={(e) => setDraggable(e, false)}
 >
 	{#if children}
 		{@render children()}
 	{:else}
-		<GripVertical class="h-4 w-4" />
+		<GripVertical class="size-4 opacity-50" />
 	{/if}
 </div>

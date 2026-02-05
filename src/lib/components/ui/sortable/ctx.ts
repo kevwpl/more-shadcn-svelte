@@ -2,12 +2,12 @@ import { getContext, setContext } from 'svelte';
 
 const SORTABLE_KEY = Symbol('sortable');
 
-type SortableContext = {
-	registerItem: (id: string, node: HTMLElement) => void;
-	unregisterItem: (id: string) => void;
+export type SortableContext = {
 	onDragStart: (e: DragEvent, id: string) => void;
 	onDragOver: (e: DragEvent, id: string) => void;
 	onDragEnd: (e: DragEvent) => void;
+	registerItem: (id: string, node: HTMLElement) => void;
+	unregisterItem: (id: string) => void;
 	getDraggedId: () => string | null;
 };
 

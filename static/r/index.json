@@ -184,6 +184,15 @@
 		"relativeUrl": "knob.json"
 	},
 	{
+		"name": "markdown",
+		"title": "Markdown",
+		"type": "registry:ui",
+		"description": "Render user-generated content, blog posts, or comments with optimized typography and safety.",
+		"dependencies": [],
+		"registryDependencies": [],
+		"relativeUrl": "markdown.json"
+	},
+	{
 		"name": "number-ticker",
 		"title": "Number Ticker",
 		"type": "registry:ui",
