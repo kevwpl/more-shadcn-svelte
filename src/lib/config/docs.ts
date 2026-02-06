@@ -32,7 +32,10 @@ import {
 	Radio,
 	CircleGauge,
 	Calendars,
-	Highlighter
+	Highlighter,
+	Package,
+	Import,
+	ClockFading
 } from 'lucide-svelte';
 
 export const COMPONENT_URL = '/docs/components';
@@ -40,7 +43,12 @@ export const COMPONENT_URL = '/docs/components';
 export const docsConfig = [
 	{
 		title: 'Getting Started',
-		links: [{ href: '/docs', label: 'Introduction', icon: Rocket, new: false }]
+		links: [
+			{ href: '/docs', label: 'Introduction', icon: Rocket, new: false },
+			{ href: '/docs/installation', label: 'Installation', icon: Import, new: false },
+			{ href: `${COMPONENT_URL}`, label: 'Components', icon: Package, new: false },
+			{ href: '/docs/changelog', label: 'Changelog', icon: ClockFading, new: false }
+		]
 	},
 	{
 		title: 'Forms & Inputs',
