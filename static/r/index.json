@@ -132,6 +132,16 @@
 		"relativeUrl": "dynamic-select.json"
 	},
 	{
+		"name": "event-card",
+		"title": "Event Card",
+		"type": "registry:ui",
+		"description": "A styled card for agenda items with a dynamic low-opacity background and floating indicator.",
+		"registryDependencies": [
+			"button"
+		],
+		"relativeUrl": "event-card.json"
+	},
+	{
 		"name": "hold-button",
 		"title": "Hold Button",
 		"type": "registry:ui",
@@ -172,6 +182,15 @@
 		"description": "A theme-aware rotating dial for precise numeric adjustment.",
 		"registryDependencies": [],
 		"relativeUrl": "knob.json"
+	},
+	{
+		"name": "markdown",
+		"title": "Markdown",
+		"type": "registry:ui",
+		"description": "Render user-generated content, blog posts, or comments with optimized typography and safety.",
+		"dependencies": [],
+		"registryDependencies": [],
+		"relativeUrl": "markdown.json"
 	},
 	{
 		"name": "number-ticker",

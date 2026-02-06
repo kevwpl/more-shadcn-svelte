@@ -1,0 +1,19 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "markdown",
+	"title": "Markdown",
+	"type": "registry:ui",
+	"description": "Render user-generated content, blog posts, or comments with optimized typography and safety.",
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\n\tlet {\n\t\tcontent = '',\n\t\tclass: className\n\t}: {\n\t\tcontent: string;\n\t\tclass?: string;\n\t} = $props();\n\n\tfunction parseMarkdown(md: string) {\n\t\tlet html = md.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\n\n\t\thtml = html.replace(/^---$/gm, '<hr class=\"my-4 border-t border-border\" />');\n\n\t\thtml = html.replace(/^### (.*$)/gm, '<h3 class=\"text-lg font-bold mt-4 mb-1\">$1</h3>');\n\t\thtml = html.replace(/^## (.*$)/gm, '<h2 class=\"text-xl font-bold mt-5 mb-2\">$1</h2>');\n\t\thtml = html.replace(/^# (.*$)/gm, '<h1 class=\"text-2xl font-black mt-6 mb-3\">$1</h1>');\n\n\t\thtml = html.replace(\n\t\t\t/^(?:>|&gt;) (.*$)/gm,\n\t\t\t'<blockquote class=\"border-l-4 border-primary/30 pl-4 py-1 italic text-muted-foreground my-3\">$1</blockquote>'\n\t\t);\n\n\t\thtml = html.replace(/\\*\\*\\*(.*?)\\*\\*\\*/g, '<strong><em>$1</em></strong>');\n\t\thtml = html.replace(/\\*\\*(.*?)\\*\\*/g, '<strong>$1</strong>');\n\t\thtml = html.replace(/\\*(.*?)\\*/g, '<em>$1</em>');\n\t\thtml = html.replace(/__(.*?)__/g, '<strong>$1</strong>');\n\t\thtml = html.replace(/_(.*?)_/g, '<em>$1</em>');\n\n\t\thtml = html.replace(\n\t\t\t/\\[([^\\]]+)\\]\\(([^)]+)\\)/g,\n\t\t\t'<a href=\"$2\" class=\"text-primary font-medium underline underline-offset-4 hover:opacity-80 transition-opacity\" target=\"_blank\" rel=\"noopener noreferrer\">$1</a>'\n\t\t);\n\n\t\thtml = html.replace(\n\t\t\t/`(.*?)`/g,\n\t\t\t'<code class=\"bg-muted px-1.5 py-0.5 rounded text-[0.85em] font-mono border border-border/50\">$1</code>'\n\t\t);\n\n\t\thtml = html.replace(/^[\\*\\+-] (.*$)/gm, '<li class=\"ml-4 list-disc pl-1\">$1</li>');\n\t\thtml = html.replace(/^\\d+\\. (.*$)/gm, '<li class=\"ml-4 list-decimal pl-1\">$1</li>');\n\n\t\tconst lines = html.split('\\n');\n\t\tlet processed = [];\n\t\tlet inList = false;\n\n\t\tfor (let line of lines) {\n\t\t\tconst l = line.trim();\n\t\t\tconst isLi = l.startsWith('<li');\n\n\t\t\tif (isLi && !inList) {\n\t\t\t\tprocessed.push('<ul class=\"my-3 space-y-1\">');\n\t\t\t\tinList = true;\n\t\t\t} else if (!isLi && inList) {\n\t\t\t\tprocessed.push('</ul>');\n\t\t\t\tinList = false;\n\t\t\t}\n\n\t\t\tif (\n\t\t\t\tl &&\n\t\t\t\t!l.startsWith('<h') &&\n\t\t\t\t!l.startsWith('<li') &&\n\t\t\t\t!l.startsWith('<hr') &&\n\t\t\t\t!l.startsWith('<blockquote') &&\n\t\t\t\t!l.startsWith('<ul') &&\n\t\t\t\t!l.startsWith('</ul')\n\t\t\t) {\n\t\t\t\tprocessed.push(`<p class=\"mb-3 last:mb-0\">${line}</p>`);\n\t\t\t} else {\n\t\t\t\tprocessed.push(line);\n\t\t\t}\n\t\t}\n\n\t\tif (inList) processed.push('</ul>');\n\n\t\treturn processed.join('\\n').trim();\n\t}\n\n\tconst rendered = $derived(parseMarkdown(content));\n</script>\n\n<div class={cn('text-base leading-relaxed', className)}>\n\t{@html rendered}\n</div>\n",
+			"type": "registry:ui",
+			"target": "markdown/markdown.svelte"
+		},
+		{
+			"content": "import Markdown from './markdown.svelte';\n\nexport { Markdown, Markdown as default };\n",
+			"type": "registry:ui",
+			"target": "markdown/index.ts"
+		}
+	]
+}

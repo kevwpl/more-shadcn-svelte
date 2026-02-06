@@ -24,11 +24,6 @@
 	</DocPage.Header>
 
 	<DocPage.Content>
-		<DocPage.Heading>Music Production</DocPage.Heading>
-		<DocPage.Text>
-			Knobs are ideal for audio interfaces. In this example, double-clicking the Pan knob resets it
-			to its <code>defaultValue</code> of 0.
-		</DocPage.Text>
 		<DocPage.Example>
 			<DocPage.Preview class="py-12">
 				<div class="flex items-center gap-12 rounded-xl border bg-muted/20 p-8 shadow-inner">

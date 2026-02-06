@@ -1,117 +1,205 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
 	import { Button } from '$lib/components/ui/button';
-	import { ArrowRight, Box, Copy, Sparkles, Component } from 'lucide-svelte';
-	import { SpotlightCard } from '$lib/components/ui/spotlight-card';
+	import { Badge } from '$lib/components/ui/badge';
+	import { ArrowRight, Github, GithubIcon, SearchIcon } from 'lucide-svelte';
+	import * as Kbd from '$lib/components/ui/kbd';
+	import * as Command from '$lib/components/ui/command';
+
+	import { docsConfig } from '$lib/config/docs';
 	import { Link } from '$lib/components/ui/link';
+	import { LightSwitch } from '$lib/components/ui/light-switch';
+	import { goto } from '$app/navigation';
 	import { ShinyButton } from '$lib/components/ui/shiny-button';
+	import StepperCard from '$lib/components/site/grid-items/StepperCard.svelte';
+	import DockCard from '$lib/components/site/grid-items/DockCard.svelte';
+	import ColorPickerCard from '$lib/components/site/grid-items/ColorPickerCard.svelte';
+	import CompareSliderCard from '$lib/components/site/grid-items/CompareSliderCard.svelte';
+	import ChipCard from '$lib/components/site/grid-items/ChipCard.svelte';
+	import CursorCard from '$lib/components/site/grid-items/CursorCard.svelte';
+	import EventCardCard from '$lib/components/site/grid-items/EventCardCard.svelte';
+	import KnobCard from '$lib/components/site/grid-items/KnobCard.svelte';
+	import VerifyHumanCard from '$lib/components/site/grid-items/VerifyHumanCard.svelte';
+	import WheelPickerCard from '$lib/components/site/grid-items/WheelPickerCard.svelte';
+
+	const newComponents = docsConfig.flatMap((group) => group.links).filter((link) => link.new);
+
+	const badgeText = $derived.by(() => {
+		const labels = newComponents.map((c) => c.label);
+		if (labels.length === 0) return 'Check out our latest components';
+
+		const limit = 3;
+		const display = labels.slice(0, limit);
+		const hasMore = labels.length > limit;
+
+		return `New Components: ${display.join(', ')}${hasMore ? ' and more' : ''}`;
+	});
+
+	let searchOpen = $state(false);
+
+	function handleKeydown(e: KeyboardEvent) {
+		if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+			e.preventDefault();
+			searchOpen = !searchOpen;
+		}
+	}
 </script>
 
-<DocPage.Root>
-	<DocPage.Header>
-		<DocPage.Title>Introduction</DocPage.Title>
-		<DocPage.Description>
-			A collection of high-quality, copy-paste components for Svelte 5, built on top of <Link
-				href="https://shadcn-svelte.com/"
-				target="_blank">shadcn-svelte</Link
-			>.
-		</DocPage.Description>
-	</DocPage.Header>
+<svelte:document onkeydown={handleKeydown} />
 
-	<DocPage.Content>
-		<div class="flex flex-col gap-4 py-4">
-			<p class="leading-7 text-muted-foreground">
-				This library extends the philosophy of shadcn/ui by providing more components that aren't
-				included in the base registry. These components are designed to be copy-pasted into your
-				project and customized to your needs. You should also check out
-				<a href="https://www.shadcn-svelte-extras.com/" class="hover:underline hover:text-primary">
-					shadcn-svelte-extras
-				</a>
-				for even more components!
+<div class="w-full sticky top-0 right-0 left-0 p-4 backdrop-blur-xl bg-background/50 z-99">
+	<div class="max-w-5xl mx-auto flex justify-between">
+		<a id="layout-logo" href="/" class="flex items-center gap-2 font-semibold">
+			<img src="/logo.svg" alt="Logo" class="size-8" />
+			<span class="text-xl font-bold">More Shadcn</span>
+		</a>
+		<div class="flex items-center justify-end gap-2">
+			<Button
+				id="layout-search"
+				variant="outline"
+				class="flex justify-between items-center gap-12"
+				onclick={() => (searchOpen = true)}
+			>
+				<div class="flex items-center gap-2 text-muted-foreground">
+					<SearchIcon class="size-4" />
+					Search docs...
+				</div>
+				<Kbd.Group><Kbd.Root>⌘+K</Kbd.Root></Kbd.Group>
+			</Button>
+			<LightSwitch variant="ghost" />
+			<Button
+				variant="ghost"
+				href="https://github.com/kevwpl/more-shadcn-svelte"
+				size="icon"
+				target="_blank"
+			>
+				<GithubIcon />
+			</Button>
+		</div>
+	</div>
+</div>
+
+<section
+	class="mx-auto flex max-w-[980px] flex-col items-center gap-2 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20"
+>
+	<a
+		href="/docs"
+		class="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium group"
+	>
+		<Badge class="mr-2 px-1 py-0 text-[10px]" variant="secondary">New</Badge>
+		<span class="sm:hidden">Browse the latest updates</span>
+		<span class="hidden sm:inline">{badgeText}</span>
+		<ArrowRight class="ml-1 size-4 group-hover:ml-2 transition-all" />
+	</a>
+	<h1
+		class="text-center text-3xl font-bold leading-tight tracking-tighter md:text-6xl lg:leading-[1.1]"
+	>
+		<span class="relative inline-block">
+			<span class="relative z-10">Expand Your Design System</span>
+			<span
+				class="absolute bottom-1 left-0 h-[0.2em] w-0 bg-[#f73c00] rounded-sm animate-[draw_0.4s_ease-in_forwards] z-0"
+			></span>
+		</span>
+	</h1>
+
+	<style>
+		@keyframes draw {
+			from {
+				width: 0;
+			}
+			to {
+				width: 100%;
+			}
+		}
+	</style>
+
+	<p class="max-w-[750px] text-center text-xl text-muted-foreground">
+		A collection of high-quality, copy-paste components for Svelte 5, built on top of <Link
+			href="https://shadcn-svelte.com/"
+			target="_blank">shadcn-svelte</Link
+		>.
+	</p>
+
+	<div class="flex w-full items-center justify-center space-x-4 py-4 md:pb-10 mt-4">
+		<ShinyButton href="/docs" class="group"
+			>Get Started <ArrowRight class="group-hover:ml-2 ml-1 transition-all" /></ShinyButton
+		>
+	</div>
+</section>
+
+<section class="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
+	<div class="grid gap-4 lg:grid-cols-2">
+		<div class="grid gap-4">
+			<StepperCard />
+			<CompareSliderCard />
+			<CursorCard />
+			<VerifyHumanCard />
+		</div>
+		<div class="grid gap-4">
+			<DockCard />
+			<ColorPickerCard />
+			<ChipCard />
+			<EventCardCard />
+			<KnobCard />
+			<WheelPickerCard />
+		</div>
+	</div>
+</section>
+
+<footer class="mt-20 border-t bg-muted/20">
+	<div class="mx-auto flex max-w-[980px] flex-col items-center gap-6 py-16 text-center">
+		<div class="space-y-3">
+			<h2 class="text-3xl font-bold tracking-tighter md:text-5xl">...and so much more</h2>
+			<p class="mx-auto max-w-[600px] text-muted-foreground md:text-lg">
+				Explore our full catalog of components including Audio Players, Advanced Calendars, Bottom
+				Navigation, and Responsive Timelines.
 			</p>
-			<div class="flex items-center gap-4 pt-2">
-				<ShinyButton href="/components/autocomplete">
-					Browse Components
-					<ArrowRight class="ml-2 h-4 w-4" />
-				</ShinyButton>
-				<Button variant="outline" href="https://github.com/huntabyte/shadcn-svelte" target="_blank">
-					Visit shadcn-svelte
-				</Button>
-			</div>
 		</div>
 
-		<DocPage.Heading>Why use this?</DocPage.Heading>
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-			<SpotlightCard class="p-6 flex flex-col gap-2" size={300}>
-				<div
-					class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-2"
-				>
-					<Component class="h-5 w-5" />
-				</div>
-				<h3 class="text-lg font-semibold">Svelte 5 Native</h3>
-				<p class="text-sm text-muted-foreground">
-					Built from the ground up using Runes (`$state`, `$props`, `$derived`) for maximum
-					performance and developer experience.
-				</p>
-			</SpotlightCard>
-
-			<SpotlightCard class="p-6 flex flex-col gap-2" size={300}>
-				<div
-					class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-2"
-				>
-					<Copy class="h-5 w-5" />
-				</div>
-				<h3 class="text-lg font-semibold">Registry</h3>
-				<p class="text-sm text-muted-foreground">
-					No npm packages to install. Install with the shadcn-svelte registry and get started in
-					seconds.
-				</p>
-			</SpotlightCard>
-
-			<SpotlightCard class="p-6 flex flex-col gap-2" size={300}>
-				<div
-					class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-2"
-				>
-					<Sparkles class="h-5 w-5" />
-				</div>
-				<h3 class="text-lg font-semibold">Visual Polish</h3>
-				<p class="text-sm text-muted-foreground">
-					Components designed with micro-interactions and animations that give your app a premium
-					feel immediately.
-				</p>
-			</SpotlightCard>
-
-			<SpotlightCard class="p-6 flex flex-col gap-2" size={300}>
-				<div
-					class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-2"
-				>
-					<Box class="h-5 w-5" />
-				</div>
-				<h3 class="text-lg font-semibold">Fully Type-Safe</h3>
-				<p class="text-sm text-muted-foreground">
-					Written in TypeScript with strict typing for props and events, ensuring excellent IDE
-					support and autocomplete.
-				</p>
-			</SpotlightCard>
+		<div class="flex items-center gap-4">
+			<ShinyButton href="/docs" class="group">
+				Explore All Components
+				<ArrowRight class="ml-1 size-4 transition-all group-hover:ml-2" />
+			</ShinyButton>
 		</div>
 
-		<DocPage.Heading>FAQ</DocPage.Heading>
-		<div class="space-y-4">
-			<div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
-				<h3 class="font-semibold mb-2">Do I need shadcn-svelte installed?</h3>
-				<p class="text-sm text-muted-foreground">
-					Yes. These components rely on the `cn` utility and base components (like `Button` or
-					`Badge`) provided by standard shadcn-svelte installation.
-				</p>
-			</div>
-
-			<div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
-				<h3 class="font-semibold mb-2">Is this an official library?</h3>
-				<p class="text-sm text-muted-foreground">
-					No. This is a collection of patterns and components commonly requested but out of scope
-					for the core library.
-				</p>
+		<div
+			class="mt-8 flex flex-col items-center gap-4 border-t pt-8 w-full md:flex-row md:justify-between md:pt-12"
+		>
+			<p class="text-sm text-muted-foreground leading-loose">
+				Built by <Link href="https://github.com/kevwpl" target="_blank">Kevin</Link>. Open source on <Link
+					href="https://github.com/kevwpl/more-shadcn-svelte"
+					target="_blank">GitHub</Link
+				>.
+			</p>
+			<div class="flex items-center gap-4 text-sm text-muted-foreground">
+				<Link href="/docs">Docs</Link>
+				<Link href="/components">Components</Link>
+				<Link href="https://shadcn-svelte.com" target="_blank">shadcn-svelte</Link>
 			</div>
 		</div>
-	</DocPage.Content>
-</DocPage.Root>
+	</div>
+</footer>
+
+<Command.Dialog bind:open={searchOpen}>
+	<Command.Input placeholder="Search Docs..." />
+	<Command.List>
+		<Command.Empty>No results found.</Command.Empty>
+		{#each docsConfig as group}
+			<Command.Group heading={group.title.toUpperCase()}>
+				{#each group.links as link}
+					{@const Icon = link.icon}
+					<Command.Item
+						class="flex items-center gap-2"
+						onSelect={() => {
+							searchOpen = false;
+							goto(link.href);
+						}}
+					>
+						<Icon class="size-4" />
+						{link.label}
+					</Command.Item>
+				{/each}
+			</Command.Group>
+		{/each}
+	</Command.List>
+</Command.Dialog>

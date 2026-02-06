@@ -347,6 +347,35 @@
       ]
     },
     {
+      "name": "event-card",
+      "type": "registry:ui",
+      "title": "Event Card",
+      "description": "A styled card for agenda items with a dynamic low-opacity background and floating indicator.",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "src/lib/components/ui/event-card/event-card.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/event-card/event-title.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/event-card/event-time.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/event-card/event-location.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/event-card/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "hold-button",
       "type": "registry:ui",
       "title": "Hold Button",
@@ -428,6 +457,24 @@
         },
         {
           "path": "src/lib/components/ui/knob/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "markdown",
+      "type": "registry:ui",
+      "title": "Markdown",
+      "description": "Render user-generated content, blog posts, or comments with optimized typography and safety.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/lib/components/ui/markdown/markdown.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/components/ui/markdown/index.ts",
           "type": "registry:ui"
         }
       ]
