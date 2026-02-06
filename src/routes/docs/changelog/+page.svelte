@@ -25,7 +25,8 @@
 					label: 'Event Card',
 					slug: 'event-card',
 					desc: 'Modern agenda and meeting display components.'
-				}
+				},
+				{ label: 'Markdown', slug: 'markdown', desc: 'Render markdown to HTML.' }
 			]
 		}
 	];
