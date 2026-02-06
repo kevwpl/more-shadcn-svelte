@@ -10,7 +10,7 @@
 		const baseTitle = 'More Shadcn';
 		const currentPath = page.url.pathname;
 
-		if (currentPath === '/') return `Introduction – ${baseTitle}`;
+		if (currentPath === '/') return `${baseTitle}`;
 
 		for (const group of docsConfig) {
 			const link = group.links.find((l) => currentPath.endsWith(l.href) && l.href !== '/');
