@@ -35,7 +35,8 @@ import {
 	Highlighter,
 	Package,
 	Import,
-	ClockFading
+	ClockFading,
+	Bot
 } from 'lucide-svelte';
 
 export const COMPONENT_URL = '/docs/components';
@@ -46,6 +47,7 @@ export const docsConfig = [
 		links: [
 			{ href: '/docs', label: 'Introduction', icon: Rocket, new: false },
 			{ href: '/docs/installation', label: 'Installation', icon: Import, new: false },
+			{ href: '/generate', label: 'Generate', icon: Bot, new: false },
 			{ href: `${COMPONENT_URL}`, label: 'Components', icon: Package, new: false },
 			{ href: '/docs/changelog', label: 'Changelog', icon: ClockFading, new: false }
 		]

@@ -147,7 +147,10 @@
 
 	async function generatePreview() {
 		errorMessage = null;
-		if (!files?.length || !usage) return;
+		if (!files?.length || !usage) {
+			errorMessage = 'Preview unavailable: missing files or usage.';
+			return;
+		}
 
 		console.groupCollapsed('🔧 Preview Generation');
 		console.log('Title:', title);
@@ -204,10 +207,11 @@
 			}
 
 			// Process Usage
+			const sanitizedUsage = stripSvelteTypes(fixRenderTags(usage));
 			const scriptRegex = /<script.*?>([\s\S]*?)<\/script>/;
-			const scriptMatch = usage.match(scriptRegex);
+			const scriptMatch = sanitizedUsage.match(scriptRegex);
 			const scriptContent = scriptMatch ? scriptMatch[1].trim() : '';
-			const templateContent = usage.replace(scriptRegex, '');
+			const templateContent = sanitizedUsage.replace(scriptRegex, '');
 
 			const wrapperSource = buildWrapper(scriptContent, templateContent);
 
@@ -258,6 +262,7 @@ ${sClose}
 </body>
 </html>`;
 
+			if (previewUrl) URL.revokeObjectURL(previewUrl);
 			previewUrl = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
 		} catch (e: any) {
 			console.error('Generation error:', e);
@@ -301,16 +306,16 @@ ${sClose}
 		{/if}
 	</div>
 
-	<div class="h-[33vh] shrink-0 border-t bg-muted/20">
-			<div class="p-4 pt-3">
-				<p class="px-1 mb-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-					Implementation Example
-				</p>
-				<ScrollArea class="h-full w-full">
-				<Code.Root code={usage} lang="svelte" class="bg-background shadow-inner">
-					<Code.CopyButton />
-				</Code.Root>
-				</ScrollArea>
-			</div>
+	<div class="flex h-[33vh] shrink-0 flex-col border-t bg-muted/20">
+		<div class="px-4 pt-3 pb-2">
+			<p class="px-1 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+				Implementation Example
+			</p>
+		</div>
+		<div class="min-h-0 flex-1 px-4 pb-4">
+			<Code.Root code={usage} lang="svelte" class="bg-background shadow-inner">
+				<Code.CopyButton />
+			</Code.Root>
+		</div>
 	</div>
 </Tabs.Content>

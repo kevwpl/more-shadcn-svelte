@@ -67,12 +67,12 @@ RESPONSE FORMAT:
 
 export const POST: RequestHandler = async ({ request }) => {
 	try {
-		const { messages, apiKey } = await request.json();
+		const { messages, apiKey, model } = await request.json();
 		if (!apiKey) return json({ error: 'API Key missing' }, { status: 401 });
 
 		const openRouter = new OpenRouter({ apiKey });
 		const completion = await openRouter.chat.send({
-			model: 'google/gemini-3-flash-preview',
+			model: model || 'anthropic/claude-sonnet-4',
 			messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages]
 		});
 
@@ -82,7 +82,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		console.log('🤖 Raw AI Response:', rawContent);
 
 		const cleanJson = rawContent.replace(/```json|```/g, '').trim();
-		const parsed = JSON.parse(cleanJson);
+		const parsed = parseJsonPayload(cleanJson);
 
 		return json(parsed);
 	} catch (e: any) {
@@ -92,3 +92,40 @@ export const POST: RequestHandler = async ({ request }) => {
 		return json({ error: msg }, { status: 500 });
 	}
 };
+
+function parseJsonPayload(input: string) {
+	const direct = tryParseJson(input);
+	if (direct) return direct;
+
+	const extracted = extractJsonPayload(input);
+	if (extracted) {
+		const parsed = tryParseJson(extracted);
+		if (parsed) return parsed;
+	}
+
+	throw new Error('Invalid JSON payload from model');
+}
+
+function tryParseJson(input: string) {
+	try {
+		return JSON.parse(input);
+	} catch {
+		return null;
+	}
+}
+
+function extractJsonPayload(input: string) {
+	const objectStart = input.indexOf('{');
+	const objectEnd = input.lastIndexOf('}');
+	if (objectStart !== -1 && objectEnd > objectStart) {
+		return input.slice(objectStart, objectEnd + 1);
+	}
+
+	const arrayStart = input.indexOf('[');
+	const arrayEnd = input.lastIndexOf(']');
+	if (arrayStart !== -1 && arrayEnd > arrayStart) {
+		return input.slice(arrayStart, arrayEnd + 1);
+	}
+
+	return null;
+}
