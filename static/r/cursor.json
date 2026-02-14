@@ -11,7 +11,7 @@
 			"target": "cursor/cursor.svelte"
 		},
 		{
-			"content": "import Cursor from \"./cursor.svelte\";\r\n\r\nexport { Cursor as Root };",
+			"content": "import Cursor from \"./cursor.svelte\";\n\nexport { Cursor as Root };",
 			"type": "registry:ui",
 			"target": "cursor/index.ts"
 		}

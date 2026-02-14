@@ -4,7 +4,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Switch } from '$lib/components/ui/switch';
 	import { Label } from '$lib/components/ui/label';
-	import { Calendar, ChevronLeft, ChevronRight, Ban, Clock } from 'lucide-svelte';
+	import { Calendar, ChevronLeft, ChevronRight, Ban, Clock } from '@lucide/svelte';
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { Input } from '$lib/components/ui/input';
 
@@ -186,7 +186,7 @@
 				code={`<script lang="ts">
   import * as BigCalendar from '$lib/components/ui/big-calendar';
   import { Button } from '$lib/components/ui/button';
-  import { Calendar, ChevronLeft, ChevronRight } from 'lucide-svelte';
+  import { Calendar, ChevronLeft, ChevronRight } from '@lucide/svelte';
 
   // 1. State for date navigation and selection
   let currentDate = $state(new Date());

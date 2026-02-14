@@ -31,12 +31,12 @@ import {
 	SquareChevronDown,
 	Radio,
 	CircleGauge,
-	Calendars,
 	Highlighter,
 	Package,
 	Import,
-	ClockFading
-} from 'lucide-svelte';
+	ClockFading,
+	Tickets
+} from '@lucide/svelte';
 
 export const COMPONENT_URL = '/docs/components';
 
@@ -201,7 +201,7 @@ export const docsConfig = [
 			{
 				href: `${COMPONENT_URL}/event-card`,
 				label: 'Event Card',
-				icon: Calendars,
+				icon: Tickets,
 				new: true
 			},
 			{

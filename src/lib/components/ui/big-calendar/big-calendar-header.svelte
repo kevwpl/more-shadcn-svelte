@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
 	import { Button } from '$lib/components/ui/button';
-	import { ChevronLeft, ChevronRight, Calendar as CalIcon } from 'lucide-svelte';
+	import { ChevronLeft, ChevronRight, Calendar as CalIcon } from '@lucide/svelte';
 	import { getCalendarContext } from './ctx';
 	import type { Snippet } from 'svelte';
 

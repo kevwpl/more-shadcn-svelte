@@ -4,7 +4,7 @@
 	import { fade } from 'svelte/transition';
 	import { onMount, onDestroy, type Snippet } from 'svelte';
 	import { Button } from '$lib/components/ui/button';
-	import { X, ChevronLeft, ChevronRight } from 'lucide-svelte';
+	import { X, ChevronLeft, ChevronRight } from '@lucide/svelte';
 	import { cn } from '$lib/utils';
 
 	let {

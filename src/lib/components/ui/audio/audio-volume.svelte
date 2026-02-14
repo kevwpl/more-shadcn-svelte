@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
 	import { Button } from '$lib/components/ui/button';
-	import { Volume2, VolumeX, Volume1 } from 'lucide-svelte';
+	import { Volume2, VolumeX, Volume1 } from '@lucide/svelte';
 	import * as HoverCard from '$lib/components/ui/hover-card';
 	import { getAudioPlayerContext } from './ctx';
 

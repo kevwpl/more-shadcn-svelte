@@ -35,7 +35,7 @@
 			"target": "walkthrough/ctx.ts"
 		},
 		{
-			"content": "import Walkthrough from \"./walkthrough.svelte\";\r\nexport { Walkthrough };",
+			"content": "import Walkthrough from \"./walkthrough.svelte\";\nexport { Walkthrough };",
 			"type": "registry:ui",
 			"target": "walkthrough/index.ts"
 		}

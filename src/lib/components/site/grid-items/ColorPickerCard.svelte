@@ -2,7 +2,7 @@
 	import * as ColorPicker from '$lib/components/ui/color-picker';
 	import * as Popover from '$lib/components/ui/popover';
 	import { Button } from '$lib/components/ui/button';
-	import { Paintbrush } from 'lucide-svelte';
+	import { Paintbrush } from '@lucide/svelte';
 
 	let color = $state('#f73c00');
 </script>

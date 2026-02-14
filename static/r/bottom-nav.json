@@ -9,7 +9,7 @@
 	],
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\r\n    import { cn } from \"$UTILS$\";\r\n    import type { Snippet } from \"svelte\";\r\n\r\n    let { class: className, children }: { class?: string, children: Snippet } = $props();\r\n</script>\r\n\r\n<nav\r\n        class={cn(\r\n        \"flex w-full items-center justify-around border-t bg-background h-16 px-2 shadow-[0_-1px_2px_rgba(0,0,0,0.03)]\",\r\n        className\r\n    )}\r\n>\r\n    {@render children()}\r\n</nav>",
+			"content": "<script lang=\"ts\">\n    import { cn } from \"$UTILS$\";\n    import type { Snippet } from \"svelte\";\n\n    let { class: className, children }: { class?: string, children: Snippet } = $props();\n</script>\n\n<nav\n        class={cn(\n        \"flex w-full items-center justify-around border-t bg-background h-16 px-2 shadow-[0_-1px_2px_rgba(0,0,0,0.03)]\",\n        className\n    )}\n>\n    {@render children()}\n</nav>",
 			"type": "registry:ui",
 			"target": "bottom-nav/bottom-nav.svelte"
 		},
@@ -19,7 +19,7 @@
 			"target": "bottom-nav/bottom-nav-item.svelte"
 		},
 		{
-			"content": "import BottomNav from \"./bottom-nav.svelte\";\r\nimport BottomNavItem from \"./bottom-nav-item.svelte\";\r\n\r\nexport {\r\n    BottomNav as Root,\r\n    BottomNavItem as Item,\r\n};",
+			"content": "import BottomNav from \"./bottom-nav.svelte\";\nimport BottomNavItem from \"./bottom-nav-item.svelte\";\n\nexport {\n    BottomNav as Root,\n    BottomNavItem as Item,\n};",
 			"type": "registry:ui",
 			"target": "bottom-nav/index.ts"
 		}

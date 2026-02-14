@@ -21,7 +21,7 @@
 			"target": "phone-input/phone-input.svelte"
 		},
 		{
-			"content": "import PhoneInput from \"./phone-input.svelte\";\r\nexport { PhoneInput };",
+			"content": "import PhoneInput from \"./phone-input.svelte\";\nexport { PhoneInput };",
 			"type": "registry:ui",
 			"target": "phone-input/index.ts"
 		}

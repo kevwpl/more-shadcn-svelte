@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
 	import { Button } from '$lib/components/ui/button';
-	import { Play, Pause } from 'lucide-svelte';
+	import { Play, Pause } from '@lucide/svelte';
 	import { getAudioPlayerContext } from './ctx';
 
 	let { class: className }: { class?: string } = $props();

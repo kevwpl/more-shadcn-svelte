@@ -2,7 +2,7 @@
 	import * as DocPage from '$lib/components/feature/doc-page';
 	import * as Timeline from '$lib/components/ui/timeline';
 	import { Badge } from '$lib/components/ui/badge';
-	import { Rocket } from 'lucide-svelte';
+	import { Rocket } from '@lucide/svelte';
 	import { COMPONENT_URL } from '$lib/config/docs';
 
 	const updates = [

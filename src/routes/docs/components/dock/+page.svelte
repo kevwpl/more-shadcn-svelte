@@ -11,7 +11,7 @@
 		Code,
 		Terminal,
 		Github
-	} from 'lucide-svelte';
+	} from '@lucide/svelte';
 </script>
 
 <DocPage.Root>

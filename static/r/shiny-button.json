@@ -17,7 +17,7 @@
 			"target": "shiny-button/shiny-button.svelte"
 		},
 		{
-			"content": "import ShinyButton from \"./shiny-button.svelte\";\r\nexport { ShinyButton };",
+			"content": "import ShinyButton from \"./shiny-button.svelte\";\nexport { ShinyButton };",
 			"type": "registry:ui",
 			"target": "shiny-button/index.ts"
 		}

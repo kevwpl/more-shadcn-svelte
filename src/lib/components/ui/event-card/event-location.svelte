@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import { MapPin } from 'lucide-svelte';
+	import { MapPin } from '@lucide/svelte';
 	import type { Snippet } from 'svelte';
 
 	let { class: className, children }: { class?: string; children: Snippet } = $props();

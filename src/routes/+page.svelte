@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
-	import { ArrowRight, Github, GithubIcon, SearchIcon } from 'lucide-svelte';
+	import { ArrowRight, Github, GithubIcon, SearchIcon } from '@lucide/svelte';
 	import * as Kbd from '$lib/components/ui/kbd';
 	import * as Command from '$lib/components/ui/command';
 

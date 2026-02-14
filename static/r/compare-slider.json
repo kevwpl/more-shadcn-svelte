@@ -5,7 +5,10 @@
 	"type": "registry:ui",
 	"description": "A slider to compare two overlapping elements, usually images.",
 	"dependencies": [
-		"lucide-svelte@^0.554.0"
+		"@lucide/svelte@^0.554.0"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
 	],
 	"files": [
 		{
@@ -19,7 +22,7 @@
 			"target": "compare-slider/compare-item.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { getCompareContext } from './ctx';\n\timport { GripVertical, GripHorizontal } from 'lucide-svelte';\n\timport type { Snippet } from 'svelte';\n\n\tlet {\n\t\tclass: className,\n\t\tchildren\n\t}: {\n\t\tclass?: string;\n\t\tchildren?: Snippet;\n\t} = $props();\n\n\tconst ctx = getCompareContext();\n\tlet isHorizontal = $derived(ctx.orientation() === 'horizontal');\n</script>\n\n<div\n\tclass={cn(\n\t\t'absolute pointer-events-none z-2 flex items-center justify-center text-primary-foreground',\n\t\tisHorizontal\n\t\t\t? 'top-0 bottom-0 w-1 -ml-0.5 left-[var(--pos)]'\n\t\t\t: 'left-0 right-0 h-1 -mt-0.5 top-[var(--pos)]',\n\t\tclassName\n\t)}\n>\n\t<div\n\t\tclass={cn(\n\t\t\t'absolute bg-accent shadow-[0_0_10px_rgba(0,0,0,0.5)]',\n\t\t\tisHorizontal ? 'h-full w-0.5' : 'w-full h-0.5'\n\t\t)}\n\t/>\n\n\t<div\n\t\tclass=\"relative z-1 w-5 h-5 flex items-center justify-center rounded-xs bg-accent text-primary shadow-md border border-black/10\"\n\t>\n\t\t{#if children}\n\t\t\t{@render children()}\n\t\t{:else if isHorizontal}\n\t\t\t<GripVertical class=\"h-4 w-4 opacity-50\" />\n\t\t{:else}\n\t\t\t<GripHorizontal class=\"h-4 w-4 opacity-50\" />\n\t\t{/if}\n\t</div>\n</div>\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { getCompareContext } from './ctx';\n\timport { GripVertical, GripHorizontal } from '@lucide/svelte';\n\timport type { Snippet } from 'svelte';\n\n\tlet {\n\t\tclass: className,\n\t\tchildren\n\t}: {\n\t\tclass?: string;\n\t\tchildren?: Snippet;\n\t} = $props();\n\n\tconst ctx = getCompareContext();\n\tlet isHorizontal = $derived(ctx.orientation() === 'horizontal');\n</script>\n\n<div\n\tclass={cn(\n\t\t'absolute pointer-events-none z-2 flex items-center justify-center text-primary-foreground',\n\t\tisHorizontal\n\t\t\t? 'top-0 bottom-0 w-1 -ml-0.5 left-[var(--pos)]'\n\t\t\t: 'left-0 right-0 h-1 -mt-0.5 top-[var(--pos)]',\n\t\tclassName\n\t)}\n>\n\t<div\n\t\tclass={cn(\n\t\t\t'absolute bg-accent shadow-[0_0_10px_rgba(0,0,0,0.5)]',\n\t\t\tisHorizontal ? 'h-full w-0.5' : 'w-full h-0.5'\n\t\t)}\n\t/>\n\n\t<div\n\t\tclass=\"relative z-1 w-5 h-5 flex items-center justify-center rounded-xs bg-accent text-primary shadow-md border border-black/10\"\n\t>\n\t\t{#if children}\n\t\t\t{@render children()}\n\t\t{:else if isHorizontal}\n\t\t\t<GripVertical class=\"h-4 w-4 opacity-50\" />\n\t\t{:else}\n\t\t\t<GripHorizontal class=\"h-4 w-4 opacity-50\" />\n\t\t{/if}\n\t</div>\n</div>\n",
 			"type": "registry:ui",
 			"target": "compare-slider/compare-handle.svelte"
 		},

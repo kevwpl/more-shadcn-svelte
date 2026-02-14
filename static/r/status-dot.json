@@ -14,7 +14,7 @@
 			"target": "status-dot/status-dot.svelte"
 		},
 		{
-			"content": "import StatusDot from \"./status-dot.svelte\";\r\n\r\nexport { StatusDot as Root };",
+			"content": "import StatusDot from \"./status-dot.svelte\";\n\nexport { StatusDot as Root };",
 			"type": "registry:ui",
 			"target": "status-dot/index.ts"
 		}

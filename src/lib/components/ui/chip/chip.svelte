@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import { X } from 'lucide-svelte';
+	import { X } from '@lucide/svelte';
 	import type { Snippet } from 'svelte';
 	import { tv, type VariantProps } from 'tailwind-variants';
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
 	import { getCompareContext } from './ctx';
-	import { GripVertical, GripHorizontal } from 'lucide-svelte';
+	import { GripVertical, GripHorizontal } from '@lucide/svelte';
 	import type { Snippet } from 'svelte';
 
 	let {

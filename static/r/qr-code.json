@@ -17,7 +17,7 @@
 			"target": "qr-code/qr-code.svelte"
 		},
 		{
-			"content": "import QRCode from \"./qr-code.svelte\";\r\n\r\nexport { QRCode as Root };",
+			"content": "import QRCode from \"./qr-code.svelte\";\n\nexport { QRCode as Root };",
 			"type": "registry:ui",
 			"target": "qr-code/index.ts"
 		}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import { Play, Pause, Volume2, VolumeX, Maximize, Minimize, Loader2 } from 'lucide-svelte';
+	import { Play, Pause, Volume2, VolumeX, Maximize, Minimize, Loader2 } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 	import { Slider } from '$lib/components/ui/slider';
 

@@ -9,7 +9,7 @@
 		MapPin,
 		Package,
 		CheckCircle2
-	} from 'lucide-svelte';
+	} from '@lucide/svelte';
 </script>
 
 <DocPage.Root>

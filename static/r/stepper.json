@@ -5,7 +5,10 @@
 	"type": "registry:ui",
 	"description": "A visual indicator for multi-step processes.",
 	"dependencies": [
-		"lucide-svelte@^0.554.0"
+		"@lucide/svelte@^0.554.0"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
 	],
 	"registryDependencies": [
 		"button"
@@ -17,17 +20,17 @@
 			"target": "stepper/stepper.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\r\n    import { cn } from \"$UTILS$\";\r\n    import { getStepperContext } from \"./ctx\";\r\n    import type { Snippet } from \"svelte\";\r\n\r\n    let { step, class: className, children }: {\r\n        step: number,\r\n        class?: string,\r\n        children: Snippet\r\n    } = $props();\r\n\r\n    const ctx = getStepperContext();\r\n\r\n    let isCompleted = $derived(step < ctx.activeStep());\r\n    let isActive = $derived(step === ctx.activeStep());\r\n    let isVertical = $derived(ctx.orientation() === \"vertical\");\r\n</script>\r\n\r\n<div\r\n        data-state={isActive ? \"active\" : isCompleted ? \"completed\" : \"inactive\"}\r\n        class={cn(\r\n\t\t\"group flex items-center\",\r\n        !isVertical && \"flex-1 gap-4 last:flex-none\",\r\n        isVertical && \"flex-col items-start relative gap-0\",\r\n\t\tclassName\r\n\t)}\r\n>\r\n    {@render children()}\r\n</div>",
+			"content": "<script lang=\"ts\">\n    import { cn } from \"$UTILS$\";\n    import { getStepperContext } from \"./ctx\";\n    import type { Snippet } from \"svelte\";\n\n    let { step, class: className, children }: {\n        step: number,\n        class?: string,\n        children: Snippet\n    } = $props();\n\n    const ctx = getStepperContext();\n\n    let isCompleted = $derived(step < ctx.activeStep());\n    let isActive = $derived(step === ctx.activeStep());\n    let isVertical = $derived(ctx.orientation() === \"vertical\");\n</script>\n\n<div\n        data-state={isActive ? \"active\" : isCompleted ? \"completed\" : \"inactive\"}\n        class={cn(\n\t\t\"group flex items-center\",\n        !isVertical && \"flex-1 gap-4 last:flex-none\",\n        isVertical && \"flex-col items-start relative gap-0\",\n\t\tclassName\n\t)}\n>\n    {@render children()}\n</div>",
 			"type": "registry:ui",
 			"target": "stepper/stepper-item.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\r\n    import { cn } from \"$UTILS$\";\r\n    import { Button } from \"$lib/components/ui/button\";\r\n    import { getStepperContext } from \"./ctx\";\r\n    import type { Snippet } from \"svelte\";\r\n\r\n    let { step, class: className, children, ...rest }: {\r\n        step: number,\r\n        class?: string,\r\n        children: Snippet,\r\n        [key: string]: any\r\n    } = $props();\r\n\r\n    const ctx = getStepperContext();\r\n    let isVertical = $derived(ctx.orientation() === \"vertical\");\r\n</script>\r\n\r\n<Button\r\n        variant=\"ghost\"\r\n        onclick={() => ctx.setStep(step)}\r\n        class={cn(\r\n        \"flex h-auto items-center justify-center gap-3 p-2 hover:bg-transparent\",\r\n        !isVertical && \"flex-col\",\r\n        isVertical && \"flex-row justify-start\",\r\n        className\r\n    )}\r\n        {...rest}\r\n>\r\n    {@render children()}\r\n</Button>",
+			"content": "<script lang=\"ts\">\n    import { cn } from \"$UTILS$\";\n    import { Button } from \"$lib/components/ui/button\";\n    import { getStepperContext } from \"./ctx\";\n    import type { Snippet } from \"svelte\";\n\n    let { step, class: className, children, ...rest }: {\n        step: number,\n        class?: string,\n        children: Snippet,\n        [key: string]: any\n    } = $props();\n\n    const ctx = getStepperContext();\n    let isVertical = $derived(ctx.orientation() === \"vertical\");\n</script>\n\n<Button\n        variant=\"ghost\"\n        onclick={() => ctx.setStep(step)}\n        class={cn(\n        \"flex h-auto items-center justify-center gap-3 p-2 hover:bg-transparent\",\n        !isVertical && \"flex-col\",\n        isVertical && \"flex-row justify-start\",\n        className\n    )}\n        {...rest}\n>\n    {@render children()}\n</Button>",
 			"type": "registry:ui",
 			"target": "stepper/stepper-trigger.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { Check } from 'lucide-svelte';\n\timport { getStepperContext } from './ctx';\n\timport type { Snippet } from 'svelte';\n\n\tlet {\n\t\tstep,\n\t\tclass: className,\n\t\tchildren,\n\t\tsuccess\n\t}: {\n\t\tstep: number;\n\t\tclass?: string;\n\t\tchildren?: Snippet;\n\t\tsuccess?: Snippet;\n\t} = $props();\n\n\tconst ctx = getStepperContext();\n\n\tlet isCompleted = $derived(step < ctx.activeStep());\n\tlet isActive = $derived(step === ctx.activeStep());\n</script>\n\n<div\n\tclass={cn(\n\t\t'relative flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm font-semibold transition-colors duration-200',\n\t\tisActive && 'border-primary text-primary ring-2 ring-primary/20 ring-offset-2',\n\t\tisCompleted && 'border-primary bg-primary text-primary-foreground',\n\t\t!isActive && !isCompleted && 'border-muted-foreground/25 text-muted-foreground',\n\t\tclassName\n\t)}\n>\n\t{#if isCompleted}\n\t\t{#if success}\n\t\t\t{@render success()}\n\t\t{:else}\n\t\t\t<Check class=\"h-5 w-5\" />\n\t\t{/if}\n\t{:else if children}\n\t\t{@render children()}\n\t{:else}\n\t\t{step + 1}\n\t{/if}\n</div>\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { Check } from '@lucide/svelte';\n\timport { getStepperContext } from './ctx';\n\timport type { Snippet } from 'svelte';\n\n\tlet {\n\t\tstep,\n\t\tclass: className,\n\t\tchildren,\n\t\tsuccess\n\t}: {\n\t\tstep: number;\n\t\tclass?: string;\n\t\tchildren?: Snippet;\n\t\tsuccess?: Snippet;\n\t} = $props();\n\n\tconst ctx = getStepperContext();\n\n\tlet isCompleted = $derived(step < ctx.activeStep());\n\tlet isActive = $derived(step === ctx.activeStep());\n</script>\n\n<div\n\tclass={cn(\n\t\t'relative flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm font-semibold transition-colors duration-200',\n\t\tisActive && 'border-primary text-primary ring-2 ring-primary/20 ring-offset-2',\n\t\tisCompleted && 'border-primary bg-primary text-primary-foreground',\n\t\t!isActive && !isCompleted && 'border-muted-foreground/25 text-muted-foreground',\n\t\tclassName\n\t)}\n>\n\t{#if isCompleted}\n\t\t{#if success}\n\t\t\t{@render success()}\n\t\t{:else}\n\t\t\t<Check class=\"h-5 w-5\" />\n\t\t{/if}\n\t{:else if children}\n\t\t{@render children()}\n\t{:else}\n\t\t{step + 1}\n\t{/if}\n</div>\n",
 			"type": "registry:ui",
 			"target": "stepper/stepper-indicator.svelte"
 		},
@@ -37,12 +40,12 @@
 			"target": "stepper/stepper-separator.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\r\n    import { cn } from \"$UTILS$\";\r\n    import type { Snippet } from \"svelte\";\r\n    let { class: className, children }: { class?: string, children: Snippet } = $props();\r\n</script>\r\n<h3 class={cn(\"text-sm font-medium leading-none\", className)}>{@render children()}</h3>",
+			"content": "<script lang=\"ts\">\n    import { cn } from \"$UTILS$\";\n    import type { Snippet } from \"svelte\";\n    let { class: className, children }: { class?: string, children: Snippet } = $props();\n</script>\n<h3 class={cn(\"text-sm font-medium leading-none\", className)}>{@render children()}</h3>",
 			"type": "registry:ui",
 			"target": "stepper/stepper-title.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\r\n    import { cn } from \"$UTILS$\";\r\n    import type { Snippet } from \"svelte\";\r\n    let { class: className, children }: { class?: string, children: Snippet } = $props();\r\n</script>\r\n<p class={cn(\"text-xs text-muted-foreground\", className)}>{@render children()}</p>",
+			"content": "<script lang=\"ts\">\n    import { cn } from \"$UTILS$\";\n    import type { Snippet } from \"svelte\";\n    let { class: className, children }: { class?: string, children: Snippet } = $props();\n</script>\n<p class={cn(\"text-xs text-muted-foreground\", className)}>{@render children()}</p>",
 			"type": "registry:ui",
 			"target": "stepper/stepper-description.svelte"
 		},
@@ -52,7 +55,7 @@
 			"target": "stepper/ctx.ts"
 		},
 		{
-			"content": "import Stepper from \"./stepper.svelte\";\r\nimport StepperItem from \"./stepper-item.svelte\";\r\nimport StepperTrigger from \"./stepper-trigger.svelte\";\r\nimport StepperIndicator from \"./stepper-indicator.svelte\";\r\nimport StepperSeparator from \"./stepper-separator.svelte\";\r\nimport StepperTitle from \"./stepper-title.svelte\";\r\nimport StepperDescription from \"./stepper-description.svelte\";\r\n\r\nexport {\r\n    Stepper as Root,\r\n    StepperItem as Item,\r\n    StepperTrigger as Trigger,\r\n    StepperIndicator as Indicator,\r\n    StepperSeparator as Separator,\r\n    StepperTitle as Title,\r\n    StepperDescription as Description,\r\n};",
+			"content": "import Stepper from \"./stepper.svelte\";\nimport StepperItem from \"./stepper-item.svelte\";\nimport StepperTrigger from \"./stepper-trigger.svelte\";\nimport StepperIndicator from \"./stepper-indicator.svelte\";\nimport StepperSeparator from \"./stepper-separator.svelte\";\nimport StepperTitle from \"./stepper-title.svelte\";\nimport StepperDescription from \"./stepper-description.svelte\";\n\nexport {\n    Stepper as Root,\n    StepperItem as Item,\n    StepperTrigger as Trigger,\n    StepperIndicator as Indicator,\n    StepperSeparator as Separator,\n    StepperTitle as Title,\n    StepperDescription as Description,\n};",
 			"type": "registry:ui",
 			"target": "stepper/index.ts"
 		}

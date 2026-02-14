@@ -5,7 +5,10 @@
 	"type": "registry:ui",
 	"description": "A combobox-style select that allows users to pick from predefined options or enter a custom value.",
 	"dependencies": [
-		"lucide-svelte@^0.554.0"
+		"@lucide/svelte@^0.554.0"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
 	],
 	"registryDependencies": [
 		"button",
@@ -14,12 +17,12 @@
 	],
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\r\n\timport * as Popover from '$lib/components/ui/popover';\r\n\timport { setDynamicSelectContext } from './ctx';\r\n\timport type { Snippet } from 'svelte';\r\n\r\n\tlet {\r\n\t\tvalue = $bindable(''),\r\n\t\topen = $bindable(false),\r\n\t\tchildren\r\n\t}: {\r\n\t\tvalue?: string;\r\n\t\topen?: boolean;\r\n\t\tchildren: Snippet;\r\n\t} = $props();\r\n\r\n\tlet inputValue = $state('');\r\n\r\n\tsetDynamicSelectContext({\r\n\t\tget value() {\r\n\t\t\treturn { value };\r\n\t\t},\r\n\t\tget open() {\r\n\t\t\treturn { value: open };\r\n\t\t},\r\n\t\tget inputValue() {\r\n\t\t\treturn { value: inputValue };\r\n\t\t},\r\n\t\tsetValue: (v: string) => {\r\n\t\t\tvalue = v;\r\n\t\t\topen = false;\r\n\t\t}\r\n\t});\r\n</script>\r\n\r\n<Popover.Root bind:open>\r\n\t{@render children()}\r\n</Popover.Root>\r\n",
+			"content": "<script lang=\"ts\">\n\timport * as Popover from '$lib/components/ui/popover';\n\timport { setDynamicSelectContext } from './ctx';\n\timport type { Snippet } from 'svelte';\n\n\tlet {\n\t\tvalue = $bindable(''),\n\t\topen = $bindable(false),\n\t\tchildren\n\t}: {\n\t\tvalue?: string;\n\t\topen?: boolean;\n\t\tchildren: Snippet;\n\t} = $props();\n\n\tlet inputValue = $state('');\n\n\tsetDynamicSelectContext({\n\t\tget value() {\n\t\t\treturn { value };\n\t\t},\n\t\tget open() {\n\t\t\treturn { value: open };\n\t\t},\n\t\tget inputValue() {\n\t\t\treturn { value: inputValue };\n\t\t},\n\t\tsetValue: (v: string) => {\n\t\t\tvalue = v;\n\t\t\topen = false;\n\t\t}\n\t});\n</script>\n\n<Popover.Root bind:open>\n\t{@render children()}\n</Popover.Root>\n",
 			"type": "registry:ui",
 			"target": "dynamic-select/dynamic-select.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport * as Popover from '$lib/components/ui/popover';\n\timport { buttonVariants } from '$lib/components/ui/button';\n\timport { ChevronDown } from 'lucide-svelte';\n\timport { getDynamicSelectContext } from './ctx';\n\timport type { Snippet } from 'svelte';\n\n\tlet { class: className, children }: { class?: string; children: Snippet } = $props();\n\tconst ctx = getDynamicSelectContext();\n</script>\n\n<Popover.Trigger\n\tclass={cn(\n\t\tbuttonVariants({ variant: 'outline' }),\n\t\t'w-full justify-between font-normal',\n\t\tclassName\n\t)}\n>\n\t{#if ctx.value.value}\n\t\t{ctx.value.value}\n\t{:else}\n\t\t{@render children()}\n\t{/if}\n\t<ChevronDown class=\"ml-2 h-4 w-4 shrink-0 opacity-50\" />\n</Popover.Trigger>\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport * as Popover from '$lib/components/ui/popover';\n\timport { buttonVariants } from '$lib/components/ui/button';\n\timport { ChevronDown } from '@lucide/svelte';\n\timport { getDynamicSelectContext } from './ctx';\n\timport type { Snippet } from 'svelte';\n\n\tlet { class: className, children }: { class?: string; children: Snippet } = $props();\n\tconst ctx = getDynamicSelectContext();\n</script>\n\n<Popover.Trigger\n\tclass={cn(\n\t\tbuttonVariants({ variant: 'outline' }),\n\t\t'w-full justify-between font-normal',\n\t\tclassName\n\t)}\n>\n\t{#if ctx.value.value}\n\t\t{ctx.value.value}\n\t{:else}\n\t\t{@render children()}\n\t{/if}\n\t<ChevronDown class=\"ml-2 h-4 w-4 shrink-0 opacity-50\" />\n</Popover.Trigger>\n",
 			"type": "registry:ui",
 			"target": "dynamic-select/dynamic-select-trigger.svelte"
 		},
@@ -29,17 +32,17 @@
 			"target": "dynamic-select/dynamic-select-content.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$';\r\n\timport * as Command from '$lib/components/ui/command';\r\n\timport { Check } from 'lucide-svelte';\r\n\timport { getDynamicSelectContext } from './ctx';\r\n\timport type { Snippet } from 'svelte';\r\n\r\n\tlet { value, children }: { value: string; children: Snippet } = $props();\r\n\tconst ctx = getDynamicSelectContext();\r\n\tconst isSelected = $derived(ctx.value.value === value);\r\n</script>\r\n\r\n<Command.Item\r\n\t{value}\r\n\tonSelect={() => ctx.setValue(value)}\r\n\tclass=\"flex cursor-pointer items-center justify-between\"\r\n>\r\n\t{@render children()}\r\n\t<Check class={cn('h-4 w-4', isSelected ? 'opacity-100' : 'opacity-0')} />\r\n</Command.Item>\r\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport * as Command from '$lib/components/ui/command';\n\timport { Check } from '@lucide/svelte';\n\timport { getDynamicSelectContext } from './ctx';\n\timport type { Snippet } from 'svelte';\n\n\tlet { value, children }: { value: string; children: Snippet } = $props();\n\tconst ctx = getDynamicSelectContext();\n\tconst isSelected = $derived(ctx.value.value === value);\n</script>\n\n<Command.Item\n\t{value}\n\tonSelect={() => ctx.setValue(value)}\n\tclass=\"flex cursor-pointer items-center justify-between\"\n>\n\t{@render children()}\n\t<Check class={cn('h-4 w-4', isSelected ? 'opacity-100' : 'opacity-0')} />\n</Command.Item>\n",
 			"type": "registry:ui",
 			"target": "dynamic-select/dynamic-select-item.svelte"
 		},
 		{
-			"content": "import { getContext, setContext } from 'svelte';\r\n\r\nconst DYNAMIC_SELECT_KEY = Symbol('dynamic-select');\r\n\r\ntype DynamicSelectContext = {\r\n\tvalue: { value: string };\r\n\topen: { value: boolean };\r\n\tinputValue: { value: string };\r\n\tsetValue: (v: string) => void;\r\n};\r\n\r\nexport function setDynamicSelectContext(props: DynamicSelectContext) {\r\n\tsetContext(DYNAMIC_SELECT_KEY, props);\r\n}\r\n\r\nexport function getDynamicSelectContext() {\r\n\treturn getContext<DynamicSelectContext>(DYNAMIC_SELECT_KEY);\r\n}\r\n",
+			"content": "import { getContext, setContext } from 'svelte';\n\nconst DYNAMIC_SELECT_KEY = Symbol('dynamic-select');\n\ntype DynamicSelectContext = {\n\tvalue: { value: string };\n\topen: { value: boolean };\n\tinputValue: { value: string };\n\tsetValue: (v: string) => void;\n};\n\nexport function setDynamicSelectContext(props: DynamicSelectContext) {\n\tsetContext(DYNAMIC_SELECT_KEY, props);\n}\n\nexport function getDynamicSelectContext() {\n\treturn getContext<DynamicSelectContext>(DYNAMIC_SELECT_KEY);\n}\n",
 			"type": "registry:ui",
 			"target": "dynamic-select/ctx.ts"
 		},
 		{
-			"content": "import Root from './dynamic-select.svelte';\r\nimport Trigger from './dynamic-select-trigger.svelte';\r\nimport Content from './dynamic-select-content.svelte';\r\nimport Item from './dynamic-select-item.svelte';\r\nimport { CommandGroup } from '$lib/components/ui/command';\r\n\r\nconst Group = CommandGroup;\r\n\r\nexport { Root, Trigger, Content, Item, Group };\r\n",
+			"content": "import Root from './dynamic-select.svelte';\nimport Trigger from './dynamic-select-trigger.svelte';\nimport Content from './dynamic-select-content.svelte';\nimport Item from './dynamic-select-item.svelte';\nimport { CommandGroup } from '$lib/components/ui/command';\n\nconst Group = CommandGroup;\n\nexport { Root, Trigger, Content, Item, Group };\n",
 			"type": "registry:ui",
 			"target": "dynamic-select/index.ts"
 		}

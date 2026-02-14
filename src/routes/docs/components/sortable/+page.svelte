@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as DocPage from '$lib/components/feature/doc-page';
 	import * as Sortable from '$lib/components/ui/sortable';
-	import { Image } from 'lucide-svelte';
+	import { Image } from '@lucide/svelte';
 
 	let listItems = $state([
 		{ id: '1', title: 'Authentication', desc: 'Setup auth providers' },

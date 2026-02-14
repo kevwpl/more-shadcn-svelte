@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import { Clock } from 'lucide-svelte';
+	import { Clock } from '@lucide/svelte';
 
 	let {
 		startTime,

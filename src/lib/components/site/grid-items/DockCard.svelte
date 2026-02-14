@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Dock from '$lib/components/ui/dock';
-	import { Home, Search, Calendar, Mail, Settings, User } from 'lucide-svelte';
+	import { Home, Search, Calendar, Mail, Settings, User } from '@lucide/svelte';
 </script>
 
 <div class="rounded-xl border bg-card p-6 shadow-sm flex flex-col justify-between">

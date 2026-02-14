@@ -2,7 +2,7 @@
 	import { AudioWave } from '$lib/components/ui/audio-wave';
 	import * as DocPage from '$lib/components/feature/doc-page';
 	import { Button } from '$lib/components/ui/button';
-	import { Pause, Play } from 'lucide-svelte';
+	import { Pause, Play } from '@lucide/svelte';
 
 	let isPlaying = $state(true);
 </script>

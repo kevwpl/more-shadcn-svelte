@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as DocPage from '$lib/components/feature/doc-page';
 	import { Button } from '$lib/components/ui/button';
-	import { ArrowRight, Box, Copy, Sparkles, Component } from 'lucide-svelte';
+	import { ArrowRight, Box, Copy, Sparkles, Component } from '@lucide/svelte';
 	import { SpotlightCard } from '$lib/components/ui/spotlight-card';
 	import { Link } from '$lib/components/ui/link';
 	import { ShinyButton } from '$lib/components/ui/shiny-button';

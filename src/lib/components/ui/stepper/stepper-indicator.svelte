@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import { Check } from 'lucide-svelte';
+	import { Check } from '@lucide/svelte';
 	import { getStepperContext } from './ctx';
 	import type { Snippet } from 'svelte';
 

@@ -14,7 +14,7 @@
 			"target": "number-ticker/number-ticker.svelte"
 		},
 		{
-			"content": "import NumberTicker from \"./number-ticker.svelte\";\r\nexport { NumberTicker };",
+			"content": "import NumberTicker from \"./number-ticker.svelte\";\nexport { NumberTicker };",
 			"type": "registry:ui",
 			"target": "number-ticker/index.ts"
 		}

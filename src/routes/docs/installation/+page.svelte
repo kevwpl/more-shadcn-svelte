@@ -42,12 +42,12 @@
 		<DocPage.Heading>Dependencies</DocPage.Heading>
 		<DocPage.Text>
 			Some components require additional libraries like <code>svelte-motion</code> or
-			<code>lucide-svelte</code>. The CLI will attempt to install these automatically, but you can
+			<code>@lucide/svelte</code>. The CLI will attempt to install these automatically, but you can
 			also add them manually if needed:
 		</DocPage.Text>
 		<DocPage.PM
 			command="install"
-			args={['svelte-motion', 'lucide-svelte', 'clsx', 'tailwind-merge']}
+			args={['svelte-motion', '@lucide/svelte', 'clsx', 'tailwind-merge']}
 		/>
 
 		<DocPage.Heading>Manual Installation</DocPage.Heading>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
 	import { Button } from '$lib/components/ui/button';
-	import { Check, Loader2 } from 'lucide-svelte';
+	import { Check, Loader2 } from '@lucide/svelte';
 	import type { Snippet } from 'svelte';
 
 	let {

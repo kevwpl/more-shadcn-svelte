@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { VerifyHuman } from '$lib/components/ui/verify-human';
-	import { ShieldCheck } from 'lucide-svelte';
+	import { ShieldCheck } from '@lucide/svelte';
 
 	let isVerified = $state(false);
 </script>

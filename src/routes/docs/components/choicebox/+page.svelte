@@ -2,7 +2,7 @@
 	import * as DocPage from '$lib/components/feature/doc-page';
 	import * as Choicebox from '$lib/components/ui/choicebox';
 	import { Label } from '$lib/components/ui/label';
-	import { Sun, Moon, Monitor, Laptop, Smartphone, Tablet } from 'lucide-svelte';
+	import { Sun, Moon, Monitor, Laptop, Smartphone, Tablet } from '@lucide/svelte';
 	import { setMode } from 'mode-watcher';
 
 	let selectedValue = $state('option-1');

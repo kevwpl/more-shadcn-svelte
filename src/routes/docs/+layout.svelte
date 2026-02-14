@@ -4,7 +4,7 @@
 	import * as Kbd from '$lib/components/ui/kbd';
 	import * as Command from '$lib/components/ui/command';
 	import { LightSwitch } from '$lib/components/ui/light-switch';
-	import { GithubIcon, SearchIcon } from 'lucide-svelte';
+	import { GithubIcon, SearchIcon } from '@lucide/svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';

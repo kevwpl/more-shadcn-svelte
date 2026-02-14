@@ -2,7 +2,7 @@
 	import { cn } from '$lib/utils';
 	import { setDateStripContext } from './ctx';
 	import { Button } from '$lib/components/ui/button';
-	import { ChevronLeft, ChevronRight } from 'lucide-svelte';
+	import { ChevronLeft, ChevronRight } from '@lucide/svelte';
 	import type { Snippet } from 'svelte';
 	import { type DateValue, getLocalTimeZone, today, startOfWeek } from '@internationalized/date';
 

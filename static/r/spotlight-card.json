@@ -14,7 +14,7 @@
 			"target": "spotlight-card/spotlight-card.svelte"
 		},
 		{
-			"content": "import SpotlightCard from \"./spotlight-card.svelte\";\r\nexport { SpotlightCard };",
+			"content": "import SpotlightCard from \"./spotlight-card.svelte\";\nexport { SpotlightCard };",
 			"type": "registry:ui",
 			"target": "spotlight-card/index.ts"
 		}

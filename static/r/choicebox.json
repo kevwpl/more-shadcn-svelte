@@ -24,12 +24,12 @@
 			"target": "choicebox/choicebox-indicator.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\r\n    import { cn } from \"$UTILS$\";\r\n    import type { Snippet } from \"svelte\";\r\n    let { class: className, children }: { class?: string, children: Snippet } = $props();\r\n</script>\r\n<h3 class={cn(\"font-semibold leading-none tracking-tight\", className)}>\r\n    {@render children()}\r\n</h3>",
+			"content": "<script lang=\"ts\">\n    import { cn } from \"$UTILS$\";\n    import type { Snippet } from \"svelte\";\n    let { class: className, children }: { class?: string, children: Snippet } = $props();\n</script>\n<h3 class={cn(\"font-semibold leading-none tracking-tight\", className)}>\n    {@render children()}\n</h3>",
 			"type": "registry:ui",
 			"target": "choicebox/choicebox-title.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\r\n    import { cn } from \"$UTILS$\";\r\n    import type { Snippet } from \"svelte\";\r\n    let { class: className, children }: { class?: string, children: Snippet } = $props();\r\n</script>\r\n<p class={cn(\"text-sm text-muted-foreground leading-normal\", className)}>\r\n    {@render children()}\r\n</p>",
+			"content": "<script lang=\"ts\">\n    import { cn } from \"$UTILS$\";\n    import type { Snippet } from \"svelte\";\n    let { class: className, children }: { class?: string, children: Snippet } = $props();\n</script>\n<p class={cn(\"text-sm text-muted-foreground leading-normal\", className)}>\n    {@render children()}\n</p>",
 			"type": "registry:ui",
 			"target": "choicebox/choicebox-description.svelte"
 		},
@@ -39,7 +39,7 @@
 			"target": "choicebox/ctx.ts"
 		},
 		{
-			"content": "import Root from './choicebox.svelte';\r\nimport Item from './choicebox-item.svelte';\r\nimport Indicator from './choicebox-indicator.svelte';\r\nimport Title from './choicebox-title.svelte';\r\nimport Description from './choicebox-description.svelte';\r\n\r\nexport {\r\n    Root,\r\n    Item,\r\n    Indicator,\r\n    Title,\r\n    Description\r\n};",
+			"content": "import Root from './choicebox.svelte';\nimport Item from './choicebox-item.svelte';\nimport Indicator from './choicebox-indicator.svelte';\nimport Title from './choicebox-title.svelte';\nimport Description from './choicebox-description.svelte';\n\nexport {\n    Root,\n    Item,\n    Indicator,\n    Title,\n    Description\n};",
 			"type": "registry:ui",
 			"target": "choicebox/index.ts"
 		}

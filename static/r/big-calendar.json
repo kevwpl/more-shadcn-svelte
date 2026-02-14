@@ -5,7 +5,10 @@
 	"type": "registry:ui",
 	"description": "A full-sized, interactive calendar with month view and event items.",
 	"dependencies": [
-		"lucide-svelte@^0.554.0"
+		"@lucide/svelte@^0.554.0"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
 	],
 	"registryDependencies": [
 		"button",
@@ -19,7 +22,7 @@
 			"target": "big-calendar/big-calendar.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { Button } from '$lib/components/ui/button';\n\timport { ChevronLeft, ChevronRight, Calendar as CalIcon } from 'lucide-svelte';\n\timport { getCalendarContext } from './ctx';\n\timport type { Snippet } from 'svelte';\n\n\tlet {\n\t\tclass: className,\n\t\tchildren\n\t}: {\n\t\tclass?: string;\n\t\tchildren?: Snippet<\n\t\t\t[\n\t\t\t\t{\n\t\t\t\t\tnext: () => void;\n\t\t\t\t\tprev: () => void;\n\t\t\t\t\ttoday: () => void;\n\t\t\t\t\tcurrentDate: Date;\n\t\t\t\t}\n\t\t\t]\n\t\t>;\n\t} = $props();\n\n\tconst ctx = getCalendarContext();\n\n\tlet label = $derived(\n\t\tctx.currentDate().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })\n\t);\n</script>\n\n<div\n\tclass={cn('flex items-center justify-between px-6 py-4 border-b bg-card min-h-[72px]', className)}\n>\n\t{#if children}\n\t\t{@render children({\n\t\t\tnext: ctx.next,\n\t\t\tprev: ctx.prev,\n\t\t\ttoday: ctx.today,\n\t\t\tcurrentDate: ctx.currentDate()\n\t\t})}\n\t{:else}\n\t\t<div class=\"flex items-center gap-4\">\n\t\t\t<div class=\"p-2 bg-primary/10 rounded-md hidden sm:block\">\n\t\t\t\t<CalIcon class=\"h-5 w-5 text-primary\" />\n\t\t\t</div>\n\t\t\t<h2 class=\"text-xl font-bold tracking-tight\">{label}</h2>\n\t\t</div>\n\t\t<div class=\"flex items-center gap-1\">\n\t\t\t<Button variant=\"outline\" size=\"icon\" class=\"h-8 w-8\" onclick={ctx.prev}\n\t\t\t\t><ChevronLeft class=\"h-4 w-4\" /></Button\n\t\t\t>\n\t\t\t<Button variant=\"outline\" class=\"h-8 px-4 text-xs font-medium\" onclick={ctx.today}\n\t\t\t\t>Today</Button\n\t\t\t>\n\t\t\t<Button variant=\"outline\" size=\"icon\" class=\"h-8 w-8\" onclick={ctx.next}\n\t\t\t\t><ChevronRight class=\"h-4 w-4\" /></Button\n\t\t\t>\n\t\t</div>\n\t{/if}\n</div>\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { Button } from '$lib/components/ui/button';\n\timport { ChevronLeft, ChevronRight, Calendar as CalIcon } from '@lucide/svelte';\n\timport { getCalendarContext } from './ctx';\n\timport type { Snippet } from 'svelte';\n\n\tlet {\n\t\tclass: className,\n\t\tchildren\n\t}: {\n\t\tclass?: string;\n\t\tchildren?: Snippet<\n\t\t\t[\n\t\t\t\t{\n\t\t\t\t\tnext: () => void;\n\t\t\t\t\tprev: () => void;\n\t\t\t\t\ttoday: () => void;\n\t\t\t\t\tcurrentDate: Date;\n\t\t\t\t}\n\t\t\t]\n\t\t>;\n\t} = $props();\n\n\tconst ctx = getCalendarContext();\n\n\tlet label = $derived(\n\t\tctx.currentDate().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })\n\t);\n</script>\n\n<div\n\tclass={cn('flex items-center justify-between px-6 py-4 border-b bg-card min-h-[72px]', className)}\n>\n\t{#if children}\n\t\t{@render children({\n\t\t\tnext: ctx.next,\n\t\t\tprev: ctx.prev,\n\t\t\ttoday: ctx.today,\n\t\t\tcurrentDate: ctx.currentDate()\n\t\t})}\n\t{:else}\n\t\t<div class=\"flex items-center gap-4\">\n\t\t\t<div class=\"p-2 bg-primary/10 rounded-md hidden sm:block\">\n\t\t\t\t<CalIcon class=\"h-5 w-5 text-primary\" />\n\t\t\t</div>\n\t\t\t<h2 class=\"text-xl font-bold tracking-tight\">{label}</h2>\n\t\t</div>\n\t\t<div class=\"flex items-center gap-1\">\n\t\t\t<Button variant=\"outline\" size=\"icon\" class=\"h-8 w-8\" onclick={ctx.prev}\n\t\t\t\t><ChevronLeft class=\"h-4 w-4\" /></Button\n\t\t\t>\n\t\t\t<Button variant=\"outline\" class=\"h-8 px-4 text-xs font-medium\" onclick={ctx.today}\n\t\t\t\t>Today</Button\n\t\t\t>\n\t\t\t<Button variant=\"outline\" size=\"icon\" class=\"h-8 w-8\" onclick={ctx.next}\n\t\t\t\t><ChevronRight class=\"h-4 w-4\" /></Button\n\t\t\t>\n\t\t</div>\n\t{/if}\n</div>\n",
 			"type": "registry:ui",
 			"target": "big-calendar/big-calendar-header.svelte"
 		},

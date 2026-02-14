@@ -2,7 +2,7 @@
 	import * as Autocomplete from '$lib/components/ui/autocomplete';
 	import * as DocPage from '$lib/components/feature/doc-page';
 	import { Avatar, AvatarFallback } from '$lib/components/ui/avatar';
-	import { Check } from 'lucide-svelte';
+	import { Check } from '@lucide/svelte';
 
 	// --- Mock Data ---
 	type User = { id: string; name: string; email: string; role: string };

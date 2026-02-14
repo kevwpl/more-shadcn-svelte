@@ -2,7 +2,7 @@
 	import { cn } from '$lib/utils';
 	import * as Popover from '$lib/components/ui/popover';
 	import { buttonVariants } from '$lib/components/ui/button';
-	import { ChevronDown } from 'lucide-svelte';
+	import { ChevronDown } from '@lucide/svelte';
 	import { getDynamicSelectContext } from './ctx';
 	import type { Snippet } from 'svelte';
 

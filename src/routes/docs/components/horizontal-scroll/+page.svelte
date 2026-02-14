@@ -3,7 +3,7 @@
 	import * as Chip from '$lib/components/ui/chip';
 	import { HorizontalScroll } from '$lib/components/ui/horizontal-scroll';
 	import { Badge } from '$lib/components/ui/badge';
-	import { Check, Image, Music, Plus } from 'lucide-svelte';
+	import { Check, Image, Music, Plus } from '@lucide/svelte';
 
 	let filters = $state<string[]>(['Design']);
 

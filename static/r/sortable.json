@@ -5,7 +5,10 @@
 	"type": "registry:ui",
 	"description": "A sortable list for vertical, horizontal, and grid layouts.",
 	"dependencies": [
-		"lucide-svelte@^0.554.0"
+		"@lucide/svelte@^0.554.0"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
 	],
 	"files": [
 		{
@@ -19,7 +22,7 @@
 			"target": "sortable/sortable-item.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { GripVertical } from 'lucide-svelte';\n\timport type { Snippet } from 'svelte';\n\n\tlet { class: className, children }: { class?: string; children?: Snippet } = $props();\n\n\tfunction setDraggable(e: MouseEvent, state: boolean) {\n\t\tconst target = e.currentTarget as HTMLElement;\n\t\tconst item =\n\t\t\ttarget.closest('div[draggable=\"false\"]') || target.closest('div[draggable=\"true\"]');\n\t\tif (item instanceof HTMLElement) {\n\t\t\titem.draggable = state;\n\t\t}\n\t}\n</script>\n\n<div\n\tclass={cn('cursor-grab active:cursor-grabbing p-1 touch-none', className)}\n\tonmousedown={(e) => setDraggable(e, true)}\n\tonmouseup={(e) => setDraggable(e, false)}\n\tonmouseleave={(e) => setDraggable(e, false)}\n>\n\t{#if children}\n\t\t{@render children()}\n\t{:else}\n\t\t<GripVertical class=\"size-4 opacity-50\" />\n\t{/if}\n</div>\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { GripVertical } from '@lucide/svelte';\n\timport type { Snippet } from 'svelte';\n\n\tlet { class: className, children }: { class?: string; children?: Snippet } = $props();\n\n\tfunction setDraggable(e: MouseEvent, state: boolean) {\n\t\tconst target = e.currentTarget as HTMLElement;\n\t\tconst item =\n\t\t\ttarget.closest('div[draggable=\"false\"]') || target.closest('div[draggable=\"true\"]');\n\t\tif (item instanceof HTMLElement) {\n\t\t\titem.draggable = state;\n\t\t}\n\t}\n</script>\n\n<div\n\tclass={cn('cursor-grab active:cursor-grabbing p-1 touch-none', className)}\n\tonmousedown={(e) => setDraggable(e, true)}\n\tonmouseup={(e) => setDraggable(e, false)}\n\tonmouseleave={(e) => setDraggable(e, false)}\n>\n\t{#if children}\n\t\t{@render children()}\n\t{:else}\n\t\t<GripVertical class=\"size-4 opacity-50\" />\n\t{/if}\n</div>\n",
 			"type": "registry:ui",
 			"target": "sortable/sortable-handle.svelte"
 		},
