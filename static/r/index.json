@@ -142,6 +142,16 @@
 		"relativeUrl": "event-card.json"
 	},
 	{
+		"name": "geocoder",
+		"title": "Geocoder",
+		"type": "registry:ui",
+		"description": "A geocoder component that provides search and autocomplete functionality for location-based queries. It can be used to find addresses, places, or points of interest based on user input.",
+		"registryDependencies": [
+			"input"
+		],
+		"relativeUrl": "geocoder.json"
+	},
+	{
 		"name": "hold-button",
 		"title": "Hold Button",
 		"type": "registry:ui",
