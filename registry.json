@@ -1,841 +1,850 @@
 {
-  "$schema": "https://shadcn-svelte.com/schema/registry.json",
-  "name": "more-shadcn-svelte",
-  "homepage": "https://your-site.com",
-  "items": [
-    {
-      "name": "audio",
-      "type": "registry:ui",
-      "title": "Audio",
-      "description": "A modern audio player with progress scrubbing and volume controls.",
-      "registryDependencies": ["button", "slider", "hover-card"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/audio/audio.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/audio/audio-play-button.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/audio/audio-slider.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/audio/audio-time.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/audio/audio-volume.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/audio/ctx.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/audio/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "audio-wave",
-      "type": "registry:ui",
-      "title": "Audio Wave",
-      "description": "An audio visualization component",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/audio-wave/audio-wave.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/audio-wave/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "autocomplete",
-      "type": "registry:ui",
-      "title": "Autocomplete",
-      "description": "An input component with autocomplete suggestions.",
-      "registryDependencies": ["input"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/autocomplete/autocomplete.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/autocomplete/autocomplete-highlight.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/autocomplete/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "big-calendar",
-      "type": "registry:ui",
-      "title": "Big Calendar",
-      "description": "A full-sized, interactive calendar with month view and event items.",
-      "registryDependencies": ["button", "input", "label"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/big-calendar/big-calendar.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/big-calendar/big-calendar-header.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/big-calendar/big-calendar-grid.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/big-calendar/big-calendar-item.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/big-calendar/ctx.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/big-calendar/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "bottom-nav",
-      "type": "registry:ui",
-      "title": "Bottom Navigation",
-      "description": "A mobile-first bottom navigation bar.",
-      "registryDependencies": ["button"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/bottom-nav/bottom-nav.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/bottom-nav/bottom-nav-item.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/bottom-nav/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "chip",
-      "type": "registry:ui",
-      "title": "Chip",
-      "description": "Compact element that represents an input, attribute, or action.",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/chip/chip.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/chip/chip-group.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/chip/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "choicebox",
-      "type": "registry:ui",
-      "title": "Choicebox",
-      "description": "A visual radio group for selecting complex options.",
-      "registryDependencies": ["label"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/choicebox/choicebox.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/choicebox/choicebox-item.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/choicebox/choicebox-indicator.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/choicebox/choicebox-title.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/choicebox/choicebox-description.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/choicebox/ctx.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/choicebox/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "color-picker",
-      "type": "registry:ui",
-      "title": "Color Picker",
-      "description": "A mobile-first bottom navigation bar.",
-      "registryDependencies": [
-        "button",
-        "button-group",
-        "command",
-        "popover",
-        "input"
-      ],
-      "files": [
-        {
-          "path": "src/lib/components/ui/color-picker/color-picker.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/color-picker/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "compare-slider",
-      "type": "registry:ui",
-      "title": "Compare Slider",
-      "description": "A slider to compare two overlapping elements, usually images.",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/compare-slider/compare-slider.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/compare-slider/compare-item.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/compare-slider/compare-handle.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/compare-slider/ctx.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/compare-slider/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "cursor",
-      "type": "registry:ui",
-      "title": "Cursor",
-      "description": "A customizable cursor component.",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/cursor/cursor.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/cursor/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "date-strip",
-      "type": "registry:ui",
-      "title": "Date Strip",
-      "description": "A horizontal strip of dates with optional navigation.",
-      "registryDependencies": ["button"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/date-strip/date-strip.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/date-strip/date-strip-item.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/date-strip/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/date-strip/ctx.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "dock",
-      "type": "registry:ui",
-      "title": "Dock",
-      "description": "A macOS-style dock with magnification interaction.",
-      "registryDependencies": ["svelte/motion"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/dock/dock.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/dock/dock-icon.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/dock/dock-separator.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/dock/ctx.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/dock/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "dynamic-select",
-      "type": "registry:ui",
-      "title": "Dynamic Select",
-      "description": "A combobox-style select that allows users to pick from predefined options or enter a custom value.",
-      "registryDependencies": ["button", "command", "popover"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/dynamic-select/dynamic-select.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/dynamic-select/dynamic-select-trigger.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/dynamic-select/dynamic-select-content.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/dynamic-select/dynamic-select-item.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/dynamic-select/ctx.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/dynamic-select/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "event-card",
-      "type": "registry:ui",
-      "title": "Event Card",
-      "description": "A styled card for agenda items with a dynamic low-opacity background and floating indicator.",
-      "registryDependencies": ["button"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/event-card/event-card.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/event-card/event-title.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/event-card/event-time.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/event-card/event-location.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/event-card/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "hold-button",
-      "type": "registry:ui",
-      "title": "Hold Button",
-      "description": "A button that triggers an action only after being held for a specified duration.",
-      "registryDependencies": ["button"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/hold-button/hold-button.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/hold-button/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "horizontal-scroll",
-      "type": "registry:ui",
-      "title": "Horizontal Scroll",
-      "description": "Converts vertical mouse wheel scrolling into horizontal scrolling.",
-      "registryDependencies": [
-        "button",
-        "button-group",
-        "command",
-        "popover",
-        "input"
-      ],
-      "files": [
-        {
-          "path": "src/lib/components/ui/horizontal-scroll/horizontal-scroll.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/horizontal-scroll/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/horizontal-scroll/ctx.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "image-zoom",
-      "type": "registry:ui",
-      "title": "Image Zoom",
-      "description": "A component to zoom into images in an overlay.",
-      "registryDependencies": ["button"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/image-zoom/image-zoom.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/image-zoom/image-zoom-trigger.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/image-zoom/ctx.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/image-zoom/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "knob",
-      "type": "registry:ui",
-      "title": "Knob",
-      "description": "A theme-aware rotating dial for precise numeric adjustment.",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/knob/knob.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/knob/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "markdown",
-      "type": "registry:ui",
-      "title": "Markdown",
-      "description": "Render user-generated content, blog posts, or comments with optimized typography and safety.",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/markdown/markdown.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/markdown/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "number-ticker",
-      "type": "registry:ui",
-      "title": "Number Ticker",
-      "description": "An animated number counter using spring physics.",
-      "dependencies": ["svelte/motion"],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/number-ticker/number-ticker.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/number-ticker/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "phone-input",
-      "type": "registry:ui",
-      "title": "Phone Input",
-      "description": "International phone input with validation and formatting.",
-      "dependencies": ["@kevwpl/svelte-o-phone", "libphonenumber-js"],
-      "registryDependencies": ["button", "input", "popover", "command"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/phone-input/phone-input.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/phone-input/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "qr-code",
-      "type": "registry:ui",
-      "title": "QR Code",
-      "description": "A vector-based QR generator with support for colors and logos.",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/qr-code/qr-code.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/qr-code/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "scrubbable",
-      "type": "registry:ui",
-      "title": "Scrubbable Input",
-      "description": "A drag-to-adjust numeric input, similar to Blender or Unity.",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/scrubbable/scrubbable.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/scrubbable/scrubbable-label.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/scrubbable/scrubbable-value.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/scrubbable/ctx.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/scrubbable/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "shiny-button",
-      "type": "registry:ui",
-      "title": "Shiny Button",
-      "description": "A button with a shiny reflection effect.",
-      "registryDependencies": ["button"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/shiny-button/shiny-button.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/shiny-button/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "sortable",
-      "type": "registry:ui",
-      "title": "Sortable",
-      "description": "A sortable list for vertical, horizontal, and grid layouts.",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/sortable/sortable.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/sortable/sortable-item.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/sortable/sortable-handle.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/sortable/ctx.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/sortable/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "spotlight-card",
-      "type": "registry:ui",
-      "title": "Spotlight Card",
-      "description": "A card that reveals a radial gradient background on hover.",
-      "registryDependencies": ["card"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/spotlight-card/spotlight-card.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/spotlight-card/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "status-dot",
-      "type": "registry:ui",
-      "title": "Status Dot",
-      "description": "A simple indicator for state, presence, or activity.",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/status-dot/status-dot.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/status-dot/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "stepper",
-      "type": "registry:ui",
-      "title": "Stepper",
-      "description": "A visual indicator for multi-step processes.",
-      "registryDependencies": ["button"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/stepper/stepper.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/stepper/stepper-item.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/stepper/stepper-trigger.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/stepper/stepper-indicator.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/stepper/stepper-separator.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/stepper/stepper-title.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/stepper/stepper-description.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/stepper/ctx.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/stepper/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "tag-input",
-      "type": "registry:ui",
-      "title": "Tag Input",
-      "description": "An input field for entering multiple values, displayed as chips.",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/tag-input/tag-input.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/tag-input/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "timeline",
-      "type": "registry:ui",
-      "title": "Timeline",
-      "description": "A vertical list of events or milestones.",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/timeline/timeline.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/timeline/timeline-item.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/timeline/timeline-separator.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/timeline/timeline-content.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/timeline/timeline-title.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/timeline/timeline-date.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/timeline/timeline-description.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/timeline/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "verify-human",
-      "type": "registry:ui",
-      "title": "Hold Button",
-      "description": "A self-contained heuristic bot protection component. It uses honeypots, velocity checks, and event trust analysis.",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/verify-human/verify-human.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/verify-human/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "video",
-      "type": "registry:ui",
-      "title": "Video",
-      "description": "A responsive video player with controls and progress bar.",
-      "registryDependencies": ["button"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/video/video.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/video/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "walkthrough",
-      "type": "registry:ui",
-      "title": "Walkthrough",
-      "description": "A guided tour component with spotlight and popover.",
-      "dependencies": ["@floating-ui/dom"],
-      "registryDependencies": ["button"],
-      "files": [
-        {
-          "path": "src/lib/components/ui/walkthrough/walkthrough.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/walkthrough/walkthrough-content.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/walkthrough/walkthrough-spotlight.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/walkthrough/ctx.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/walkthrough/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "wheel-picker",
-      "type": "registry:ui",
-      "title": "Wheel Picker",
-      "description": "An iOS-style scrollable wheel selector.",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/lib/components/ui/wheel-picker/wheel-picker.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/wheel-picker/wheel-picker-group.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/wheel-picker/wheel-picker-item.svelte",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/wheel-picker/ctx.svelte.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/components/ui/wheel-picker/index.ts",
-          "type": "registry:ui"
-        }
-      ]
-    }
-  ]
+	"$schema": "https://shadcn-svelte.com/schema/registry.json",
+	"name": "more-shadcn-svelte",
+	"homepage": "https://your-site.com",
+	"items": [
+		{
+			"name": "audio",
+			"type": "registry:ui",
+			"title": "Audio",
+			"description": "A modern audio player with progress scrubbing and volume controls.",
+			"registryDependencies": ["button", "slider", "hover-card"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/audio/audio.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/audio/audio-play-button.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/audio/audio-slider.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/audio/audio-time.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/audio/audio-volume.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/audio/ctx.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/audio/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "audio-wave",
+			"type": "registry:ui",
+			"title": "Audio Wave",
+			"description": "An audio visualization component",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/audio-wave/audio-wave.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/audio-wave/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "autocomplete",
+			"type": "registry:ui",
+			"title": "Autocomplete",
+			"description": "An input component with autocomplete suggestions.",
+			"registryDependencies": ["input"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/autocomplete/autocomplete.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/autocomplete/autocomplete-highlight.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/autocomplete/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "big-calendar",
+			"type": "registry:ui",
+			"title": "Big Calendar",
+			"description": "A full-sized, interactive calendar with month view and event items.",
+			"registryDependencies": ["button", "input", "label"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/big-calendar/big-calendar.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/big-calendar/big-calendar-header.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/big-calendar/big-calendar-grid.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/big-calendar/big-calendar-item.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/big-calendar/ctx.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/big-calendar/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "bottom-nav",
+			"type": "registry:ui",
+			"title": "Bottom Navigation",
+			"description": "A mobile-first bottom navigation bar.",
+			"registryDependencies": ["button"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/bottom-nav/bottom-nav.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/bottom-nav/bottom-nav-item.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/bottom-nav/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "chip",
+			"type": "registry:ui",
+			"title": "Chip",
+			"description": "Compact element that represents an input, attribute, or action.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/chip/chip.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/chip/chip-group.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/chip/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "choicebox",
+			"type": "registry:ui",
+			"title": "Choicebox",
+			"description": "A visual radio group for selecting complex options.",
+			"registryDependencies": ["label"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/choicebox/choicebox.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/choicebox/choicebox-item.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/choicebox/choicebox-indicator.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/choicebox/choicebox-title.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/choicebox/choicebox-description.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/choicebox/ctx.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/choicebox/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "color-picker",
+			"type": "registry:ui",
+			"title": "Color Picker",
+			"description": "A mobile-first bottom navigation bar.",
+			"registryDependencies": ["button", "button-group", "command", "popover", "input"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/color-picker/color-picker.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/color-picker/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "compare-slider",
+			"type": "registry:ui",
+			"title": "Compare Slider",
+			"description": "A slider to compare two overlapping elements, usually images.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/compare-slider/compare-slider.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/compare-slider/compare-item.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/compare-slider/compare-handle.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/compare-slider/ctx.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/compare-slider/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "cursor",
+			"type": "registry:ui",
+			"title": "Cursor",
+			"description": "A customizable cursor component.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/cursor/cursor.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/cursor/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "date-strip",
+			"type": "registry:ui",
+			"title": "Date Strip",
+			"description": "A horizontal strip of dates with optional navigation.",
+			"registryDependencies": ["button"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/date-strip/date-strip.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/date-strip/date-strip-item.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/date-strip/index.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/date-strip/ctx.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "dock",
+			"type": "registry:ui",
+			"title": "Dock",
+			"description": "A macOS-style dock with magnification interaction.",
+			"registryDependencies": ["svelte/motion"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/dock/dock.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/dock/dock-icon.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/dock/dock-separator.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/dock/ctx.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/dock/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "dynamic-select",
+			"type": "registry:ui",
+			"title": "Dynamic Select",
+			"description": "A combobox-style select that allows users to pick from predefined options or enter a custom value.",
+			"registryDependencies": ["button", "command", "popover"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/dynamic-select/dynamic-select.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/dynamic-select/dynamic-select-trigger.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/dynamic-select/dynamic-select-content.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/dynamic-select/dynamic-select-item.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/dynamic-select/ctx.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/dynamic-select/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "event-card",
+			"type": "registry:ui",
+			"title": "Event Card",
+			"description": "A styled card for agenda items with a dynamic low-opacity background and floating indicator.",
+			"registryDependencies": ["button"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/event-card/event-card.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/event-card/event-title.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/event-card/event-time.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/event-card/event-location.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/event-card/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "geocoder",
+			"type": "registry:ui",
+			"title": "Geocoder",
+			"description": "A geocoder component that provides search and autocomplete functionality for location-based queries. It can be used to find addresses, places, or points of interest based on user input.",
+			"registryDependencies": ["input"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/geocoder/geocoder.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/geocoder/geocoder-highlight.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/geocoder/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "hold-button",
+			"type": "registry:ui",
+			"title": "Hold Button",
+			"description": "A button that triggers an action only after being held for a specified duration.",
+			"registryDependencies": ["button"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/hold-button/hold-button.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/hold-button/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "horizontal-scroll",
+			"type": "registry:ui",
+			"title": "Horizontal Scroll",
+			"description": "Converts vertical mouse wheel scrolling into horizontal scrolling.",
+			"registryDependencies": ["button", "button-group", "command", "popover", "input"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/horizontal-scroll/horizontal-scroll.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/horizontal-scroll/index.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/horizontal-scroll/ctx.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "image-zoom",
+			"type": "registry:ui",
+			"title": "Image Zoom",
+			"description": "A component to zoom into images in an overlay.",
+			"registryDependencies": ["button"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/image-zoom/image-zoom.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/image-zoom/image-zoom-trigger.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/image-zoom/ctx.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/image-zoom/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "knob",
+			"type": "registry:ui",
+			"title": "Knob",
+			"description": "A theme-aware rotating dial for precise numeric adjustment.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/knob/knob.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/knob/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "markdown",
+			"type": "registry:ui",
+			"title": "Markdown",
+			"description": "Render user-generated content, blog posts, or comments with optimized typography and safety.",
+			"dependencies": [],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/markdown/markdown.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/markdown/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "number-ticker",
+			"type": "registry:ui",
+			"title": "Number Ticker",
+			"description": "An animated number counter using spring physics.",
+			"dependencies": ["svelte/motion"],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/number-ticker/number-ticker.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/number-ticker/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "phone-input",
+			"type": "registry:ui",
+			"title": "Phone Input",
+			"description": "International phone input with validation and formatting.",
+			"dependencies": ["@kevwpl/svelte-o-phone", "libphonenumber-js"],
+			"registryDependencies": ["button", "input", "popover", "command"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/phone-input/phone-input.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/phone-input/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "qr-code",
+			"type": "registry:ui",
+			"title": "QR Code",
+			"description": "A vector-based QR generator with support for colors and logos.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/qr-code/qr-code.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/qr-code/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "scrubbable",
+			"type": "registry:ui",
+			"title": "Scrubbable Input",
+			"description": "A drag-to-adjust numeric input, similar to Blender or Unity.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/scrubbable/scrubbable.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/scrubbable/scrubbable-label.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/scrubbable/scrubbable-value.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/scrubbable/ctx.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/scrubbable/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "shiny-button",
+			"type": "registry:ui",
+			"title": "Shiny Button",
+			"description": "A button with a shiny reflection effect.",
+			"registryDependencies": ["button"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/shiny-button/shiny-button.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/shiny-button/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "sortable",
+			"type": "registry:ui",
+			"title": "Sortable",
+			"description": "A sortable list for vertical, horizontal, and grid layouts.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/sortable/sortable.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/sortable/sortable-item.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/sortable/sortable-handle.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/sortable/ctx.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/sortable/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "spotlight-card",
+			"type": "registry:ui",
+			"title": "Spotlight Card",
+			"description": "A card that reveals a radial gradient background on hover.",
+			"registryDependencies": ["card"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/spotlight-card/spotlight-card.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/spotlight-card/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "status-dot",
+			"type": "registry:ui",
+			"title": "Status Dot",
+			"description": "A simple indicator for state, presence, or activity.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/status-dot/status-dot.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/status-dot/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "stepper",
+			"type": "registry:ui",
+			"title": "Stepper",
+			"description": "A visual indicator for multi-step processes.",
+			"registryDependencies": ["button"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/stepper/stepper.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/stepper/stepper-item.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/stepper/stepper-trigger.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/stepper/stepper-indicator.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/stepper/stepper-separator.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/stepper/stepper-title.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/stepper/stepper-description.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/stepper/ctx.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/stepper/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "tag-input",
+			"type": "registry:ui",
+			"title": "Tag Input",
+			"description": "An input field for entering multiple values, displayed as chips.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/tag-input/tag-input.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/tag-input/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "timeline",
+			"type": "registry:ui",
+			"title": "Timeline",
+			"description": "A vertical list of events or milestones.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/timeline/timeline.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/timeline/timeline-item.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/timeline/timeline-separator.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/timeline/timeline-content.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/timeline/timeline-title.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/timeline/timeline-date.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/timeline/timeline-description.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/timeline/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "verify-human",
+			"type": "registry:ui",
+			"title": "Hold Button",
+			"description": "A self-contained heuristic bot protection component. It uses honeypots, velocity checks, and event trust analysis.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/verify-human/verify-human.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/verify-human/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "video",
+			"type": "registry:ui",
+			"title": "Video",
+			"description": "A responsive video player with controls and progress bar.",
+			"registryDependencies": ["button"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/video/video.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/video/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "walkthrough",
+			"type": "registry:ui",
+			"title": "Walkthrough",
+			"description": "A guided tour component with spotlight and popover.",
+			"dependencies": ["@floating-ui/dom"],
+			"registryDependencies": ["button"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/walkthrough/walkthrough.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/walkthrough/walkthrough-content.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/walkthrough/walkthrough-spotlight.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/walkthrough/ctx.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/walkthrough/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "wheel-picker",
+			"type": "registry:ui",
+			"title": "Wheel Picker",
+			"description": "An iOS-style scrollable wheel selector.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/wheel-picker/wheel-picker.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/wheel-picker/wheel-picker-group.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/wheel-picker/wheel-picker-item.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/wheel-picker/ctx.svelte.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/wheel-picker/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		}
+	]
 }

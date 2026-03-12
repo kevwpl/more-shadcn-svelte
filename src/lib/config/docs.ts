@@ -35,7 +35,8 @@ import {
 	Package,
 	Import,
 	ClockFading,
-	Tickets
+	Tickets,
+	MapPin
 } from '@lucide/svelte';
 
 export const COMPONENT_URL = '/docs/components';
@@ -87,6 +88,12 @@ export const docsConfig = [
 				href: `${COMPONENT_URL}/dynamic-select`,
 				label: 'Dynamic Select',
 				icon: SquareChevronDown,
+				new: true
+			},
+			{
+				href: `${COMPONENT_URL}/geocoder`,
+				label: 'Geocoder',
+				icon: MapPin,
 				new: true
 			},
 			{
