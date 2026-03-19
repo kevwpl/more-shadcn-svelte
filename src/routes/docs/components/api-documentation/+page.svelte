@@ -65,9 +65,9 @@
 				<ApiDocumentation api={buttonAPI} />
 			</DocPage.Preview>
 		</DocPage.Example>
-		<!-- <Separator class="my-6" /> -->
+		<DocPage.Heading>Usage</DocPage.Heading>
 		<DocPage.Code
-			class="rounded"
+			class="rounded-t overflow-auto rounded-b-none"
 			lang="typescript"
 			code={`import { defineAPI } from '$lib/components/ui/api-documentation';
 const buttonAPI = defineAPI('Button', 'Button API')
@@ -115,6 +115,8 @@ const buttonAPI = defineAPI('Button', 'Button API')
     )
     .build();`}
 		/>
+		<Separator class="border-b border-background" />
+		<DocPage.Code lang="svelte" code={`<ApiDocumentation api={buttonAPI} />`} />
 
 		<DocPage.Heading>Installation</DocPage.Heading>
 		{@const componentName = 'api-documentation'}
