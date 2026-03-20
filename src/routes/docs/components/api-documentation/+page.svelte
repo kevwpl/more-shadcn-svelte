@@ -4,7 +4,7 @@
 	import { defineAPI } from '$lib/components/ui/api-documentation';
 	import Separator from '$lib/components/ui/separator/separator.svelte';
 
-	const buttonAPI = defineAPI('Button', 'Button API')
+	const buttonAPI = defineAPI('API Reference', '')
 		.component('Button', 'Main button component', (component) =>
 			component
 				.prop('variant', '"primary" | "secondary"', {
@@ -61,7 +61,7 @@
 	<DocPage.Content>
 		<DocPage.Example>
 			<Separator class="my-6" />
-			<DocPage.Preview class="relative h-full w-full overflow-x-scroll bg-muted/30">
+			<DocPage.Preview class="relative p-0 h-full w-full overflow-x-scroll border-0">
 				<ApiDocumentation api={buttonAPI} />
 			</DocPage.Preview>
 		</DocPage.Example>
