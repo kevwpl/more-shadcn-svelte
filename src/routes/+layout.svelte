@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import { ModeWatcher } from 'mode-watcher';
 	import { docsConfig } from '$lib/config/docs';
+	import * as Tooltip from '$lib/components/ui/tooltip';
 
 	let { children } = $props();
 
@@ -30,4 +31,6 @@
 
 <ModeWatcher />
 
-{@render children()}
+<Tooltip.Provider>
+	{@render children()}
+</Tooltip.Provider>

@@ -59,15 +59,12 @@
 	</DocPage.Header>
 
 	<DocPage.Content>
-		<DocPage.Example>
-			<Separator class="my-6" />
-			<DocPage.Preview class="relative p-0 h-full w-full overflow-x-scroll border-0">
-				<ApiDocumentation api={buttonAPI} />
-			</DocPage.Preview>
+		<DocPage.Example class="max-w-3xl">
+			<ApiDocumentation api={buttonAPI} />
 		</DocPage.Example>
 		<DocPage.Heading>Usage</DocPage.Heading>
 		<DocPage.Code
-			class="rounded-t overflow-auto rounded-b-none"
+			class="rounded-t-md overflow-auto rounded-b-none"
 			lang="typescript"
 			code={`import { defineAPI } from '$lib/components/ui/api-documentation';
 const buttonAPI = defineAPI('Button', 'Button API')
