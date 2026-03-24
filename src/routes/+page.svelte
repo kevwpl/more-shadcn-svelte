@@ -156,7 +156,7 @@
 		</div>
 
 		<div class="flex items-center gap-4">
-			<ShinyButton href="/docs" class="group">
+			<ShinyButton href="/docs/components" class="group">
 				Explore All Components
 				<ArrowRight class="ml-1 size-4 transition-all group-hover:ml-2" />
 			</ShinyButton>
