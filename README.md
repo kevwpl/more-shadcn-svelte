@@ -6,7 +6,7 @@ A collection of high-quality, copy-paste components for Svelte 5, built on top o
 This library extends the philosophy of shadcn/ui by providing more components that aren't included in the base registry. These components are designed to be copy-pasted into your project and customized to your needs. You should also check out [shadcn-svelte-extras](https://www.shadcn-svelte-extras.com/) for even more components!
 
 Explore the documentation and live previews:
-[more-shadcn.noair.fun](more-shadcn.noair.fun)
+[more-shadcn.noair.fun](https://more-shadcn.noair.fun)
 
 
 ---
