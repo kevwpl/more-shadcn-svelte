@@ -44,7 +44,8 @@ import {
 	Signal,
 	RefreshCw,
 	Frame,
-	StickyNote
+	StickyNote,
+	MapPin
 } from '@lucide/svelte';
 
 export const COMPONENT_URL = '/docs/components';
@@ -105,6 +106,12 @@ export const docsConfig = [
 				new: true
 			},
 			{
+				href: `${COMPONENT_URL}/geocoder`,
+				label: 'Geocoder',
+				icon: MapPin,
+				new: true
+			},
+			{
 				href: `${COMPONENT_URL}/hold-button`,
 				label: 'Hold Button',
 				icon: SquareArrowDown,
@@ -115,7 +122,7 @@ export const docsConfig = [
 				href: `${COMPONENT_URL}/mention-input`,
 				label: 'Mention Input',
 				icon: AtSign,
-				new: true
+				new: false
 			},
 			{
 				href: `${COMPONENT_URL}/phone-input`,
