@@ -36,7 +36,8 @@ import {
 	Import,
 	ClockFading,
 	Tickets,
-	MapPin
+	MapPin,
+	BookOpen
 } from '@lucide/svelte';
 
 export const COMPONENT_URL = '/docs/components';
@@ -199,6 +200,12 @@ export const docsConfig = [
 	{
 		title: 'Data Display',
 		links: [
+			// {
+			// 	href: `${COMPONENT_URL}/api-documentation`,
+			// 	label: 'API Documentation',
+			// 	icon: BookOpen,
+			// 	new: true
+			// },
 			{
 				href: `${COMPONENT_URL}/big-calendar`,
 				label: 'Big Calendar',

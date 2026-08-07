@@ -6,6 +6,105 @@
 	import { Label } from '$lib/components/ui/label';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Check, User, Mail, Shield, Circle, CheckCircle2 } from '@lucide/svelte';
+	import { defineAPI } from '$lib/components/ui/api-documentation';
+	import ApiDocumentation from '$lib/components/ui/api-documentation/api-documentation.svelte';
+
+	const stepperAPI = defineAPI('Stepper', 'A visual indicator for multi-step processes.')
+		.component('Root', 'Container that provides stepper state and layout', (component) =>
+			component
+				.prop('value', 'number', {
+					description: 'Currently active step index',
+					defaultValue: 0,
+					bindable: true
+				})
+				.prop('orientation', '"horizontal" | "vertical"', {
+					description: 'Layout direction of the stepper',
+					defaultValue: 'horizontal',
+					optional: true
+				})
+				.prop('class', 'string', {
+					description: 'Additional classes for the root element',
+					optional: true
+				})
+				.prop('children', 'Snippet', {
+					description: 'Stepper items to render'
+				})
+		)
+		.component('Item', 'Wraps a single step and exposes step state', (component) =>
+			component
+				.prop('step', 'number', {
+					description: 'Step index for this item'
+				})
+				.prop('class', 'string', {
+					description: 'Additional classes for the item element',
+					optional: true
+				})
+				.prop('children', 'Snippet', {
+					description: 'Content for the step item'
+				})
+		)
+		.component('Trigger', 'Interactive control that activates a step', (component) =>
+			component
+				.prop('step', 'number', {
+					description: 'Step index to activate when clicked'
+				})
+				.prop('class', 'string', {
+					description: 'Additional classes for the trigger',
+					optional: true
+				})
+				.prop('children', 'Snippet', {
+					description: 'Content rendered inside the trigger'
+				})
+				.prop('...rest', 'Record<string, any>', {
+					description: 'Additional props forwarded to the underlying Button',
+					optional: true
+				})
+		)
+		.component('Indicator', 'Visual circle showing step state', (component) =>
+			component
+				.prop('step', 'number', {
+					description: 'Step index represented by this indicator'
+				})
+				.prop('class', 'string', {
+					description: 'Additional classes for the indicator',
+					optional: true
+				})
+				.prop('children', 'Snippet', {
+					description: 'Custom content for the inactive or active indicator state',
+					optional: true
+				})
+				.prop('success', 'Snippet', {
+					description: 'Custom content shown when the step is completed',
+					optional: true
+				})
+		)
+		.component('Separator', 'Connector line between steps', (component) =>
+			component.prop('class', 'string', {
+				description: 'Additional classes for the separator',
+				optional: true
+			})
+		)
+		.component('Title', 'Step title text', (component) =>
+			component
+				.prop('class', 'string', {
+					description: 'Additional classes for the title',
+					optional: true
+				})
+				.prop('children', 'Snippet', {
+					description: 'Title content'
+				})
+		)
+		.component('Description', 'Step description text', (component) =>
+			component
+				.prop('class', 'string', {
+					description: 'Additional classes for the description',
+					optional: true
+				})
+				.prop('children', 'Snippet', {
+					description: 'Description content'
+				})
+		)
+		.build();
 
 	// --- 1. Wizard State ---
 	let currentStep = $state(0);
@@ -321,5 +420,7 @@
 </Stepper.Indicator>`}
 			/>
 		</DocPage.Example>
+
+		<ApiDocumentation api={stepperAPI} />
 	</DocPage.Content>
 </DocPage.Root>
