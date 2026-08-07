@@ -62,7 +62,7 @@
 		</DocPage.Example>
 
 		<DocPage.Heading>Installation</DocPage.Heading>
-		{@const componentName = 'audio-player'}
+		{@const componentName = 'audio'}
 		<DocPage.Text>
 			Run the following command to install the `{componentName}` components:
 		</DocPage.Text>
