@@ -293,6 +293,13 @@
 	}
 
 	function handleDragStart(e: MouseEvent | TouchEvent, fn: (e: MouseEvent | TouchEvent) => void) {
+		// Without this the drag runs a text selection across the whole document,
+		// which is very visible when the picker sits inside a popover.
+		if (!('touches' in e)) {
+			e.preventDefault();
+			(e.currentTarget as HTMLElement | null)?.focus();
+		}
+
 		isDragging = true;
 		fn(e);
 		const move = (e: MouseEvent | TouchEvent) => fn(e);
@@ -353,7 +360,7 @@
 >
 	<div
 		bind:this={sbRef}
-		class="relative h-56 w-full cursor-crosshair rounded-md shadow-sm overflow-hidden touch-none"
+		class="relative h-56 w-full cursor-crosshair rounded-md shadow-sm overflow-hidden touch-none select-none"
 		style:background-color={`hsl(${h}, 100%, 50%)`}
 		role="slider"
 		aria-label="Saturation and Brightness"
@@ -381,7 +388,7 @@
 		<div class="flex flex-1 flex-col gap-3 justify-center">
 			<div
 				bind:this={hueRef}
-				class="relative h-3 w-full cursor-pointer rounded-full shadow-sm ring-1 ring-black/5 touch-none"
+				class="relative h-3 w-full cursor-pointer rounded-full shadow-sm ring-1 ring-black/5 touch-none select-none"
 				style:background={'linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)'}
 				role="slider"
 				aria-valuenow={h}
@@ -398,7 +405,7 @@
 			{#if allowOpacity}
 				<div
 					bind:this={alphaRef}
-					class="relative h-3 w-full cursor-pointer rounded-full shadow-sm ring-1 ring-black/5 touch-none bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==')]"
+					class="relative h-3 w-full cursor-pointer rounded-full shadow-sm ring-1 ring-black/5 touch-none select-none bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==')]"
 					role="slider"
 					aria-valuenow={a}
 					tabindex="0"

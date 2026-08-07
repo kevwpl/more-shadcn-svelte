@@ -2,10 +2,60 @@
 	import * as DocPage from '$lib/components/feature/doc-page';
 	import * as Timeline from '$lib/components/ui/timeline';
 	import { Badge } from '$lib/components/ui/badge';
-	import { Rocket } from '@lucide/svelte';
+	import { Frame, Rocket } from '@lucide/svelte';
 	import { COMPONENT_URL } from '$lib/config/docs';
 
 	const updates = [
+		{
+			date: 'August 2026',
+			version: '1.1.0',
+			title: 'A canvas to build on',
+			icon: Frame,
+			description:
+				'Eight new components, including a new Canvas section: an infinite pannable, zoomable field with draggable nodes, connectors, controls and a minimap.',
+			items: [
+				{
+					label: 'Canvas',
+					slug: 'canvas',
+					desc: 'Infinite pannable, zoomable field with nodes and connectors.'
+				},
+				{
+					label: 'Sticky Note',
+					slug: 'sticky-note',
+					desc: 'Editable coloured note for boards and canvases.'
+				},
+				{
+					label: 'Emoji Picker',
+					slug: 'emoji-picker',
+					desc: 'Categories, search, skin tones and recents. No dependencies.'
+				},
+				{
+					label: 'Mention Input',
+					slug: 'mention-input',
+					desc: 'Trigger a filterable list from any character, anchored to the caret.'
+				},
+				{
+					label: 'Signature Pad',
+					slug: 'signature-pad',
+					desc: 'Pressure aware drawing canvas that exports to PNG or SVG.'
+				},
+				{
+					label: 'Banner',
+					slug: 'banner',
+					desc: 'Dismissible page-level notice that remembers being closed.'
+				},
+				{
+					label: 'Ping Indicator',
+					slug: 'ping-indicator',
+					desc: 'Rising bars showing connection quality from a live probe.'
+				},
+				{
+					label: 'Update Banner',
+					slug: 'update-banner',
+					desc: 'Reload prompt for when a new service worker is waiting.'
+				}
+			]
+		},
 		{
 			date: 'February 2026',
 			version: '1.0.0',

@@ -30,6 +30,14 @@
 		"relativeUrl": "autocomplete.json"
 	},
 	{
+		"name": "banner",
+		"title": "Banner",
+		"type": "registry:ui",
+		"description": "A dismissible page-level notice that remembers when it was closed.",
+		"registryDependencies": [],
+		"relativeUrl": "banner.json"
+	},
+	{
 		"name": "big-calendar",
 		"title": "Big Calendar",
 		"type": "registry:ui",
@@ -50,6 +58,14 @@
 			"button"
 		],
 		"relativeUrl": "bottom-nav.json"
+	},
+	{
+		"name": "canvas",
+		"title": "Canvas",
+		"type": "registry:ui",
+		"description": "An infinite pannable, zoomable field with draggable nodes and connectors.",
+		"registryDependencies": [],
+		"relativeUrl": "canvas.json"
 	},
 	{
 		"name": "chip",
@@ -132,6 +148,14 @@
 		"relativeUrl": "dynamic-select.json"
 	},
 	{
+		"name": "emoji-picker",
+		"title": "Emoji Picker",
+		"type": "registry:ui",
+		"description": "A self-contained emoji picker with categories, search, skin tones and recents.",
+		"registryDependencies": [],
+		"relativeUrl": "emoji-picker.json"
+	},
+	{
 		"name": "event-card",
 		"title": "Event Card",
 		"type": "registry:ui",
@@ -193,6 +217,14 @@
 		"relativeUrl": "markdown.json"
 	},
 	{
+		"name": "mention-input",
+		"title": "Mention Input",
+		"type": "registry:ui",
+		"description": "An input or textarea that opens a filterable list when you type a trigger character.",
+		"registryDependencies": [],
+		"relativeUrl": "mention-input.json"
+	},
+	{
 		"name": "number-ticker",
 		"title": "Number Ticker",
 		"type": "registry:ui",
@@ -221,6 +253,14 @@
 		"relativeUrl": "phone-input.json"
 	},
 	{
+		"name": "ping-indicator",
+		"title": "Ping Indicator",
+		"type": "registry:ui",
+		"description": "Four rising bars that show connection quality from a live probe.",
+		"registryDependencies": [],
+		"relativeUrl": "ping-indicator.json"
+	},
+	{
 		"name": "qr-code",
 		"title": "QR Code",
 		"type": "registry:ui",
@@ -245,6 +285,14 @@
 			"button"
 		],
 		"relativeUrl": "shiny-button.json"
+	},
+	{
+		"name": "signature-pad",
+		"title": "Signature Pad",
+		"type": "registry:ui",
+		"description": "A pressure and velocity aware drawing canvas that exports to PNG or SVG.",
+		"registryDependencies": [],
+		"relativeUrl": "signature-pad.json"
 	},
 	{
 		"name": "sortable",
@@ -283,6 +331,14 @@
 		"relativeUrl": "stepper.json"
 	},
 	{
+		"name": "sticky-note",
+		"title": "Sticky Note",
+		"type": "registry:ui",
+		"description": "An editable coloured note for boards and canvases.",
+		"registryDependencies": [],
+		"relativeUrl": "sticky-note.json"
+	},
+	{
 		"name": "tag-input",
 		"title": "Tag Input",
 		"type": "registry:ui",
@@ -297,6 +353,16 @@
 		"description": "A vertical list of events or milestones.",
 		"registryDependencies": [],
 		"relativeUrl": "timeline.json"
+	},
+	{
+		"name": "update-banner",
+		"title": "Update Banner",
+		"type": "registry:ui",
+		"description": "A reload prompt that appears when a new service worker is waiting to take over.",
+		"registryDependencies": [
+			"button"
+		],
+		"relativeUrl": "update-banner.json"
 	},
 	{
 		"name": "verify-human",

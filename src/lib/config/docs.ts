@@ -36,7 +36,15 @@ import {
 	Import,
 	ClockFading,
 	Tickets,
-	BookOpen
+	BookOpen,
+	AtSign,
+	Smile,
+	Signature,
+	Megaphone,
+	Signal,
+	RefreshCw,
+	Frame,
+	StickyNote
 } from '@lucide/svelte';
 
 export const COMPONENT_URL = '/docs/components';
@@ -88,6 +96,12 @@ export const docsConfig = [
 				href: `${COMPONENT_URL}/dynamic-select`,
 				label: 'Dynamic Select',
 				icon: SquareChevronDown,
+				new: false
+			},
+			{
+				href: `${COMPONENT_URL}/emoji-picker`,
+				label: 'Emoji Picker',
+				icon: Smile,
 				new: true
 			},
 			{
@@ -96,7 +110,13 @@ export const docsConfig = [
 				icon: SquareArrowDown,
 				new: false
 			},
-			{ href: `${COMPONENT_URL}/knob`, label: 'Knob', icon: CircleGauge, new: true },
+			{ href: `${COMPONENT_URL}/knob`, label: 'Knob', icon: CircleGauge, new: false },
+			{
+				href: `${COMPONENT_URL}/mention-input`,
+				label: 'Mention Input',
+				icon: AtSign,
+				new: true
+			},
 			{
 				href: `${COMPONENT_URL}/phone-input`,
 				label: 'Phone Input',
@@ -108,6 +128,12 @@ export const docsConfig = [
 				label: 'Scrubbable',
 				icon: MoveHorizontal,
 				new: false
+			},
+			{
+				href: `${COMPONENT_URL}/signature-pad`,
+				label: 'Signature Pad',
+				icon: Signature,
+				new: true
 			},
 			{
 				href: `${COMPONENT_URL}/tag-input`,
@@ -150,7 +176,7 @@ export const docsConfig = [
 	{
 		title: 'Visuals & Media',
 		links: [
-			{ href: `${COMPONENT_URL}/audio`, label: 'Audio', icon: Radio, new: true },
+			{ href: `${COMPONENT_URL}/audio`, label: 'Audio', icon: Radio, new: false },
 			{
 				href: `${COMPONENT_URL}/audio-wave`,
 				label: 'Audio Wave',
@@ -197,8 +223,14 @@ export const docsConfig = [
 			// 	href: `${COMPONENT_URL}/api-documentation`,
 			// 	label: 'API Documentation',
 			// 	icon: BookOpen,
-			// 	new: true
+			// 	new: false
 			// },
+			{
+				href: `${COMPONENT_URL}/banner`,
+				label: 'Banner',
+				icon: Megaphone,
+				new: true
+			},
 			{
 				href: `${COMPONENT_URL}/big-calendar`,
 				label: 'Big Calendar',
@@ -209,19 +241,25 @@ export const docsConfig = [
 				href: `${COMPONENT_URL}/event-card`,
 				label: 'Event Card',
 				icon: Tickets,
-				new: true
+				new: false
 			},
 			{
 				href: `${COMPONENT_URL}/markdown`,
 				label: 'Markdown',
 				icon: Highlighter,
-				new: true
+				new: false
 			},
 			{
 				href: `${COMPONENT_URL}/number-ticker`,
 				label: 'Number Ticker',
 				icon: ClockArrowUp,
 				new: false
+			},
+			{
+				href: `${COMPONENT_URL}/ping-indicator`,
+				label: 'Ping Indicator',
+				icon: Signal,
+				new: true
 			},
 			{ href: `${COMPONENT_URL}/qr-code`, label: 'QR Code', icon: QrCode, new: false },
 			{
@@ -230,7 +268,25 @@ export const docsConfig = [
 				icon: CircleDot,
 				new: false
 			},
-			{ href: `${COMPONENT_URL}/timeline`, label: 'Timeline', icon: History, new: false }
+			{ href: `${COMPONENT_URL}/timeline`, label: 'Timeline', icon: History, new: false },
+			{
+				href: `${COMPONENT_URL}/update-banner`,
+				label: 'Update Banner',
+				icon: RefreshCw,
+				new: true
+			}
+		]
+	},
+	{
+		title: 'Canvas',
+		links: [
+			{ href: `${COMPONENT_URL}/canvas`, label: 'Canvas', icon: Frame, new: true },
+			{
+				href: `${COMPONENT_URL}/sticky-note`,
+				label: 'Sticky Note',
+				icon: StickyNote,
+				new: true
+			}
 		]
 	},
 	{
