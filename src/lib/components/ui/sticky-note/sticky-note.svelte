@@ -161,8 +161,11 @@
 	{/if}
 
 	{#if showPalette}
+		<!-- Keyed on :focus-visible rather than :focus-within so that clicking a
+		     swatch does not pin the palette open until focus moves elsewhere,
+		     while tabbing into it still reveals it. -->
 		<div
-			class="pointer-events-none absolute -bottom-3 left-1/2 flex -translate-x-1/2 gap-1 rounded-full border bg-popover p-1 opacity-0 shadow-sm transition-opacity group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100"
+			class="pointer-events-none absolute -bottom-3 left-1/2 flex -translate-x-1/2 gap-1 rounded-full border bg-popover p-1 opacity-0 shadow-sm transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 group-has-[:focus-visible]:pointer-events-auto group-has-[:focus-visible]:opacity-100"
 		>
 			{#each STICKY_NOTE_COLORS as swatch}
 				<button
