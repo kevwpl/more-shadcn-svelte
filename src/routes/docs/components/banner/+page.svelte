@@ -4,6 +4,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { RotateCcw, Sparkles, TriangleAlert } from '@lucide/svelte';
 
+	let basicOpen = $state(true);
 	let persistedOpen = $state(true);
 	let bump = $state(0);
 
@@ -26,18 +27,28 @@
 	<DocPage.Content>
 		<DocPage.Example>
 			<DocPage.Preview class="h-auto py-10">
-				<div class="w-full max-w-2xl overflow-hidden rounded-lg border">
-					<Banner id="docs-basic" persist="none">
-						{#snippet icon()}
-							<Sparkles class="size-4" />
-						{/snippet}
-						<span>
-							<strong>More Shadcn 1.0</strong> is out — 30+ components, all copy and paste.
-						</span>
-						{#snippet action()}
-							<Button size="sm" variant="outline" href="/docs/changelog">Changelog</Button>
-						{/snippet}
-					</Banner>
+				<div class="w-full max-w-2xl space-y-3">
+					<!-- The frame is only here to show the banner in context, so it has to
+					     go with the banner — a bordered empty box reads as a stray line. -->
+					{#if basicOpen}
+						<div class="overflow-hidden rounded-lg border">
+							<Banner id="docs-basic" persist="none" bind:open={basicOpen}>
+								{#snippet icon()}
+									<Sparkles class="size-4" />
+								{/snippet}
+								<span>
+									<strong>More Shadcn 1.0</strong> is out — 30+ components, all copy and paste.
+								</span>
+								{#snippet action()}
+									<Button size="sm" variant="outline" href="/docs/changelog">Changelog</Button>
+								{/snippet}
+							</Banner>
+						</div>
+					{:else}
+						<Button size="sm" variant="outline" onclick={() => (basicOpen = true)}>
+							<RotateCcw class="size-3.5" /> Show again
+						</Button>
+					{/if}
 				</div>
 			</DocPage.Preview>
 			<DocPage.Code
@@ -80,19 +91,21 @@
 		<DocPage.Example>
 			<DocPage.Preview class="h-auto py-10">
 				<div class="w-full max-w-2xl space-y-3">
-					<div class="overflow-hidden rounded-lg border">
-						{#key bump}
-							<Banner
-								id="docs-demo"
-								persist="local"
-								variant="info"
-								bind:open={persistedOpen}
-								align="center"
-							>
-								Dismiss me, then reload the page — I stay closed.
-							</Banner>
-						{/key}
-					</div>
+					{#if persistedOpen}
+						<div class="overflow-hidden rounded-lg border">
+							{#key bump}
+								<Banner
+									id="docs-demo"
+									persist="local"
+									variant="info"
+									bind:open={persistedOpen}
+									align="center"
+								>
+									Dismiss me, then reload the page — I stay closed.
+								</Banner>
+							{/key}
+						</div>
+					{/if}
 					<Button size="sm" variant="outline" onclick={restore}>
 						<RotateCcw class="size-3.5" /> Reset dismissal
 					</Button>
@@ -119,7 +132,7 @@
 		<DocPage.Example>
 			<DocPage.Preview class="h-auto py-10">
 				<div class="w-full max-w-2xl space-y-2">
-					{#each ['default', 'primary', 'info', 'success', 'warning', 'destructive'] as const as variant}
+					{#each ['default', 'primary', 'info', 'success', 'warning', 'destructive'] as variant}
 						<div class="overflow-hidden rounded-lg border">
 							<Banner id={`docs-variant-${variant}`} persist="none" {variant} dismissible={false}>
 								{#snippet icon()}

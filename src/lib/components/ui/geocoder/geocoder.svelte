@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { Input } from '$lib/components/ui/input';
 	import { cn } from '$lib/utils';
-	import { Loader, MapPin, Search, X } from '@lucide/svelte';
+	import { Check, Loader, MapPin, X } from '@lucide/svelte';
 	import { fly } from 'svelte/transition';
 	import type { Snippet } from 'svelte';
 	import type { GeoLocation } from '.';
+	import Highlight from './geocoder-highlight.svelte';
+	import { formatAddress, type AddressConvention } from './format';
 
 	let {
 		value = $bindable(''),
@@ -12,6 +14,10 @@
 		loading = false,
 		placeholder = 'Search for a location...',
 		labelKey,
+		format = 'short',
+		convention = 'auto',
+		showCountry = true,
+		language,
 		class: className,
 		onSelect,
 		locationSnippet,
@@ -23,12 +29,29 @@
 		loading?: boolean;
 		placeholder?: string;
 		labelKey?: keyof GeoLocation;
+		/**
+		 * `short` builds a compact address from the structured fields, `full` uses
+		 * Nominatim's raw `display_name`, or pass a function for total control.
+		 */
+		format?: 'short' | 'full' | ((location: GeoLocation) => string);
+		/** Address ordering. `auto` follows the country of each result. */
+		convention?: AddressConvention | 'auto';
+		showCountry?: boolean;
+		/** Sent as `accept-language`, so results come back localised. */
+		language?: string;
 		class?: string;
 		onSelect?: (loc: GeoLocation) => void;
-		locationSnippet: Snippet<[GeoLocation, boolean]>;
+		locationSnippet?: Snippet<[GeoLocation, boolean]>;
 		emptySnippet?: Snippet;
 		[key: string]: any;
 	} = $props();
+
+	/** The single source of truth for a result's label. */
+	function label(loc: GeoLocation) {
+		if (typeof format === 'function') return format(loc);
+		if (format === 'full') return loc.display_name;
+		return formatAddress(loc, { convention, showCountry });
+	}
 
 	let isOpen = $state(false);
 	let activeIndex = $state(-1);
@@ -56,12 +79,7 @@
 
 	function handleSelect(loc: GeoLocation) {
 		selected = loc;
-
-		if (labelKey && loc && typeof loc === 'object') {
-			value = String(loc[labelKey]);
-		} else if (typeof loc === 'string') {
-			value = loc;
-		}
+		value = labelKey ? String(loc[labelKey]) : label(loc);
 
 		if (onSelect) onSelect(loc);
 		close();
@@ -142,14 +160,19 @@
 	$effect(() => {
 		if (debouncedQuery) {
 			loading = true;
-			fetch(
-				' https://nominatim.openstreetmap.org/search?q=' +
-					encodeURIComponent(debouncedQuery) +
-					'&format=json'
-			)
+
+			// addressdetails=1 is what returns the structured `address` object the
+			// short format is built from; without it only display_name comes back.
+			const params = new URLSearchParams({
+				q: debouncedQuery,
+				format: 'json',
+				addressdetails: '1'
+			});
+			if (language) params.set('accept-language', language);
+
+			fetch(`https://nominatim.openstreetmap.org/search?${params}`)
 				.then((res) => res.json())
 				.then((data) => {
-					console.log('Fetched data:', data);
 					options = data;
 				})
 				.catch((error) => {
@@ -227,7 +250,19 @@
 						onclick={() => handleSelect(option)}
 						onmouseenter={() => (activeIndex = i)}
 					>
-						{@render locationSnippet(option, option.place_id === selected?.place_id)}
+						{#if locationSnippet}
+							{@render locationSnippet(option, option.place_id === selected?.place_id)}
+						{:else}
+							<span class="flex w-full items-center gap-2 text-left">
+								<MapPin class="size-3.5 shrink-0 text-muted-foreground" />
+								<span class="truncate">
+									<Highlight text={label(option)} query={value} />
+								</span>
+								{#if option.place_id === selected?.place_id}
+									<Check class="ml-auto size-4 shrink-0 opacity-50" />
+								{/if}
+							</span>
+						{/if}
 					</button>
 				{/each}
 			{:else if loading}

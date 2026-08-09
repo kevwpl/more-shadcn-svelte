@@ -25,6 +25,11 @@
 					desc: 'Editable coloured note for boards and canvases.'
 				},
 				{
+					label: 'Geocoder',
+					slug: 'geocoder',
+					desc: 'Location search with compact, locale-aware address labels.'
+				},
+				{
 					label: 'Emoji Picker',
 					slug: 'emoji-picker',
 					desc: 'Categories, search, skin tones and recents. No dependencies.'

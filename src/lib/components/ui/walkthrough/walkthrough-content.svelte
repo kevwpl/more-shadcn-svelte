@@ -14,7 +14,8 @@
 		contentSnippet,
 		padding = 0
 	}: {
-		targetId: string;
+		/** Omit to centre the step instead of anchoring it to an element. */
+		targetId?: string;
 		placement?: 'top' | 'bottom' | 'left' | 'right';
 		onUpdateRect: (rect: { top: number; left: number; width: number; height: number }) => void;
 		contentSnippet?: Snippet<[any]>;
@@ -28,6 +29,8 @@
 	let cleanup: (() => void) | undefined;
 
 	let actualPlacement = $state(placement);
+	/** True when there is nothing to anchor to, so the step floats in the middle. */
+	let centered = $state(false);
 
 	function updateSpotlight(el: HTMLElement) {
 		const rect = el.getBoundingClientRect();
@@ -45,9 +48,57 @@
 		});
 	}
 
-	function setupFloating() {
-		const targetEl = document.getElementById(targetId);
-		if (!targetEl || !tooltipEl) return;
+	/**
+	 * Parks the step in the middle of the viewport and collapses the spotlight to
+	 * a zero sized hole, so the overlay dims everything and highlights nothing.
+	 */
+	function centerTooltip() {
+		if (!tooltipEl) return;
+
+		// A zero sized anchor at the middle of the viewport. Going through
+		// floating-ui rather than `left: 50%` matters: a `position: fixed` element
+		// resolves percentages against the nearest transformed ancestor, so a
+		// parent with a transform would throw the step well off centre.
+		const viewportCenter = {
+			getBoundingClientRect: () => {
+				const x = window.innerWidth / 2;
+				const y = window.innerHeight / 2;
+				return { width: 0, height: 0, x, y, top: y, bottom: y, left: x, right: x };
+			}
+		};
+
+		const place = () => {
+			onUpdateRect({
+				top: window.innerHeight / 2,
+				left: window.innerWidth / 2,
+				width: 0,
+				height: 0
+			});
+
+			computePosition(viewportCenter, tooltipEl, {
+				placement: 'bottom',
+				strategy: 'fixed',
+				// Pulling up by half the height turns "below the point" into "on it".
+				middleware: [offset(({ rects }) => -rects.floating.height / 2), shift({ padding: 10 })]
+			}).then(({ x, y }) => {
+				Object.assign(tooltipEl.style, {
+					position: 'fixed',
+					left: `${x}px`,
+					top: `${y}px`,
+					transform: '',
+					display: 'block'
+				});
+			});
+		};
+
+		place();
+
+		window.addEventListener('resize', place);
+		cleanup = () => window.removeEventListener('resize', place);
+	}
+
+	function setupFloating(targetEl: HTMLElement) {
+		if (!tooltipEl) return;
 
 		updateSpotlight(targetEl);
 
@@ -77,6 +128,8 @@
 					left: `${x}px`,
 					top: `${y}px`,
 					position: 'fixed',
+					// Cleared in case the previous step was a centred one.
+					transform: '',
 					display: 'block'
 				});
 
@@ -104,10 +157,32 @@
 	}
 
 	$effect(() => {
-		if (targetId) {
-			if (cleanup) cleanup();
-			setTimeout(setupFloating, 10);
+		const id = targetId;
+
+		if (cleanup) {
+			cleanup();
+			cleanup = undefined;
 		}
+
+		// The delay lets the step's target mount before it is looked up.
+		const timer = setTimeout(() => {
+			const targetEl = id ? document.getElementById(id) : null;
+
+			// No id, or an id that resolves to nothing — centre it rather than
+			// leaving the step stranded in the corner.
+			centered = !targetEl;
+
+			if (targetEl) setupFloating(targetEl);
+			else centerTooltip();
+		}, 10);
+
+		return () => {
+			clearTimeout(timer);
+			if (cleanup) {
+				cleanup();
+				cleanup = undefined;
+			}
+		};
 	});
 
 	onDestroy(() => {
@@ -135,7 +210,10 @@
 		{@render contentSnippet(ctx)}
 	{:else}
 		<div class="relative w-[350px] rounded-lg border bg-popover text-popover-foreground shadow-xl">
-			<div bind:this={arrowEl} class={arrowClasses}></div>
+			{#if !centered}
+				<!-- An arrow would be pointing at nothing on a centred step. -->
+				<div bind:this={arrowEl} class={arrowClasses}></div>
+			{/if}
 
 			<div class="p-4">
 				<div class="flex items-start justify-between gap-4">

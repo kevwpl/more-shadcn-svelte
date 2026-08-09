@@ -3,7 +3,12 @@ import { getContext, setContext } from 'svelte';
 const WALKTHROUGH_KEY = Symbol('walkthrough');
 
 export type Step = {
-	target: string;
+	/**
+	 * Id of the element to anchor to. Leave it out — or point it at an element
+	 * that is not on the page — and the step is centred with nothing highlighted,
+	 * which is what you want for an intro or a closing step.
+	 */
+	target?: string;
 	title: string;
 	description: string;
 	position?: 'top' | 'bottom' | 'left' | 'right';

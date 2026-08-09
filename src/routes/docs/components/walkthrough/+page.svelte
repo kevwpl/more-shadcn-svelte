@@ -9,8 +9,13 @@
 
 	const steps = [
 		{
+			// No target — this step is centred with nothing highlighted.
+			title: 'Welcome aboard',
+			description: 'A quick tour of the layout. Use Next to step through, or close at any time.'
+		},
+		{
 			target: 'tour-start-btn', // The button we just clicked
-			title: 'Welcome!',
+			title: 'Where you started',
 			description: "This is a demo of the Walkthrough component. Let's explore the layout.",
 			position: 'bottom'
 		},
@@ -108,6 +113,30 @@
 		/>
 
 		<Walkthrough bind:open={openTour} {steps} padding={4} />
+
+		<DocPage.Heading>Centred steps</DocPage.Heading>
+		<DocPage.Text>
+			<code>target</code> is optional. Leave it off and the step sits in the middle of the screen with
+			the overlay dimming everything and nothing highlighted — the usual shape for an intro or a closing
+			step. The arrow is dropped too, since it would be pointing at nothing.
+		</DocPage.Text>
+		<DocPage.Text>
+			The same thing happens when a <code>target</code> is set but no element with that id is on the
+			page, so a step whose element is conditionally rendered degrades to a centred step instead of stranding
+			the popover in the corner. The tour above opens with one.
+		</DocPage.Text>
+		<DocPage.Code
+			code={`const steps = [
+  // No target: centred, nothing highlighted
+  { title: 'Welcome aboard', description: 'A quick tour of the layout.' },
+
+  // Anchored to an element
+  { target: 'layout-sidebar', title: 'Navigation', description: '...', position: 'right' },
+
+  // Centred again to wrap up
+  { title: 'That\\'s it', description: 'You can reopen the tour from the help menu.' }
+];`}
+		/>
 
 		<DocPage.Heading>Customization</DocPage.Heading>
 		<DocPage.Text>

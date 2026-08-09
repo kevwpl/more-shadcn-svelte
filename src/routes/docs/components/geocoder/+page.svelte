@@ -1,99 +1,20 @@
 <script lang="ts">
 	import * as Geocoder from '$lib/components/ui/geocoder';
 	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Check } from '@lucide/svelte';
+	import { Check, MapPin } from '@lucide/svelte';
 	import { cn } from '$lib/utils';
 
 	let query = $state('');
 	let loading = $state(false);
 	let selectedLocation = $state<Geocoder.GeoLocation | null>(null);
 
-	function onSelect(location: Geocoder.GeoLocation) {
-		query = location.display_name;
-	}
+	let fullQuery = $state('');
+	let customQuery = $state('');
 
-	const types = [
-		{
-			name: 'GeoLocation',
-			description: 'Represents a geographical location returned by the geocoding API.',
-			fields: [
-				{
-					name: 'address',
-					type: 'Address',
-					description: 'Detailed address components for the location.'
-				},
-				{
-					name: 'boundingbox',
-					type: 'string[]',
-					description: 'Bounding box coordinates for the location.'
-				},
-				{
-					name: 'class',
-					type: 'string',
-					description: 'Classification of the location (e.g., place, building).'
-				},
-				{
-					name: 'display_name',
-					type: 'string',
-					description: 'Human-readable name of the location.'
-				},
-				{
-					name: 'importance',
-					type: 'number',
-					description: 'Relevance score for the location result.'
-				},
-				{ name: 'lat', type: 'string', description: 'Latitude coordinate of the location.' },
-				{ name: 'lon', type: 'string', description: 'Longitude coordinate of the location.' },
-				{ name: 'place_id', type: 'string', description: 'Unique identifier for the location.' },
-				{ name: 'type', type: 'string', description: 'Type of the location (e.g., city, road).' }
-			]
-		},
-		{
-			name: 'Address',
-			description: 'Represents the address components of a geocoded location.',
-			fields: [
-				{ name: 'borough', type: 'string', description: 'Borough or administrative area.' },
-				{ name: 'city', type: 'string', description: 'City component of the address.' },
-				{
-					name: 'country',
-					type: 'string',
-					description: 'Country name component of the address.'
-				},
-				{
-					name: 'country_code',
-					type: 'string',
-					description: 'ISO 3166-1 alpha-2 country code.'
-				},
-				{ name: 'historic', type: 'string', description: 'Historic area or landmark.' },
-				{
-					name: 'house_number',
-					type: 'string',
-					description: 'House number component of the address.'
-				},
-				{
-					name: 'ISO3166-2-lvl4',
-					type: 'string',
-					description:
-						'ISO 3166-2 code for the administrative level 4 region (e.g., state, province).'
-				},
-				{
-					name: 'neighbourhood',
-					type: 'string',
-					description: 'Neighbourhood or district component of the address.'
-				},
-				{ name: 'postcode', type: 'string', description: 'Postal code for the address.' },
-				{
-					name: 'road',
-					type: 'string',
-					description: 'Road or street name component of the address.'
-				},
-				{
-					name: 'suburb',
-					type: 'string',
-					description: 'Suburb or locality component of the address.'
-				}
-			]
-		}
+	const conventions = [
+		{ name: 'continental', example: 'Musterstraße 12, 12345 Musterstadt, Austria' },
+		{ name: 'french', example: "12 Rue de l'Exemple, 75000 Exempleville, France" },
+		{ name: 'anglo', example: '12 Example Street, Springfield 12345, United States' }
 	];
 </script>
 
@@ -122,82 +43,33 @@
 						bind:value={query}
 						bind:selected={selectedLocation}
 						{loading}
-						{onSelect}
 					>
-						{#snippet locationSnippet(location, isActive)}
-							<div class="flex items-center gap-3 w-full">
-								<div class="flex flex-col text-left">
-									<span class="font-medium">
-										<Geocoder.Highlight text={location.display_name} {query} />
-									</span>
-								</div>
-								{#if isActive}
-									<Check class="ml-auto h-4 w-4 opacity-50" />
-								{/if}
-							</div>
-						{/snippet}
-
 						{#snippet emptySnippet()}
 							<div class="flex flex-col items-center gap-2 py-2">
 								<span class="text-muted-foreground text-sm">No locations found.</span>
 							</div>
 						{/snippet}
 					</Geocoder.Root>
+
+					{#if selectedLocation}
+						<p class="text-xs text-muted-foreground">
+							{selectedLocation.lat}, {selectedLocation.lon}
+						</p>
+					{/if}
 				</div>
 			</DocPage.Preview>
 
 			<DocPage.Code
-				code={`<Geocoder.Root
-  id="location-search"
-  bind:value
-  {loading}
->
-  {#snippet itemSnippet(user)}
-    <Autocomplete.Highlight text={user.name} {query} />
-  {/snippet}
-</Geocoder.Root>`}
+				code={`<script lang="ts">
+  import * as Geocoder from '$lib/components/ui/geocoder';
+
+  let query = $state('');
+  let selected = $state<Geocoder.GeoLocation | null>(null);
+</script>
+
+<Geocoder.Root bind:value={query} bind:selected={selected} />`}
 			/>
 		</DocPage.Example>
-
-		<DocPage.Heading>Types</DocPage.Heading>
-		<div class="rounded-lg border border-border bg-card overflow-hidden">
-			<div class="overflow-auto max-h-80 w-full flex flex-col">
-				{#each types as t, idx}
-					<div
-						class={cn(
-							'flex flex-row w-full',
-							idx < types.length - 1 ? 'border-b-2 border-border' : ''
-						)}
-					>
-						<div class="w-1/3 p-4 border-r border-border">
-							<div class="font-medium">{t.name}</div>
-							<div class="text-sm text-muted-foreground">{t.description}</div>
-						</div>
-						<div class="w-2/3">
-							{#each t.fields as field, i}
-								<div
-									class={cn(
-										'flex flex-row w-full gap py-2 px-4 text-sm',
-										i < t.fields.length - 1 ? 'border-b border-border' : '',
-										i % 2 === 0 ? '' : 'bg-muted/50'
-									)}
-								>
-									<div class="min-w-1/3 self-center">
-										<span class="bg-muted py-1 px-1.5 rounded">{field.name}</span>
-									</div>
-									<div class="w-42 self-center font-mono text-blue-500">
-										{field.type}
-									</div>
-									<div class="w-full self-center text-xs text-muted-foreground">
-										{field.description}
-									</div>
-								</div>
-							{/each}
-						</div>
-					</div>
-				{/each}
-			</div>
-		</div>
 
 		<DocPage.Heading>Installation</DocPage.Heading>
 		{@const componentName = 'geocoder'}
@@ -212,5 +84,128 @@
 				'https://more-shadcn.noair.fun/r/' + componentName + '.json'
 			]}
 		/>
+
+		<DocPage.Heading>Result labels</DocPage.Heading>
+		<DocPage.Text>
+			Nominatim's <code>display_name</code> is the complete administrative hierarchy, which is rarely
+			what you want to show:
+		</DocPage.Text>
+		<DocPage.Code
+			code={`12, Musterstraße, Katastralgemeinde Musterdorf, Musterdorf,
+Musterstadt, Bezirk Mustertal, Musterregion, 12345, Austria`}
+		/>
+		<DocPage.Text>
+			By default the geocoder requests <code>addressdetails=1</code> and assembles a compact address
+			from the structured fields instead — street, settlement and country only. Set
+			<code>format="full"</code> to go back to the raw string, or pass a function for anything else.
+		</DocPage.Text>
+		<DocPage.Example>
+			<DocPage.Preview class="flex flex-col gap-4 min-h-[300px] items-center pt-10">
+				<div class="w-full max-w-sm space-y-2">
+					<span class="text-sm font-medium">format="full"</span>
+					<Geocoder.Root
+						bind:value={fullQuery}
+						format="full"
+						placeholder="Search for a street or city..."
+					/>
+				</div>
+			</DocPage.Preview>
+			<DocPage.Code
+				code={`<!-- compact, the default -->
+<Geocoder.Root bind:value={query} />
+
+<!-- the raw display_name -->
+<Geocoder.Root bind:value={query} format="full" />
+
+<!-- your own string -->
+<Geocoder.Root
+  bind:value={query}
+  format={(loc) => \`\${loc.address?.road ?? ''} — \${loc.lat}, \${loc.lon}\`}
+/>`}
+			/>
+		</DocPage.Example>
+
+		<DocPage.Heading>Ordering</DocPage.Heading>
+		<DocPage.Text>
+			Address layout differs by country along two axes: whether the house number comes before or
+			after the street, and whether the postcode comes before or after the city. Each result is
+			ordered using its own <code>country_code</code>, so a mixed result list stays correct.
+		</DocPage.Text>
+		<div class="rounded-lg border border-border bg-card overflow-hidden text-sm">
+			{#each conventions as c, i}
+				<div
+					class={cn('flex gap-4 px-4 py-2', i < conventions.length - 1 && 'border-b border-border')}
+				>
+					<span class="w-28 shrink-0 font-mono text-blue-500">{c.name}</span>
+					<span class="text-muted-foreground">{c.example}</span>
+				</div>
+			{/each}
+		</div>
+		<DocPage.Text>
+			Countries that are not mapped fall back to <code>anglo</code>. Pass <code>convention</code> to
+			force one layout everywhere regardless of the result's country.
+		</DocPage.Text>
+		<DocPage.Code
+			code={`<Geocoder.Root convention="continental" />
+<Geocoder.Root showCountry={false} />
+
+<!-- localise the place names too -->
+<Geocoder.Root language="en" />`}
+		/>
+
+		<DocPage.Heading>Custom rendering</DocPage.Heading>
+		<DocPage.Text>
+			Pass a <code>locationSnippet</code> to take over the markup of each result. The
+			<code>formatAddress</code> helper is exported, so you can still reuse the label logic — here it
+			builds a two line entry with the street on top and the country muted underneath.
+		</DocPage.Text>
+		<DocPage.Example>
+			<DocPage.Preview class="flex flex-col gap-4 min-h-[300px] items-center pt-10">
+				<div class="w-full max-w-sm space-y-2">
+					<Geocoder.Root bind:value={customQuery} placeholder="Search for a street or city...">
+						{#snippet locationSnippet(location, isActive)}
+							<div class="flex w-full items-center gap-3">
+								<MapPin class="size-4 shrink-0 text-muted-foreground" />
+								<div class="flex min-w-0 flex-col text-left">
+									<span class="truncate font-medium">
+										<Geocoder.Highlight
+											text={Geocoder.formatAddress(location, { showCountry: false })}
+											query={customQuery}
+										/>
+									</span>
+									<span class="truncate text-xs text-muted-foreground">
+										{location.address?.country ?? location.type}
+									</span>
+								</div>
+								{#if isActive}
+									<Check class="ml-auto size-4 shrink-0 opacity-50" />
+								{/if}
+							</div>
+						{/snippet}
+					</Geocoder.Root>
+				</div>
+			</DocPage.Preview>
+			<DocPage.Code
+				code={`<Geocoder.Root bind:value={query}>
+  {#snippet locationSnippet(location, isActive)}
+    <Geocoder.Highlight
+      text={Geocoder.formatAddress(location, { showCountry: false })}
+      {query}
+    />
+    <span class="text-xs text-muted-foreground">
+      {location.address?.country}
+    </span>
+  {/snippet}
+</Geocoder.Root>`}
+			/>
+		</DocPage.Example>
+
+		<DocPage.Heading>Usage policy</DocPage.Heading>
+		<DocPage.Text>
+			The default provider is the public Nominatim instance, whose usage policy asks for an
+			identifying <code>User-Agent</code> or <code>Referer</code>, caps requests at one per second
+			and forbids heavy use. For anything beyond light traffic, proxy the request through your own
+			backend or run your own Nominatim instance.
+		</DocPage.Text>
 	</DocPage.Content>
 </DocPage.Root>

@@ -1,2 +1,2 @@
-import Walkthrough from "./walkthrough.svelte";
+import Walkthrough from './walkthrough.svelte';
 export { Walkthrough };
