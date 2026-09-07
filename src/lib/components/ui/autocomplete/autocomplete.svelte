@@ -1,10 +1,25 @@
 <script lang="ts" generics="T">
 	import { Input } from '$lib/components/ui/input';
 	import { cn } from '$lib/utils';
-	import { Loader2, Search, X } from '@lucide/svelte';
+	import { LoaderCircleIcon, Search, X } from '@lucide/svelte';
 	import { fly } from 'svelte/transition';
 	import type { Snippet } from 'svelte';
+	import type { HTMLInputAttributes } from 'svelte/elements';
 
+	interface Props extends Omit<HTMLInputAttributes, 'type' | 'files'> {
+		value: string;
+		selected?: T | null;
+		options: T[];
+		loading?: boolean;
+		placeholder?: string;
+		labelKey?: keyof T;
+		class?: string;
+		type?: string;
+		onSelect?: (item: T) => void;
+		onOpenChange?: (open: boolean) => void;
+		itemSnippet: Snippet<[T, boolean]>;
+		emptySnippet?: Snippet;
+	}
 	let {
 		value = $bindable(''),
 		selected = $bindable<T | null>(null),
@@ -13,23 +28,15 @@
 		placeholder = 'Search...',
 		labelKey,
 		class: className,
+		oninput,
+		onkeydown,
+		onfocus,
+		onOpenChange,
 		onSelect,
 		itemSnippet,
 		emptySnippet,
 		...rest
-	}: {
-		value: string;
-		selected?: T | null;
-		options: T[];
-		loading?: boolean;
-		placeholder?: string;
-		labelKey?: keyof T;
-		class?: string;
-		onSelect?: (item: T) => void;
-		itemSnippet: Snippet<[T, boolean]>;
-		emptySnippet?: Snippet;
-		[key: string]: any;
-	} = $props();
+	}: Props = $props();
 
 	let isOpen = $state(false);
 	let activeIndex = $state(-1);
@@ -40,17 +47,20 @@
 	function open() {
 		isOpen = true;
 		activeIndex = -1;
+		onOpenChange?.($state.snapshot(isOpen));
 	}
 
 	function close() {
 		isOpen = false;
 		activeIndex = -1;
+		onOpenChange?.($state.snapshot(isOpen));
 	}
 
-	function handleInput(e: Event) {
-		value = (e.target as HTMLInputElement).value;
+	function handleInput(e: Event & { currentTarget: EventTarget & HTMLInputElement }) {
+		value = e.currentTarget.value;
 		if (value.length > 0) open();
 		else close();
+		oninput?.(e);
 	}
 
 	function handleSelect(item: T) {
@@ -66,7 +76,8 @@
 		close();
 	}
 
-	function handleKeydown(e: KeyboardEvent) {
+	function handleKeydown(e: KeyboardEvent & { currentTarget: EventTarget & HTMLInputElement }) {
+		onkeydown?.(e);
 		if (!isOpen) {
 			if (e.key === 'ArrowDown' && value.length > 0) open();
 			return;
@@ -87,6 +98,8 @@
 				e.preventDefault();
 				if (activeIndex >= 0 && options[activeIndex]) {
 					handleSelect(options[activeIndex]);
+				} else {
+					close();
 				}
 				break;
 			case 'Escape':
@@ -127,22 +140,23 @@
 <div class={cn('relative w-full group', className)}>
 	<div class="relative" bind:this={inputContainerRef}>
 		<Input
-			type="text"
 			{placeholder}
 			bind:value
 			oninput={handleInput}
 			onkeydown={handleKeydown}
-			onfocus={() => {
+			onfocus={(e: FocusEvent & { currentTarget: EventTarget & HTMLInputElement }) => {
+				onfocus?.(e);
 				if (value) open();
 			}}
 			role="combobox"
 			aria-expanded={isOpen}
 			aria-autocomplete="list"
 			{...rest}
+			type="text"
 		/>
 
 		{#if loading}
-			<Loader2
+			<LoaderCircleIcon
 				class="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 animate-spin text-muted-foreground"
 			/>
 		{:else if value.length > 0}
@@ -174,6 +188,7 @@
 		>
 			{#if options.length > 0}
 				{#each options as option, i}
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
 					<div
 						role="option"
 						tabindex="-1"
