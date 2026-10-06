@@ -445,6 +445,23 @@
 			]
 		},
 		{
+			"name": "file-upload",
+			"type": "registry:ui",
+			"title": "File Upload",
+			"description": "A file upload component with preview and removal.",
+			"registryDependencies": ["button", "input-group"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/file-upload/file-upload.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/file-upload/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
 			"name": "geocoder",
 			"type": "registry:ui",
 			"title": "Geocoder",
