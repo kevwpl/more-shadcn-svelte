@@ -45,7 +45,8 @@ import {
 	RefreshCw,
 	Frame,
 	StickyNote,
-	MapPin
+	MapPin,
+	Upload
 } from '@lucide/svelte';
 
 export const COMPONENT_URL = '/docs/components';
@@ -103,6 +104,12 @@ export const docsConfig = [
 				href: `${COMPONENT_URL}/emoji-picker`,
 				label: 'Emoji Picker',
 				icon: Smile,
+				new: true
+			},
+			{
+				href: `${COMPONENT_URL}/file-upload`,
+				label: 'File Upload',
+				icon: Upload,
 				new: true
 			},
 			{
