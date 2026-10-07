@@ -24,7 +24,11 @@
 
 <svelte:document onkeydown={handleKeydown} />
 
-<div class="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+<!-- minmax(0, 1fr) rather than 1fr / an implicit auto column: those size to
+     their content, so one long code line would widen the page past the screen. -->
+<div
+	class="grid min-h-screen w-full grid-cols-1 md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[280px_minmax(0,1fr)]"
+>
 	<div id="layout-sidebar" class="bg-muted/40 hidden border-r md:block sticky top-0 z-20 h-screen">
 		<div class="flex h-full max-h-screen flex-col gap-2">
 			<div class="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
@@ -72,7 +76,7 @@
 		</div>
 	</div>
 
-	<div class="flex flex-col">
+	<div class="flex min-w-0 flex-col">
 		<header
 			class="bg-muted/40 flex backdrop-blur-2xl h-14 items-center gap-4 border-b px-4 lg:h-[60px] lg:px-4 sticky top-0 z-20"
 		>

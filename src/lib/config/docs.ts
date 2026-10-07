@@ -45,7 +45,12 @@ import {
 	RefreshCw,
 	Frame,
 	StickyNote,
-	MapPin
+	MapPin,
+	FileText,
+	Clock,
+	TextCursor,
+	Shuffle,
+	GalleryHorizontalEnd
 } from '@lucide/svelte';
 
 export const COMPONENT_URL = '/docs/components';
@@ -103,13 +108,13 @@ export const docsConfig = [
 				href: `${COMPONENT_URL}/emoji-picker`,
 				label: 'Emoji Picker',
 				icon: Smile,
-				new: true
+				new: false
 			},
 			{
 				href: `${COMPONENT_URL}/geocoder`,
 				label: 'Geocoder',
 				icon: MapPin,
-				new: true
+				new: false
 			},
 			{
 				href: `${COMPONENT_URL}/hold-button`,
@@ -140,7 +145,7 @@ export const docsConfig = [
 				href: `${COMPONENT_URL}/signature-pad`,
 				label: 'Signature Pad',
 				icon: Signature,
-				new: true
+				new: false
 			},
 			{
 				href: `${COMPONENT_URL}/tag-input`,
@@ -209,6 +214,24 @@ export const docsConfig = [
 				new: false
 			},
 			{
+				href: `${COMPONENT_URL}/marquee`,
+				label: 'Marquee',
+				icon: GalleryHorizontalEnd,
+				new: true
+			},
+			{
+				href: `${COMPONENT_URL}/pdf-viewer`,
+				label: 'PDF Viewer',
+				icon: FileText,
+				new: true
+			},
+			{
+				href: `${COMPONENT_URL}/scramble-text`,
+				label: 'Scramble Text',
+				icon: Shuffle,
+				new: true
+			},
+			{
 				href: `${COMPONENT_URL}/shiny-button`,
 				label: 'Shiny Button',
 				icon: Sparkle,
@@ -219,6 +242,12 @@ export const docsConfig = [
 				label: 'Spotlight Card',
 				icon: Square,
 				new: false
+			},
+			{
+				href: `${COMPONENT_URL}/typewriter`,
+				label: 'Typewriter',
+				icon: TextCursor,
+				new: true
 			},
 			{ href: `${COMPONENT_URL}/video`, label: 'Video', icon: SquarePlay, new: false }
 		]
@@ -236,7 +265,7 @@ export const docsConfig = [
 				href: `${COMPONENT_URL}/banner`,
 				label: 'Banner',
 				icon: Megaphone,
-				new: true
+				new: false
 			},
 			{
 				href: `${COMPONENT_URL}/big-calendar`,
@@ -266,9 +295,15 @@ export const docsConfig = [
 				href: `${COMPONENT_URL}/ping-indicator`,
 				label: 'Ping Indicator',
 				icon: Signal,
-				new: true
+				new: false
 			},
 			{ href: `${COMPONENT_URL}/qr-code`, label: 'QR Code', icon: QrCode, new: false },
+			{
+				href: `${COMPONENT_URL}/relative-time`,
+				label: 'Relative Time',
+				icon: Clock,
+				new: true
+			},
 			{
 				href: `${COMPONENT_URL}/status-dot`,
 				label: 'Status Dot',
@@ -280,19 +315,19 @@ export const docsConfig = [
 				href: `${COMPONENT_URL}/update-banner`,
 				label: 'Update Banner',
 				icon: RefreshCw,
-				new: true
+				new: false
 			}
 		]
 	},
 	{
 		title: 'Canvas',
 		links: [
-			{ href: `${COMPONENT_URL}/canvas`, label: 'Canvas', icon: Frame, new: true },
+			{ href: `${COMPONENT_URL}/canvas`, label: 'Canvas', icon: Frame, new: false },
 			{
 				href: `${COMPONENT_URL}/sticky-note`,
 				label: 'Sticky Note',
 				icon: StickyNote,
-				new: true
+				new: false
 			}
 		]
 	},

@@ -568,6 +568,23 @@
 			]
 		},
 		{
+			"name": "marquee",
+			"type": "registry:ui",
+			"title": "Marquee",
+			"description": "An endlessly scrolling strip of content that loops seamlessly.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/marquee/marquee.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/marquee/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
 			"name": "mention-input",
 			"type": "registry:ui",
 			"title": "Mention Input",
@@ -598,6 +615,68 @@
 				},
 				{
 					"path": "src/lib/components/ui/number-ticker/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "pdf-viewer",
+			"type": "registry:ui",
+			"title": "PDF Viewer",
+			"description": "A composable PDF viewer with paging, zoom, rotation, thumbnails and download.",
+			"dependencies": ["pdfjs-dist"],
+			"registryDependencies": ["button"],
+			"files": [
+				{
+					"path": "src/lib/components/ui/pdf-viewer/pdf-viewer.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/pdf-viewer/pdf-viewer-pages.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/pdf-viewer/pdf-viewer-page.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/pdf-viewer/pdf-viewer-thumbnails.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/pdf-viewer/pdf-viewer-toolbar.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/pdf-viewer/pdf-viewer-page-nav.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/pdf-viewer/pdf-viewer-zoom.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/pdf-viewer/pdf-viewer-rotate.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/pdf-viewer/pdf-viewer-download.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/pdf-viewer/pdf-viewer-sidebar-toggle.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/pdf-viewer/ctx.svelte.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/pdf-viewer/pdfjs.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/pdf-viewer/index.ts",
 					"type": "registry:ui"
 				}
 			]
@@ -650,6 +729,48 @@
 				},
 				{
 					"path": "src/lib/components/ui/qr-code/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "relative-time",
+			"type": "registry:ui",
+			"title": "Relative Time",
+			"description": "A timestamp that reads \"3 minutes ago\" and keeps itself up to date.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/relative-time/relative-time.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/relative-time/clock.svelte.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/relative-time/format.ts",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/relative-time/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "scramble-text",
+			"type": "registry:ui",
+			"title": "Scramble Text",
+			"description": "Text that resolves out of random characters, one glyph at a time.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/scramble-text/scramble-text.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/scramble-text/index.ts",
 					"type": "registry:ui"
 				}
 			]
@@ -896,6 +1017,23 @@
 				},
 				{
 					"path": "src/lib/components/ui/timeline/index.ts",
+					"type": "registry:ui"
+				}
+			]
+		},
+		{
+			"name": "typewriter",
+			"type": "registry:ui",
+			"title": "Typewriter",
+			"description": "Text that types itself out, optionally cycling through several phrases.",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ui/typewriter/typewriter.svelte",
+					"type": "registry:ui"
+				},
+				{
+					"path": "src/lib/components/ui/typewriter/index.ts",
 					"type": "registry:ui"
 				}
 			]

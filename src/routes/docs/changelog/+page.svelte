@@ -2,17 +2,52 @@
 	import * as DocPage from '$lib/components/feature/doc-page';
 	import * as Timeline from '$lib/components/ui/timeline';
 	import { Badge } from '$lib/components/ui/badge';
-	import { Frame, Rocket } from '@lucide/svelte';
+	import { FileText, Frame, Rocket } from '@lucide/svelte';
 	import { COMPONENT_URL } from '$lib/config/docs';
 
 	const updates = [
+		{
+			date: 'October 2026',
+			version: '1.2.0',
+			title: 'Documents and motion',
+			icon: FileText,
+			description:
+				'A composable PDF viewer, self-updating timestamps, and three text effects for headings and landing pages.',
+			items: [
+				{
+					label: 'PDF Viewer',
+					slug: 'pdf-viewer',
+					desc: 'Composable viewer with paging, zoom, rotation and thumbnails.'
+				},
+				{
+					label: 'Relative Time',
+					slug: 'relative-time',
+					desc: '"3 minutes ago" that stays current on one shared timer.'
+				},
+				{
+					label: 'Typewriter',
+					slug: 'typewriter',
+					desc: 'Types text out, or cycles through several phrases.'
+				},
+				{
+					label: 'Scramble Text',
+					slug: 'scramble-text',
+					desc: 'Resolves text out of random characters.'
+				},
+				{
+					label: 'Marquee',
+					slug: 'marquee',
+					desc: 'Seamlessly looping strip of content, horizontal or vertical.'
+				}
+			]
+		},
 		{
 			date: 'August 2026',
 			version: '1.1.0',
 			title: 'A canvas to build on',
 			icon: Frame,
 			description:
-				'Eight new components, including a new Canvas section: an infinite pannable, zoomable field with draggable nodes, connectors, controls and a minimap.',
+				'Nine new components, including a new Canvas section: an infinite pannable, zoomable field with draggable nodes, connectors, controls and a minimap.',
 			items: [
 				{
 					label: 'Canvas',

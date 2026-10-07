@@ -227,6 +227,14 @@
 		"relativeUrl": "markdown.json"
 	},
 	{
+		"name": "marquee",
+		"title": "Marquee",
+		"type": "registry:ui",
+		"description": "An endlessly scrolling strip of content that loops seamlessly.",
+		"registryDependencies": [],
+		"relativeUrl": "marquee.json"
+	},
+	{
 		"name": "mention-input",
 		"title": "Mention Input",
 		"type": "registry:ui",
@@ -244,6 +252,19 @@
 		],
 		"registryDependencies": [],
 		"relativeUrl": "number-ticker.json"
+	},
+	{
+		"name": "pdf-viewer",
+		"title": "PDF Viewer",
+		"type": "registry:ui",
+		"description": "A composable PDF viewer with paging, zoom, rotation, thumbnails and download.",
+		"dependencies": [
+			"pdfjs-dist"
+		],
+		"registryDependencies": [
+			"button"
+		],
+		"relativeUrl": "pdf-viewer.json"
 	},
 	{
 		"name": "phone-input",
@@ -277,6 +298,22 @@
 		"description": "A vector-based QR generator with support for colors and logos.",
 		"registryDependencies": [],
 		"relativeUrl": "qr-code.json"
+	},
+	{
+		"name": "relative-time",
+		"title": "Relative Time",
+		"type": "registry:ui",
+		"description": "A timestamp that reads \"3 minutes ago\" and keeps itself up to date.",
+		"registryDependencies": [],
+		"relativeUrl": "relative-time.json"
+	},
+	{
+		"name": "scramble-text",
+		"title": "Scramble Text",
+		"type": "registry:ui",
+		"description": "Text that resolves out of random characters, one glyph at a time.",
+		"registryDependencies": [],
+		"relativeUrl": "scramble-text.json"
 	},
 	{
 		"name": "scrubbable",
@@ -363,6 +400,14 @@
 		"description": "A vertical list of events or milestones.",
 		"registryDependencies": [],
 		"relativeUrl": "timeline.json"
+	},
+	{
+		"name": "typewriter",
+		"title": "Typewriter",
+		"type": "registry:ui",
+		"description": "Text that types itself out, optionally cycling through several phrases.",
+		"registryDependencies": [],
+		"relativeUrl": "typewriter.json"
 	},
 	{
 		"name": "update-banner",
