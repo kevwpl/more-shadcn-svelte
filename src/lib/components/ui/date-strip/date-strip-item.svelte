@@ -19,7 +19,7 @@
 
 	let isSelected = $derived(ctx.selectedValue()?.compare(date) === 0);
 	let isDisabled = $derived(ctx.isDateDisabled(date));
-    let direction = $derived(ctx.direction());
+	let direction = $derived(ctx.direction());
 
 	function handleClick() {
 		if (!isDisabled) {
@@ -31,22 +31,22 @@
 </script>
 
 <Button
-        variant="ghost"
-        onclick={handleClick}
-        class={cn(
-        "flex flex-col items-center justify-center -space-y-1 animate-in fade-in-5",
-        "w-12 h-12 shrink-0 rounded-lg",
-        direction === "end" ? "slide-in-from-right-12" : "slide-in-from-left-12",
-        isToday(date, getLocalTimeZone()) && "bg-accent",
-        isSelected && "bg-primary text-primary-foreground",
-        className
-    )}
-        disabled={isDisabled}
+	variant="ghost"
+	onclick={handleClick}
+	class={cn(
+		'flex flex-col items-center justify-center -space-y-1 animate-in fade-in-5',
+		'w-12 h-12 shrink-0 rounded-lg',
+		direction === 'end' ? 'slide-in-from-right-12' : 'slide-in-from-left-12',
+		isToday(date, getLocalTimeZone()) && 'bg-accent',
+		isSelected && 'bg-primary text-primary-foreground',
+		className
+	)}
+	disabled={isDisabled}
 >
-    <span class="text-[8px] font-medium uppercase opacity-70">
-        {formatterMonth.format(dateObj)}
-    </span>
-    <span class="text-base font-bold leading-none">
-        {formatterDay.format(dateObj)}
-    </span>
+	<span class="text-[8px] font-medium uppercase opacity-70">
+		{formatterMonth.format(dateObj)}
+	</span>
+	<span class="text-base font-bold leading-none">
+		{formatterDay.format(dateObj)}
+	</span>
 </Button>
