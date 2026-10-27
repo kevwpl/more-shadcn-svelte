@@ -1,6 +1,6 @@
 <script lang="ts" generics="T">
-	import { Input } from '$lib/components/ui/input';
-	import { cn } from '$lib/utils';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { cn } from '#lib/utils.js';
 	import { LoaderCircleIcon, Search, X } from '@lucide/svelte';
 	import { fly } from 'svelte/transition';
 	import type { Snippet } from 'svelte';

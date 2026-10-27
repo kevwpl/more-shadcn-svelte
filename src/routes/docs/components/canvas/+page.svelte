@@ -1,8 +1,8 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as Canvas from '$lib/components/ui/canvas';
-	import { StickyNote } from '$lib/components/ui/sticky-note';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as Canvas from '#lib/components/ui/canvas/index.js';
+	import { StickyNote } from '#lib/components/ui/sticky-note/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 
 	let zoom = $state(1);
 
@@ -61,7 +61,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script lang="ts">
-  import * as Canvas from '$lib/components/ui/canvas';
+  import * as Canvas from '#lib/components/ui/canvas/index.js';
 
   const nodes = $state([
     { id: 'source', x: 40, y: 60 },
@@ -187,7 +187,7 @@
 		</DocPage.Text>
 		<DocPage.Code
 			code={`<script lang="ts">
-  import { getCanvasContext } from '$lib/components/ui/canvas';
+  import { getCanvasContext } from '#lib/components/ui/canvas/index.js';
 
   const canvas = getCanvasContext();
 </script>

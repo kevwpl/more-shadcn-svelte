@@ -3,11 +3,11 @@
 -->
 
 <script lang="ts">
-	import Button from '$lib/components/ui/button/button.svelte';
+	import Button from '#lib/components/ui/button/button.svelte';
 	import { useCodeOverflow } from './code.svelte.js';
 	import { box } from 'svelte-toolbelt';
 	import type { CodeOverflowProps } from './types';
-	import { cn } from '$lib/utils/utils';
+	import { cn } from '#lib/utils/utils.js';
 
 	let {
 		collapsed = $bindable(true),

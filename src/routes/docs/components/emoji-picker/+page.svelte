@@ -1,9 +1,9 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { EmojiPicker } from '$lib/components/ui/emoji-picker';
-	import * as Popover from '$lib/components/ui/popover';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { EmojiPicker } from '#lib/components/ui/emoji-picker/index.js';
+	import * as Popover from '#lib/components/ui/popover/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
 	import { Smile } from '@lucide/svelte';
 
 	let picked = $state('👋');
@@ -31,7 +31,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script lang="ts">
-  import { EmojiPicker } from '$lib/components/ui/emoji-picker';
+  import { EmojiPicker } from '#lib/components/ui/emoji-picker/index.js';
 
   let picked = $state('👋');
 </script>

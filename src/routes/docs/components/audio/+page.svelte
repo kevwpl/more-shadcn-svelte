@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as AudioPlayer from '$lib/components/ui/audio';
-	import * as DocPage from '$lib/components/feature/doc-page';
+	import * as AudioPlayer from '#lib/components/ui/audio/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
 
 	const track = {
 		title: 'SoundHelix Song 1',

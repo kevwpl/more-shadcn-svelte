@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as EventCard from '$lib/components/ui/event-card';
+	import * as EventCard from '#lib/components/ui/event-card/index.js';
 
 	let status = $state<'idle' | 'loading' | 'completed'>('idle');
 

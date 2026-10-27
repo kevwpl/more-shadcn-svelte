@@ -23,10 +23,10 @@
 </script>
 
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { onMount, type Snippet } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { Button } from '$lib/components/ui/button';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { RefreshCw, Sparkles, X } from '@lucide/svelte';
 
 	let {

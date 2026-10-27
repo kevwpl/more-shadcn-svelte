@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as Sortable from '$lib/components/ui/sortable';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as Sortable from '#lib/components/ui/sortable/index.js';
 	import { Image } from '@lucide/svelte';
 
 	let listItems = $state([

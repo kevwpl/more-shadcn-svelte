@@ -3,8 +3,8 @@
 -->
 
 <script lang="ts">
-	import { CopyButton } from '$lib/components/ui/copy-button';
-	import { cn } from '$lib/utils/utils';
+	import { CopyButton } from '#lib/components/ui/copy-button/index.js';
+	import { cn } from '#lib/utils/utils.js';
 	import { useCodeCopyButton } from './code.svelte.js';
 	import type { CodeCopyButtonProps } from './types.js';
 

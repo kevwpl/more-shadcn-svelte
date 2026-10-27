@@ -1,10 +1,10 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Button } from '$lib/components/ui/button';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { ArrowRight, Box, Copy, Sparkles, Component } from '@lucide/svelte';
-	import { SpotlightCard } from '$lib/components/ui/spotlight-card';
-	import { Link } from '$lib/components/ui/link';
-	import { ShinyButton } from '$lib/components/ui/shiny-button';
+	import { SpotlightCard } from '#lib/components/ui/spotlight-card/index.js';
+	import { Link } from '#lib/components/ui/link/index.js';
+	import { ShinyButton } from '#lib/components/ui/shiny-button/index.js';
 </script>
 
 <DocPage.Root>

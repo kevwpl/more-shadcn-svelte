@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { ShinyButton } from '$lib/components/ui/shiny-button';
-	import * as DocPage from '$lib/components/feature/doc-page';
+	import { ShinyButton } from '#lib/components/ui/shiny-button/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
 	import { ArrowRight, Trash, Github, Sparkle, Mail } from '@lucide/svelte';
 </script>
 

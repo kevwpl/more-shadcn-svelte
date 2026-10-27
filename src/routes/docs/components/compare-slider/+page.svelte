@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as CompareSlider from '$lib/components/ui/compare-slider';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as CompareSlider from '#lib/components/ui/compare-slider/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 </script>
 
 <DocPage.Root>

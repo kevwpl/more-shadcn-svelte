@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { setDockContext } from './ctx';
 	import { useMotionValue } from 'svelte-motion';
 	import type { Snippet } from 'svelte';

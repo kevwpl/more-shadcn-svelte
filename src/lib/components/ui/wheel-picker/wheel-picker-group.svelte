@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { setWheelContext } from './ctx.svelte';
 	import type { Snippet } from 'svelte';
 	import { onMount, tick } from 'svelte';

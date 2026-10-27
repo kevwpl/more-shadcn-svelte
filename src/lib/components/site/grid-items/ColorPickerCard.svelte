@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as ColorPicker from '$lib/components/ui/color-picker';
-	import * as Popover from '$lib/components/ui/popover';
-	import { Button } from '$lib/components/ui/button';
+	import * as ColorPicker from '#lib/components/ui/color-picker/index.js';
+	import * as Popover from '#lib/components/ui/popover/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { Paintbrush } from '@lucide/svelte';
 
 	let color = $state('#f73c00');

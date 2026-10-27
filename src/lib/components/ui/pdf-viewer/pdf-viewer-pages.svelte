@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { tick, untrack } from 'svelte';
 	import { FileWarning, LoaderCircle } from '@lucide/svelte';
 	import { clamp, getPdfViewerContext } from './ctx.svelte';

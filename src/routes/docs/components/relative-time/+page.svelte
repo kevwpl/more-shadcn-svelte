@@ -1,7 +1,13 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { RelativeTime, SECOND, MINUTE, HOUR, DAY } from '$lib/components/ui/relative-time';
-	import { Button } from '$lib/components/ui/button';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import {
+		RelativeTime,
+		SECOND,
+		MINUTE,
+		HOUR,
+		DAY
+	} from '#lib/components/ui/relative-time/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 
 	const now = Date.now();
 
@@ -46,7 +52,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script lang="ts">
-  import { RelativeTime } from '$lib/components/ui/relative-time';
+  import { RelativeTime } from '#lib/components/ui/relative-time/index.js';
 </script>
 
 <RelativeTime date={comment.createdAt} />`}
@@ -156,7 +162,7 @@
 			anywhere a component does not fit.
 		</DocPage.Text>
 		<DocPage.Code
-			code={`import { formatRelative } from '$lib/components/ui/relative-time';
+			code={`import { formatRelative } from '#lib/components/ui/relative-time/index.js';
 
 formatRelative(post.createdAt);                  // "3 hours ago"
 formatRelative(deadline, { locale: 'de' });      // "in 2 Tagen"`}

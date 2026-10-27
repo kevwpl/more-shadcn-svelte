@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as Popover from '$lib/components/ui/popover';
-	import * as Command from '$lib/components/ui/command';
+	import * as Popover from '#lib/components/ui/popover/index.js';
+	import * as Command from '#lib/components/ui/command/index.js';
 	import { getDynamicSelectContext } from './ctx';
 	import type { Snippet } from 'svelte';
 

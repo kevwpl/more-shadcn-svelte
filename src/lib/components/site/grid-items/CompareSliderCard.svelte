@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as CompareSlider from '$lib/components/ui/compare-slider';
+	import * as CompareSlider from '#lib/components/ui/compare-slider/index.js';
 </script>
 
 <div class="rounded-xl border bg-card p-6 shadow-sm flex flex-col justify-between h-full">

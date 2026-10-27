@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as Dock from '$lib/components/ui/dock';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as Dock from '#lib/components/ui/dock/index.js';
 	import {
 		Home,
 		Search,

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { AudioWave } from '$lib/components/ui/audio-wave';
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Button } from '$lib/components/ui/button';
+	import { AudioWave } from '#lib/components/ui/audio-wave/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { Pause, Play } from '@lucide/svelte';
 
 	let isPlaying = $state(true);

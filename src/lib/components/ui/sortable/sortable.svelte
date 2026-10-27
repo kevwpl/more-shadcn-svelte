@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { setSortableContext } from './ctx';
 	import { tick, type Snippet } from 'svelte';
 

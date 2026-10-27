@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { SpotlightCard } from '$lib/components/ui/spotlight-card';
-	import * as DocPage from '$lib/components/feature/doc-page';
+	import { SpotlightCard } from '#lib/components/ui/spotlight-card/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
 	import { Zap, Shield, Rocket, Palette, MousePointer2, Sparkle } from '@lucide/svelte';
-	import { Button } from '$lib/components/ui/button';
+	import { Button } from '#lib/components/ui/button/index.js';
 </script>
 
 <DocPage.Root>

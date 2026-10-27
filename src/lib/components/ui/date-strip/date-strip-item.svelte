@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { getDateStripContext } from './ctx';
 	import { type DateValue, getLocalTimeZone, isToday } from '@internationalized/date';
 	import { DateFormatter } from '@internationalized/date';
-	import { Button } from '$lib/components/ui/button';
+	import { Button } from '#lib/components/ui/button/index.js';
 
 	let {
 		date,

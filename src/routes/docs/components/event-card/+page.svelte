@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as EventCard from '$lib/components/ui/event-card';
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Button } from '$lib/components/ui/button';
+	import * as EventCard from '#lib/components/ui/event-card/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 
 	let status = $state<'idle' | 'loading' | 'completed'>('idle');
 

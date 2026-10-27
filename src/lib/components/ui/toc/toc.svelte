@@ -12,8 +12,8 @@
 </script>
 
 <script lang="ts">
-	import type { Heading } from '$lib/hooks/use-toc.svelte';
-	import { cn } from '$lib/utils/utils';
+	import type { Heading } from '#lib/hooks/use-toc.svelte.js';
+	import { cn } from '#lib/utils/utils.js';
 	import Self from './toc.svelte';
 
 	let { toc, isChild = false, class: className }: TocProps = $props();

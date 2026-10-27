@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as Timeline from '$lib/components/ui/timeline';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as Timeline from '#lib/components/ui/timeline/index.js';
 	import {
 		Rocket,
 		GitCommit,

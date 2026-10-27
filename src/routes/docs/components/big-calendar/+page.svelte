@@ -1,12 +1,12 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as BigCalendar from '$lib/components/ui/big-calendar';
-	import { Button } from '$lib/components/ui/button';
-	import { Switch } from '$lib/components/ui/switch';
-	import { Label } from '$lib/components/ui/label';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as BigCalendar from '#lib/components/ui/big-calendar/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Switch } from '#lib/components/ui/switch/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
 	import { Calendar, ChevronLeft, ChevronRight, Ban, Clock } from '@lucide/svelte';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Input } from '$lib/components/ui/input';
+	import * as Dialog from '#lib/components/ui/dialog/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
 
 	const today = new Date();
 	const d = (offset: number) => {
@@ -184,8 +184,8 @@
 
 			<DocPage.Code
 				code={`<script lang="ts">
-  import * as BigCalendar from '$lib/components/ui/big-calendar';
-  import { Button } from '$lib/components/ui/button';
+  import * as BigCalendar from '#lib/components/ui/big-calendar/index.js';
+  import { Button } from '#lib/components/ui/button/index.js';
   import { Calendar, ChevronLeft, ChevronRight } from '@lucide/svelte';
 
   // 1. State for date navigation and selection

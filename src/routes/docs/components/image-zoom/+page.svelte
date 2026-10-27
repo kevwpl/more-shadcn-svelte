@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as ImageZoom from '$lib/components/ui/image-zoom';
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Separator } from '$lib/components/ui/separator';
+	import * as ImageZoom from '#lib/components/ui/image-zoom/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Separator } from '#lib/components/ui/separator/index.js';
 
 	const images = [
 		{

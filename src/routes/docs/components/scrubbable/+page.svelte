@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as Scrubbable from '$lib/components/ui/scrubbable';
-	import { Label } from '$lib/components/ui/label';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as Scrubbable from '#lib/components/ui/scrubbable/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
 
 	let volume = $state(50);
 	let scale = $state(1);

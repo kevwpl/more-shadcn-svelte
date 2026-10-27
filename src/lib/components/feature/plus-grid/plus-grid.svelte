@@ -1,6 +1,6 @@
 <!-- $lib/components/ui/plus-grid/plus-grid.svelte -->
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import type { Snippet } from 'svelte';
 
 	let {

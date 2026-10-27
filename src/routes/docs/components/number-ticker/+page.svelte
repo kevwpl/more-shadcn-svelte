@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { NumberTicker } from '$lib/components/ui/number-ticker';
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as Card from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button';
+	import { NumberTicker } from '#lib/components/ui/number-ticker/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { DollarSign, Users, ArrowUpRight, Activity } from '@lucide/svelte';
 
 	// Simple reload hack to replay animation

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { onDestroy, type Snippet } from 'svelte';
 	import { getCanvasContext, snapTo, type CanvasPoint } from './ctx.svelte';
 

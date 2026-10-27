@@ -1,8 +1,8 @@
 <script lang="ts">
-	import * as Geocoder from '$lib/components/ui/geocoder';
-	import * as DocPage from '$lib/components/feature/doc-page';
+	import * as Geocoder from '#lib/components/ui/geocoder/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
 	import { Check, MapPin } from '@lucide/svelte';
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 
 	let query = $state('');
 	let loading = $state(false);
@@ -61,7 +61,7 @@
 
 			<DocPage.Code
 				code={`<script lang="ts">
-  import * as Geocoder from '$lib/components/ui/geocoder';
+  import * as Geocoder from '#lib/components/ui/geocoder/index.js';
 
   let query = $state('');
   let selected = $state<Geocoder.GeoLocation | null>(null);

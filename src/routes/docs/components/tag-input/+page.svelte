@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { TagInput } from '$lib/components/ui/tag-input';
-	import { Label } from '$lib/components/ui/label';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { TagInput } from '#lib/components/ui/tag-input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
 
 	let basicTags = $state(['Svelte', 'Kit']);
 	let emailTags = $state(['john@example.com']);

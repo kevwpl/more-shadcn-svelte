@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { VerifyHuman } from '$lib/components/ui/verify-human';
-	import * as DocPage from '$lib/components/feature/doc-page';
+	import { VerifyHuman } from '#lib/components/ui/verify-human/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
 </script>
 
 <DocPage.Root>

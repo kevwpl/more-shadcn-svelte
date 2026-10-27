@@ -1,8 +1,8 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { SignaturePad } from '$lib/components/ui/signature-pad';
-	import { Button } from '$lib/components/ui/button';
-	import { Label } from '$lib/components/ui/label';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { SignaturePad } from '#lib/components/ui/signature-pad/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
 	import { Download, Eraser, Undo2 } from '@lucide/svelte';
 
 	let pad = $state<ReturnType<typeof SignaturePad> | null>(null);
@@ -59,7 +59,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script lang="ts">
-  import { SignaturePad } from '$lib/components/ui/signature-pad';
+  import { SignaturePad } from '#lib/components/ui/signature-pad/index.js';
 
   let pad = $state<ReturnType<typeof SignaturePad> | null>(null);
   let strokes = $state([]);

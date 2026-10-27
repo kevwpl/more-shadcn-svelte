@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as WheelPicker from '$lib/components/ui/wheel-picker';
+	import * as WheelPicker from '#lib/components/ui/wheel-picker/index.js';
 
 	let hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
 	let minutes = Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0'));

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { MentionInput, type MentionItem } from '$lib/components/ui/mention-input';
-	import { Label } from '$lib/components/ui/label';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { MentionInput, type MentionItem } from '#lib/components/ui/mention-input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
 
 	const people: MentionItem[] = [
 		{ id: '1', label: 'ada', description: 'Ada Lovelace', keywords: ['math'] },
@@ -52,7 +52,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script lang="ts">
-  import { MentionInput, type MentionItem } from '$lib/components/ui/mention-input';
+  import { MentionInput, type MentionItem } from '#lib/components/ui/mention-input/index.js';
 
   const people: MentionItem[] = [
     { id: '1', label: 'ada', description: 'Ada Lovelace' },

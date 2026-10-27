@@ -1,11 +1,11 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as QRCode from '$lib/components/ui/qr-code';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Button } from '$lib/components/ui/button';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as QRCode from '#lib/components/ui/qr-code/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { Download } from '@lucide/svelte';
-	import { Avatar, AvatarImage, AvatarFallback } from '$lib/components/ui/avatar';
+	import { Avatar, AvatarImage, AvatarFallback } from '#lib/components/ui/avatar/index.js';
 </script>
 
 <DocPage.Root>

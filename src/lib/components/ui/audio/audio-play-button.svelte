@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import { Button } from '$lib/components/ui/button';
+	import { cn } from '#lib/utils.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { Play, Pause } from '@lucide/svelte';
 	import { getAudioPlayerContext } from './ctx';
 

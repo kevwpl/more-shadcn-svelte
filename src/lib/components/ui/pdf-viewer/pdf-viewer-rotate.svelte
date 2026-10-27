@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { RotateCcw, RotateCw } from '@lucide/svelte';
 	import { getPdfViewerContext } from './ctx.svelte';
 

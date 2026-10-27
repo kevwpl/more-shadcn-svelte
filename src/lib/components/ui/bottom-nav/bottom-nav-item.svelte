@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import type { Snippet } from 'svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
 	let {
 		href,
@@ -15,7 +15,7 @@
 		children: Snippet;
 	} = $props();
 
-	let active = $derived(isActive ?? $page.url.pathname === href);
+	let active = $derived(isActive ?? page.url.pathname === href);
 </script>
 
 <a

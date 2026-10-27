@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as Autocomplete from '$lib/components/ui/autocomplete';
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Avatar, AvatarFallback } from '$lib/components/ui/avatar';
+	import * as Autocomplete from '#lib/components/ui/autocomplete/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Avatar, AvatarFallback } from '#lib/components/ui/avatar/index.js';
 	import { Check } from '@lucide/svelte';
 
 	// --- Mock Data ---

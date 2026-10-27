@@ -1,8 +1,8 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import ApiDocumentation from '$lib/components/ui/api-documentation/api-documentation.svelte';
-	import { defineAPI } from '$lib/components/ui/api-documentation';
-	import Separator from '$lib/components/ui/separator/separator.svelte';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import ApiDocumentation from '#lib/components/ui/api-documentation/api-documentation.svelte';
+	import { defineAPI } from '#lib/components/ui/api-documentation/index.js';
+	import Separator from '#lib/components/ui/separator/separator.svelte';
 
 	const buttonAPI = defineAPI('API Reference', '')
 		.component('Button', 'Main button component', (component) =>
@@ -66,7 +66,7 @@
 		<DocPage.Code
 			class="rounded-t-md overflow-auto rounded-b-none"
 			lang="typescript"
-			code={`import { defineAPI } from '$lib/components/ui/api-documentation';
+			code={`import { defineAPI } from '#lib/components/ui/api-documentation/index.js';
 const buttonAPI = defineAPI('Button', 'Button API')
     .component('Button', 'Main button component', (component) =>
         component

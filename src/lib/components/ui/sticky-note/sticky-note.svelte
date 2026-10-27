@@ -45,7 +45,7 @@
 </script>
 
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { tick, type Snippet } from 'svelte';
 	import { X } from '@lucide/svelte';
 

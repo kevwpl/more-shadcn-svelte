@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as BottomNav from '$lib/components/ui/bottom-nav';
-	import * as DocPage from '$lib/components/feature/doc-page';
+	import * as BottomNav from '#lib/components/ui/bottom-nav/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
 	import { Home, Search, PlusCircle, Bell, User, LayoutGrid, Calendar, Mail } from '@lucide/svelte';
 </script>
 
@@ -56,7 +56,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script>
-  import * as BottomNav from "$lib/components/ui/bottom-nav";
+  import * as BottomNav from "#lib/components/ui/bottom-nav/index.js";
 </script>
 
 <!-- Place this in your layout or page wrapper -->

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { Check, Loader2, ShieldCheck, X } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Walkthrough } from '$lib/components/ui/walkthrough';
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Button } from '$lib/components/ui/button';
+	import { Walkthrough } from '#lib/components/ui/walkthrough/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { Play, MousePointerClick, Paintbrush } from '@lucide/svelte';
 
 	let openTour = $state(false);

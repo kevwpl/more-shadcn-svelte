@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { Check } from '@lucide/svelte';
 	import { getStepperContext } from './ctx';
 	import type { Snippet } from 'svelte';

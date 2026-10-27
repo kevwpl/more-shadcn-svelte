@@ -1,13 +1,13 @@
 <script lang="ts">
-	import * as Stepper from '$lib/components/ui/stepper';
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as Stepper from '#lib/components/ui/stepper/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import { Check, User, Mail, Shield, Circle, CheckCircle2 } from '@lucide/svelte';
-	import { defineAPI } from '$lib/components/ui/api-documentation';
-	import ApiDocumentation from '$lib/components/ui/api-documentation/api-documentation.svelte';
+	import { defineAPI } from '#lib/components/ui/api-documentation/index.js';
+	import ApiDocumentation from '#lib/components/ui/api-documentation/api-documentation.svelte';
 
 	const stepperAPI = defineAPI('Stepper', 'A visual indicator for multi-step processes.')
 		.component('Root', 'Container that provides stepper state and layout', (component) =>

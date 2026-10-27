@@ -2,8 +2,8 @@
 	import '../app.css';
 	import { page } from '$app/state';
 	import { ModeWatcher } from 'mode-watcher';
-	import { docsConfig } from '$lib/config/docs';
-	import * as Tooltip from '$lib/components/ui/tooltip';
+	import { docsConfig } from '#lib/config/docs.js';
+	import * as Tooltip from '#lib/components/ui/tooltip/index.js';
 
 	let { children } = $props();
 

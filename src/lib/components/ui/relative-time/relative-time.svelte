@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { onMount } from 'svelte';
 	import { clock } from './clock.svelte';
 	import { DAY, HOUR, MINUTE, relativeParts, toTime, type DateInput } from './format';

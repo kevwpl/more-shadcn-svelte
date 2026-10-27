@@ -1,25 +1,25 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import { ArrowRight, Github, GithubIcon, SearchIcon } from '@lucide/svelte';
-	import * as Kbd from '$lib/components/ui/kbd';
-	import * as Command from '$lib/components/ui/command';
+	import * as Kbd from '#lib/components/ui/kbd/index.js';
+	import * as Command from '#lib/components/ui/command/index.js';
 
-	import { docsConfig } from '$lib/config/docs';
-	import { Link } from '$lib/components/ui/link';
-	import { LightSwitch } from '$lib/components/ui/light-switch';
+	import { docsConfig } from '#lib/config/docs.js';
+	import { Link } from '#lib/components/ui/link/index.js';
+	import { LightSwitch } from '#lib/components/ui/light-switch/index.js';
 	import { goto } from '$app/navigation';
-	import { ShinyButton } from '$lib/components/ui/shiny-button';
-	import StepperCard from '$lib/components/site/grid-items/StepperCard.svelte';
-	import DockCard from '$lib/components/site/grid-items/DockCard.svelte';
-	import ColorPickerCard from '$lib/components/site/grid-items/ColorPickerCard.svelte';
-	import CompareSliderCard from '$lib/components/site/grid-items/CompareSliderCard.svelte';
-	import ChipCard from '$lib/components/site/grid-items/ChipCard.svelte';
-	import CursorCard from '$lib/components/site/grid-items/CursorCard.svelte';
-	import EventCardCard from '$lib/components/site/grid-items/EventCardCard.svelte';
-	import KnobCard from '$lib/components/site/grid-items/KnobCard.svelte';
-	import VerifyHumanCard from '$lib/components/site/grid-items/VerifyHumanCard.svelte';
-	import WheelPickerCard from '$lib/components/site/grid-items/WheelPickerCard.svelte';
+	import { ShinyButton } from '#lib/components/ui/shiny-button/index.js';
+	import StepperCard from '#lib/components/site/grid-items/StepperCard.svelte';
+	import DockCard from '#lib/components/site/grid-items/DockCard.svelte';
+	import ColorPickerCard from '#lib/components/site/grid-items/ColorPickerCard.svelte';
+	import CompareSliderCard from '#lib/components/site/grid-items/CompareSliderCard.svelte';
+	import ChipCard from '#lib/components/site/grid-items/ChipCard.svelte';
+	import CursorCard from '#lib/components/site/grid-items/CursorCard.svelte';
+	import EventCardCard from '#lib/components/site/grid-items/EventCardCard.svelte';
+	import KnobCard from '#lib/components/site/grid-items/KnobCard.svelte';
+	import VerifyHumanCard from '#lib/components/site/grid-items/VerifyHumanCard.svelte';
+	import WheelPickerCard from '#lib/components/site/grid-items/WheelPickerCard.svelte';
 
 	const newComponents = docsConfig.flatMap((group) => group.links).filter((link) => link.new);
 

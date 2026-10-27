@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { cn } from '$lib/utils';
-	import { Button } from '$lib/components/ui/button';
+	import { page } from '$app/state';
+	import { cn } from '#lib/utils.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 
 	const items = [
 		{
@@ -28,7 +28,7 @@
 				</h4>
 				<div class="grid grid-flow-row auto-rows-max text-sm">
 					{#each group.links as link}
-						{@const isActive = $page.url.pathname === link.href}
+						{@const isActive = page.url.pathname === link.href}
 						<a
 							href={link.href}
 							class={cn(

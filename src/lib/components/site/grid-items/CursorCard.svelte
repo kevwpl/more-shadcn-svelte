@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as Cursor from '$lib/components/ui/cursor';
+	import * as Cursor from '#lib/components/ui/cursor/index.js';
 	import { onMount } from 'svelte';
 
 	let x = $state(0);

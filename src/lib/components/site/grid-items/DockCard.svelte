@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as Dock from '$lib/components/ui/dock';
+	import * as Dock from '#lib/components/ui/dock/index.js';
 	import { Home, Search, Calendar, Mail, Settings, User } from '@lucide/svelte';
 </script>
 

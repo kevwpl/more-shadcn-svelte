@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as Stepper from '$lib/components/ui/stepper';
-	import { Button } from '$lib/components/ui/button';
+	import * as Stepper from '#lib/components/ui/stepper/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { Mail, User, Shield, Check } from '@lucide/svelte';
 
 	let currentStep = $state(0);

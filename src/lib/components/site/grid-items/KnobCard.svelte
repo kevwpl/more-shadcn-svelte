@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Knob } from '$lib/components/ui/knob';
+	import { Knob } from '#lib/components/ui/knob/index.js';
 
 	let vol = $state(65);
 	let pan = $state(0);

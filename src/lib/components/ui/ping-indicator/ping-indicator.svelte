@@ -18,7 +18,7 @@
 </script>
 
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { onMount, type Snippet } from 'svelte';
 
 	let {

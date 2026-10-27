@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { StickyNote, STICKY_NOTE_COLORS } from '$lib/components/ui/sticky-note';
-	import * as Canvas from '$lib/components/ui/canvas';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { StickyNote, STICKY_NOTE_COLORS } from '#lib/components/ui/sticky-note/index.js';
+	import * as Canvas from '#lib/components/ui/canvas/index.js';
 
 	let text = $state('Double click to edit me');
 	let color = $state<(typeof STICKY_NOTE_COLORS)[number]>('yellow');
@@ -30,7 +30,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script lang="ts">
-  import { StickyNote } from '$lib/components/ui/sticky-note';
+  import { StickyNote } from '#lib/components/ui/sticky-note/index.js';
 
   let text = $state('Double click to edit me');
 </script>

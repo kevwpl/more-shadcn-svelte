@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import * as Command from '$lib/components/ui/command';
+	import { cn } from '#lib/utils.js';
+	import * as Command from '#lib/components/ui/command/index.js';
 	import { Check } from '@lucide/svelte';
 	import { getDynamicSelectContext } from './ctx';
 	import type { Snippet } from 'svelte';

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { PingIndicator } from '$lib/components/ui/ping-indicator';
-	import { Button } from '$lib/components/ui/button';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { PingIndicator } from '#lib/components/ui/ping-indicator/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 
 	// Stand-in probes so the docs stay lively without hammering the network.
 	let drift = 60;
@@ -41,7 +41,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script lang="ts">
-  import { PingIndicator } from '$lib/components/ui/ping-indicator';
+  import { PingIndicator } from '#lib/components/ui/ping-indicator/index.js';
 </script>
 
 <PingIndicator url="https://api.example.com/health" />`}

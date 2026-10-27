@@ -55,7 +55,7 @@
 </script>
 
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { X } from '@lucide/svelte';
 	import { slide } from 'svelte/transition';
 	import type { Snippet } from 'svelte';

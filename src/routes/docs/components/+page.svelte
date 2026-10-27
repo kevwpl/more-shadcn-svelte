@@ -1,8 +1,8 @@
 <script>
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { docsConfig } from '$lib/config/docs';
-	import { Button } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { docsConfig } from '#lib/config/docs.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 
 	const componentGroups = docsConfig.filter((group) => group.title !== 'Getting Started');
 </script>

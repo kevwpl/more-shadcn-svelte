@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as WheelPicker from '$lib/components/ui/wheel-picker';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as WheelPicker from '#lib/components/ui/wheel-picker/index.js';
 
 	const frameworks = [
 		'Next.js',

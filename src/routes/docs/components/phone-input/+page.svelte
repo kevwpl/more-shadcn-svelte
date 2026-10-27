@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { PhoneInput } from '$lib/components/ui/phone-input';
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Label } from '$lib/components/ui/label';
-	import { Button } from '$lib/components/ui/button';
+	import { PhoneInput } from '#lib/components/ui/phone-input/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 
 	let phoneBasic = $state('');
 

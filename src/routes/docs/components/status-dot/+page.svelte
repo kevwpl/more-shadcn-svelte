@@ -1,8 +1,8 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as StatusDot from '$lib/components/ui/status-dot';
-	import { Avatar, AvatarFallback, AvatarImage } from '$lib/components/ui/avatar';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as StatusDot from '#lib/components/ui/status-dot/index.js';
+	import { Avatar, AvatarFallback, AvatarImage } from '#lib/components/ui/avatar/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 </script>
 
 <DocPage.Root>

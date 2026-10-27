@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { Maximize, Minus, Plus, RotateCcw } from '@lucide/svelte';
 	import { getCanvasContext } from './ctx.svelte';
 

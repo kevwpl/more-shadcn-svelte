@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Knob } from '$lib/components/ui/knob';
-	import * as DocPage from '$lib/components/feature/doc-page';
+	import { Knob } from '#lib/components/ui/knob/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
 
 	let gain = $state(75);
 	let pan = $state(0);

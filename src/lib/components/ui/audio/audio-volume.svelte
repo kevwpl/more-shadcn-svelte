@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import { Button } from '$lib/components/ui/button';
+	import { cn } from '#lib/utils.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { Volume2, VolumeX, Volume1 } from '@lucide/svelte';
-	import * as HoverCard from '$lib/components/ui/hover-card';
+	import * as HoverCard from '#lib/components/ui/hover-card/index.js';
 	import { getAudioPlayerContext } from './ctx';
 
 	let { class: className }: { class?: string } = $props();

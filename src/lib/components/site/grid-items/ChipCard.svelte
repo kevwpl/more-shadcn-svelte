@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as Chip from '$lib/components/ui/chip';
-	import { Avatar, AvatarImage, AvatarFallback } from '$lib/components/ui/avatar';
+	import * as Chip from '#lib/components/ui/chip/index.js';
+	import { Avatar, AvatarImage, AvatarFallback } from '#lib/components/ui/avatar/index.js';
 	import { Check, Plus } from '@lucide/svelte';
 
 	let activeTags = $state(['Svelte', 'Tailwind']);

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Banner, resetBanner } from '$lib/components/ui/banner';
-	import { Button } from '$lib/components/ui/button';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Banner, resetBanner } from '#lib/components/ui/banner/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { RotateCcw, Sparkles, TriangleAlert } from '@lucide/svelte';
 
 	let basicOpen = $state(true);
@@ -113,7 +113,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script lang="ts">
-  import { Banner, resetBanner } from '$lib/components/ui/banner';
+  import { Banner, resetBanner } from '#lib/components/ui/banner/index.js';
 </script>
 
 <Banner id="cookie-notice" persist="local" variant="info" align="center">

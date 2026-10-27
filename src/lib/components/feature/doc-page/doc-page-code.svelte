@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as Code from '$lib/components/ui/code';
-	import { cn } from '$lib/utils';
+	import * as Code from '#lib/components/ui/code/index.js';
+	import { cn } from '#lib/utils.js';
 
 	let {
 		class: className,

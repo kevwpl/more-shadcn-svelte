@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import type { Snippet } from 'svelte';
-	import { PMCommand } from '$lib/components/ui/pm-command';
-	import type { PMCommandProps } from '$lib/components/ui/pm-command/pm-command.svelte';
+	import { PMCommand } from '#lib/components/ui/pm-command/index.js';
+	import type { PMCommandProps } from '#lib/components/ui/pm-command/pm-command.svelte';
 
 	let {
 		variant = 'default',

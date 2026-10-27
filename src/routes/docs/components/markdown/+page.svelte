@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Markdown } from '$lib/components/ui/markdown';
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { Card } from '$lib/components/ui/card';
-	import { Tabs, TabsContent, TabsList, TabsTrigger } from '$lib/components/ui/tabs';
+	import { Markdown } from '#lib/components/ui/markdown/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Textarea } from '#lib/components/ui/textarea/index.js';
+	import { Card } from '#lib/components/ui/card/index.js';
+	import { Tabs, TabsContent, TabsList, TabsTrigger } from '#lib/components/ui/tabs/index.js';
 
 	let blogPost = $state(`# Building Scalable Systems
 

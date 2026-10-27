@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Marquee } from '$lib/components/ui/marquee';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Marquee } from '#lib/components/ui/marquee/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import { CircleCheck, GitBranch, Rocket, TriangleAlert } from '@lucide/svelte';
 
 	const components = [
@@ -50,7 +50,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script lang="ts">
-  import { Marquee } from '$lib/components/ui/marquee';
+  import { Marquee } from '#lib/components/ui/marquee/index.js';
 </script>
 
 <Marquee gap={12}>

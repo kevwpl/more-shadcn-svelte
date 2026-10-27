@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Link } from '$lib/components/ui/link';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Link } from '#lib/components/ui/link/index.js';
 </script>
 
 <DocPage.Root>

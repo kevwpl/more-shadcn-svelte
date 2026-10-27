@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Editor } from '$lib/components/ui/editor';
-	import * as DocPage from '$lib/components/feature/doc-page';
+	import { Editor } from '#lib/components/ui/editor/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
 </script>
 
 <DocPage.Root>

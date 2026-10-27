@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { getDockContext } from './ctx';
 	import { Motion, useSpring, useTransform } from 'svelte-motion';
-	import * as Tooltip from '$lib/components/ui/tooltip';
+	import * as Tooltip from '#lib/components/ui/tooltip/index.js';
 	import type { Snippet } from 'svelte';
 
 	let {

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { APIRegistry } from '.';
-	import { Badge } from '$lib/components/ui/badge';
-	import * as Tooltip from '$lib/components/ui/tooltip/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import * as Tooltip from '#lib/components/ui/tooltip/index.js';
 
 	type APIItem = APIRegistry['items'][number];
 	type APIMember = APIItem['members'][number];

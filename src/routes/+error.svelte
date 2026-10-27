@@ -1,11 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
 	onMount(() => {
-		if ($page.status === 404) {
-			goto('/', { replaceState: true });
+		if (page.status === 404) {
+			goto('/', { replace: true });
 		}
 	});
 </script>

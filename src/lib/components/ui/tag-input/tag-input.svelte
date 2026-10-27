@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import * as Chip from '$lib/components/ui/chip';
+	import { cn } from '#lib/utils.js';
+	import * as Chip from '#lib/components/ui/chip/index.js';
 	import { X } from '@lucide/svelte';
 
 	let {

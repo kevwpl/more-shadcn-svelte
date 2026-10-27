@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as Cursor from '$lib/components/ui/cursor';
-	import * as PlusGrid from '$lib/components/feature/plus-grid';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as Cursor from '#lib/components/ui/cursor/index.js';
+	import * as PlusGrid from '#lib/components/feature/plus-grid/index.js';
 	import { onMount } from 'svelte';
 
 	// Simulation State

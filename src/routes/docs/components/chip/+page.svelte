@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as Chip from '$lib/components/ui/chip';
-	import { Avatar, AvatarImage, AvatarFallback } from '$lib/components/ui/avatar';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as Chip from '#lib/components/ui/chip/index.js';
+	import { Avatar, AvatarImage, AvatarFallback } from '#lib/components/ui/avatar/index.js';
 	import { Check, Plus } from '@lucide/svelte';
 
 	// State for toggleable chips

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as Timeline from '$lib/components/ui/timeline';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as Timeline from '#lib/components/ui/timeline/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import { FileText, Frame, Rocket } from '@lucide/svelte';
-	import { COMPONENT_URL } from '$lib/config/docs';
+	import { COMPONENT_URL } from '#lib/config/docs.js';
 
 	const updates = [
 		{

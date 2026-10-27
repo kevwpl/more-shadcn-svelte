@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as PdfViewer from '$lib/components/ui/pdf-viewer';
-	import { Button } from '$lib/components/ui/button';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as PdfViewer from '#lib/components/ui/pdf-viewer/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { FileUp } from '@lucide/svelte';
 
 	let localFile = $state<ArrayBuffer | null>(null);
@@ -34,7 +34,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script lang="ts">
-  import * as PdfViewer from '$lib/components/ui/pdf-viewer';
+  import * as PdfViewer from '#lib/components/ui/pdf-viewer/index.js';
 </script>
 
 <PdfViewer.Root src="/files/report.pdf" sidebar class="h-[560px]" />`}

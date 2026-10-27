@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import * as Kbd from '$lib/components/ui/kbd';
-	import * as Command from '$lib/components/ui/command';
-	import { LightSwitch } from '$lib/components/ui/light-switch';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import * as Kbd from '#lib/components/ui/kbd/index.js';
+	import * as Command from '#lib/components/ui/command/index.js';
+	import { LightSwitch } from '#lib/components/ui/light-switch/index.js';
 	import { GithubIcon, SearchIcon } from '@lucide/svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
-	import { browser } from '$app/environment';
-	import { ScrollArea } from '$lib/components/ui/scroll-area';
-	import { docsConfig } from '$lib/config/docs';
+	import { browser } from '$app/env';
+	import { ScrollArea } from '#lib/components/ui/scroll-area/index.js';
+	import { docsConfig } from '#lib/config/docs.js';
 
 	let { children } = $props();
 	let searchOpen = $state(false);

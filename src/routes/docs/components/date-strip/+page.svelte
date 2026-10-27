@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as DateStrip from '$lib/components/ui/date-strip';
-	import { Label } from '$lib/components/ui/label';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as DateStrip from '#lib/components/ui/date-strip/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
 	import { today, getLocalTimeZone, isWeekend } from '@internationalized/date';
 
 	// 1. Basic State

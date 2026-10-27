@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { UpdateBanner } from '$lib/components/ui/update-banner';
-	import { Button } from '$lib/components/ui/button';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { UpdateBanner } from '#lib/components/ui/update-banner/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { Rocket } from '@lucide/svelte';
 
 	let inlineOpen = $state(true);
@@ -40,7 +40,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script lang="ts">
-  import { UpdateBanner } from '$lib/components/ui/update-banner';
+  import { UpdateBanner } from '#lib/components/ui/update-banner/index.js';
 </script>
 
 <!-- Drop it in the root layout; it stays hidden until an update is waiting -->

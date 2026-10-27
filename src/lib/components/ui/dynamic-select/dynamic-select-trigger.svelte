@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import * as Popover from '$lib/components/ui/popover';
-	import { buttonVariants } from '$lib/components/ui/button';
+	import { cn } from '#lib/utils.js';
+	import * as Popover from '#lib/components/ui/popover/index.js';
+	import { buttonVariants } from '#lib/components/ui/button/index.js';
 	import { ChevronDown } from '@lucide/svelte';
 	import { getDynamicSelectContext } from './ctx';
 	import type { Snippet } from 'svelte';

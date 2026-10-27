@@ -3,9 +3,9 @@
 	import { setImageZoomContext, type ZoomImageData } from './ctx';
 	import { fade } from 'svelte/transition';
 	import { onMount, onDestroy, type Snippet } from 'svelte';
-	import { Button } from '$lib/components/ui/button';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { X, ChevronLeft, ChevronRight } from '@lucide/svelte';
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 
 	let {
 		class: className,

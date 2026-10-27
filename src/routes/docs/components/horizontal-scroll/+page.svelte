@@ -1,8 +1,8 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as Chip from '$lib/components/ui/chip';
-	import { HorizontalScroll } from '$lib/components/ui/horizontal-scroll';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as Chip from '#lib/components/ui/chip/index.js';
+	import { HorizontalScroll } from '#lib/components/ui/horizontal-scroll/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import { Check, Image, Music, Plus } from '@lucide/svelte';
 
 	let filters = $state<string[]>(['Design']);

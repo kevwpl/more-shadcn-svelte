@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Video } from '$lib/components/ui/video';
-	import * as DocPage from '$lib/components/feature/doc-page';
+	import { Video } from '#lib/components/ui/video/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
 </script>
 
 <DocPage.Root>

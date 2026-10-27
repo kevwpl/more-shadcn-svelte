@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DynamicSelect from '$lib/components/ui/dynamic-select';
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Button } from '$lib/components/ui/button';
+	import * as DynamicSelect from '#lib/components/ui/dynamic-select/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 
 	let framework = $state('Svelte');
 	const frameworks = [

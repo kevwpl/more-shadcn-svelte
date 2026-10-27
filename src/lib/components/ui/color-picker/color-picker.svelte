@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import { Button } from '$lib/components/ui/button';
+	import { cn } from '#lib/utils.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { ChevronDown } from '@lucide/svelte';
-	import * as Popover from '$lib/components/ui/popover';
-	import * as Command from '$lib/components/ui/command';
-	import * as ButtonGroup from '$lib/components/ui/button-group';
-	import { Input } from '$lib/components/ui/input';
+	import * as Popover from '#lib/components/ui/popover/index.js';
+	import * as Command from '#lib/components/ui/command/index.js';
+	import * as ButtonGroup from '#lib/components/ui/button-group/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
 
 	type ColorFormat = 'hex' | 'rgb' | 'hsl' | 'oklch';
 

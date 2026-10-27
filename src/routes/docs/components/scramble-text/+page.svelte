@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { ScrambleText } from '$lib/components/ui/scramble-text';
-	import { Button } from '$lib/components/ui/button';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { ScrambleText } from '#lib/components/ui/scramble-text/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { RotateCcw } from '@lucide/svelte';
 
 	let hero = $state<ReturnType<typeof ScrambleText> | null>(null);
@@ -33,7 +33,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script lang="ts">
-  import { ScrambleText } from '$lib/components/ui/scramble-text';
+  import { ScrambleText } from '#lib/components/ui/scramble-text/index.js';
 </script>
 
 <ScrambleText text="Access granted" duration={1400} />`}

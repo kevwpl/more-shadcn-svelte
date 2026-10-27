@@ -1,9 +1,9 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import * as ColorPicker from '$lib/components/ui/color-picker';
-	import * as Popover from '$lib/components/ui/popover';
-	import { Label } from '$lib/components/ui/label';
-	import { Button } from '$lib/components/ui/button';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import * as ColorPicker from '#lib/components/ui/color-picker/index.js';
+	import * as Popover from '#lib/components/ui/popover/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { Paintbrush } from '@lucide/svelte';
 
 	let color = $state('#FF0000');

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { HoldButton } from '$lib/components/ui/hold-button';
-	import * as DocPage from '$lib/components/feature/doc-page';
+	import { HoldButton } from '#lib/components/ui/hold-button/index.js';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
 	import { Trash2, AlertTriangle, Fingerprint, Power, RotateCcw } from '@lucide/svelte';
 
 	let status = $state('Idle');

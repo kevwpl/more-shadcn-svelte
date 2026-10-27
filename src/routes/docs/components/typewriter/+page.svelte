@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as DocPage from '$lib/components/feature/doc-page';
-	import { Typewriter } from '$lib/components/ui/typewriter';
-	import { Button } from '$lib/components/ui/button';
+	import * as DocPage from '#lib/components/feature/doc-page/index.js';
+	import { Typewriter } from '#lib/components/ui/typewriter/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { RotateCcw } from '@lucide/svelte';
 
 	let replay = $state(0);
@@ -30,7 +30,7 @@
 			</DocPage.Preview>
 			<DocPage.Code
 				code={`<script lang="ts">
-  import { Typewriter } from '$lib/components/ui/typewriter';
+  import { Typewriter } from '#lib/components/ui/typewriter/index.js';
 </script>
 
 <h3>
