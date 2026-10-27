@@ -2,10 +2,40 @@
 	import * as DocPage from '#lib/components/feature/doc-page/index.js';
 	import * as Timeline from '#lib/components/ui/timeline/index.js';
 	import { Badge } from '#lib/components/ui/badge/index.js';
-	import { FileText, Frame, Rocket } from '@lucide/svelte';
-	import { COMPONENT_URL } from '#lib/config/docs.js';
+	import { FileText, Frame, Rocket, Zap } from '@lucide/svelte';
+	import { COMPONENT_URL, LEGACY_DOCS_URL } from '#lib/config/docs.js';
 
-	const updates = [
+	// Items link to a component page by slug, or anywhere else by href.
+	type UpdateItem = { label: string; desc: string; slug?: string; href?: string };
+
+	const updates: {
+		date: string;
+		version: string;
+		title: string;
+		icon: typeof Zap;
+		description: string;
+		items: UpdateItem[];
+	}[] = [
+		{
+			date: 'October 2026',
+			version: '2.0.0',
+			title: 'Now on SvelteKit 3',
+			icon: Zap,
+			description:
+				'The docs site now runs on SvelteKit 3, Vite 8 and TypeScript 6. Components still install the same way and keep working in SvelteKit 2 projects. The SvelteKit 2 version of the docs stays online.',
+			items: [
+				{
+					label: 'Installation',
+					href: '/docs/installation',
+					desc: 'Same commands as before. Imports resolve to your own aliases.'
+				},
+				{
+					label: 'SvelteKit 2 docs',
+					href: LEGACY_DOCS_URL,
+					desc: 'The previous version of the site, kept for SvelteKit 2 projects.'
+				}
+			]
+		},
 		{
 			date: 'October 2026',
 			version: '1.2.0',
@@ -152,7 +182,7 @@
 						<div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 							{#each update.items as item}
 								<a
-									href={`${COMPONENT_URL}/${item.slug}`}
+									href={item.href ?? `${COMPONENT_URL}/${item.slug}`}
 									class="flex flex-col gap-1 p-3 rounded-xl border bg-muted/30 transition-all hover:bg-muted hover:border-primary/30 group"
 								>
 									<span class="text-sm font-bold group-hover:text-primary transition-colors">

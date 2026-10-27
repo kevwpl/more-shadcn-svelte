@@ -5,7 +5,7 @@
 	import * as Kbd from '#lib/components/ui/kbd/index.js';
 	import * as Command from '#lib/components/ui/command/index.js';
 
-	import { docsConfig } from '#lib/config/docs.js';
+	import { docsConfig, LEGACY_DOCS_URL } from '#lib/config/docs.js';
 	import { Link } from '#lib/components/ui/link/index.js';
 	import { LightSwitch } from '#lib/components/ui/light-switch/index.js';
 	import { goto } from '$app/navigation';
@@ -64,6 +64,9 @@
 					Search docs...
 				</div>
 				<Kbd.Group><Kbd.Root>⌘+K</Kbd.Root></Kbd.Group>
+			</Button>
+			<Button variant="ghost" href={LEGACY_DOCS_URL} class="hidden sm:inline-flex">
+				SvelteKit 2 docs
 			</Button>
 			<LightSwitch variant="ghost" />
 			<Button

@@ -6,37 +6,37 @@
 	"description": "A vertical list of events or milestones.",
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport type { Snippet } from 'svelte';\n\n\tlet {\n\t\tclass: className,\n\t\tchildren\n\t}: {\n\t\tclass?: string;\n\t\tchildren: Snippet;\n\t} = $props();\n</script>\n\n<div class={cn('relative flex flex-col', className)}>\n\t<div class=\"absolute left-[11.5px] top-0 bottom-0 w-px bg-border\" />\n\t{@render children()}\n</div>\n",
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$.js';\r\n\timport type { Snippet } from 'svelte';\r\n\r\n\tlet {\r\n\t\tclass: className,\r\n\t\tchildren\r\n\t}: {\r\n\t\tclass?: string;\r\n\t\tchildren: Snippet;\r\n\t} = $props();\r\n</script>\r\n\r\n<div class={cn('relative flex flex-col', className)}>\r\n\t<div class=\"absolute left-[11.5px] top-0 bottom-0 w-px bg-border\" />\r\n\t{@render children()}\r\n</div>\r\n",
 			"type": "registry:ui",
 			"target": "timeline/timeline.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport type { Snippet } from 'svelte';\n\n\tlet {\n\t\tclass: className,\n\t\tchildren\n\t}: {\n\t\tclass?: string;\n\t\tchildren: Snippet;\n\t} = $props();\n</script>\n\n<div class={cn('group relative flex items-start pb-8 last:pb-0', className)}>\n\t{@render children()}\n</div>\n",
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$.js';\r\n\timport type { Snippet } from 'svelte';\r\n\r\n\tlet {\r\n\t\tclass: className,\r\n\t\tchildren\r\n\t}: {\r\n\t\tclass?: string;\r\n\t\tchildren: Snippet;\r\n\t} = $props();\r\n</script>\r\n\r\n<div class={cn('group relative flex items-start pb-8 last:pb-0', className)}>\r\n\t{@render children()}\r\n</div>\r\n",
 			"type": "registry:ui",
 			"target": "timeline/timeline-item.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport type { Snippet } from 'svelte';\n\n\tlet {\n\t\tclass: className,\n\t\tchildren\n\t}: {\n\t\tclass?: string;\n\t\tchildren?: Snippet;\n\t} = $props();\n</script>\n\n<div\n\tclass={cn(\n\t\t'relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border bg-background shadow-sm',\n\t\tclassName\n\t)}\n>\n\t{#if children}\n\t\t{@render children()}\n\t{:else}\n\t\t<div class=\"h-1.5 w-1.5 rounded-full bg-primary\" />\n\t{/if}\n</div>\n",
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$.js';\r\n\timport type { Snippet } from 'svelte';\r\n\r\n\tlet {\r\n\t\tclass: className,\r\n\t\tchildren\r\n\t}: {\r\n\t\tclass?: string;\r\n\t\tchildren?: Snippet;\r\n\t} = $props();\r\n</script>\r\n\r\n<div\r\n\tclass={cn(\r\n\t\t'relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border bg-background shadow-sm',\r\n\t\tclassName\r\n\t)}\r\n>\r\n\t{#if children}\r\n\t\t{@render children()}\r\n\t{:else}\r\n\t\t<div class=\"h-1.5 w-1.5 rounded-full bg-primary\" />\r\n\t{/if}\r\n</div>\r\n",
 			"type": "registry:ui",
 			"target": "timeline/timeline-separator.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport type { Snippet } from 'svelte';\n\n\tlet {\n\t\tclass: className,\n\t\tchildren\n\t}: {\n\t\tclass?: string;\n\t\tchildren: Snippet;\n\t} = $props();\n</script>\n\n<div class={cn('flex flex-col gap-1 flex-1 ml-4 pt-0.5', className)}>\n\t{@render children()}\n</div>\n",
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$.js';\r\n\timport type { Snippet } from 'svelte';\r\n\r\n\tlet {\r\n\t\tclass: className,\r\n\t\tchildren\r\n\t}: {\r\n\t\tclass?: string;\r\n\t\tchildren: Snippet;\r\n\t} = $props();\r\n</script>\r\n\r\n<div class={cn('flex flex-col gap-1 flex-1 ml-4 pt-0.5', className)}>\r\n\t{@render children()}\r\n</div>\r\n",
 			"type": "registry:ui",
 			"target": "timeline/timeline-content.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport type { Snippet } from 'svelte';\n\n\tlet { class: className, children }: { class?: string; children: Snippet } = $props();\n</script>\n\n<h3 class={cn('text-sm font-semibold leading-none tracking-tight', className)}>\n\t{@render children()}\n</h3>\n",
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$.js';\r\n\timport type { Snippet } from 'svelte';\r\n\r\n\tlet { class: className, children }: { class?: string; children: Snippet } = $props();\r\n</script>\r\n\r\n<h3 class={cn('text-sm font-semibold leading-none tracking-tight', className)}>\r\n\t{@render children()}\r\n</h3>\r\n",
 			"type": "registry:ui",
 			"target": "timeline/timeline-title.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport type { Snippet } from 'svelte';\n\n\tlet { class: className, children }: { class?: string; children: Snippet } = $props();\n</script>\n\n<p class={cn('text-xs text-muted-foreground mb-0.5', className)}>\n\t{@render children()}\n</p>\n",
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$.js';\r\n\timport type { Snippet } from 'svelte';\r\n\r\n\tlet { class: className, children }: { class?: string; children: Snippet } = $props();\r\n</script>\r\n\r\n<p class={cn('text-xs text-muted-foreground mb-0.5', className)}>\r\n\t{@render children()}\r\n</p>\r\n",
 			"type": "registry:ui",
 			"target": "timeline/timeline-date.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport type { Snippet } from 'svelte';\n\n\tlet { class: className, children }: { class?: string; children: Snippet } = $props();\n</script>\n\n<p class={cn('text-sm text-muted-foreground mt-1', className)}>\n\t{@render children()}\n</p>\n",
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$.js';\r\n\timport type { Snippet } from 'svelte';\r\n\r\n\tlet { class: className, children }: { class?: string; children: Snippet } = $props();\r\n</script>\r\n\r\n<p class={cn('text-sm text-muted-foreground mt-1', className)}>\r\n\t{@render children()}\r\n</p>\r\n",
 			"type": "registry:ui",
 			"target": "timeline/timeline-description.svelte"
 		},

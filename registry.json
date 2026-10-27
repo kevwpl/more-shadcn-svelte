@@ -2,6 +2,11 @@
 	"$schema": "https://shadcn-svelte.com/schema/registry.json",
 	"name": "more-shadcn-svelte",
 	"homepage": "https://your-site.com",
+	"aliases": {
+		"ui": "#lib/components/ui",
+		"hooks": "#lib/hooks",
+		"utils": "#lib/utils"
+	},
 	"items": [
 		{
 			"name": "audio",

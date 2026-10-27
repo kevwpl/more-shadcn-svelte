@@ -55,6 +55,9 @@ import {
 
 export const COMPONENT_URL = '/docs/components';
 
+/** Docs for the SvelteKit 2 version, built from the legacy/sveltekit-2 branch. */
+export const LEGACY_DOCS_URL = 'https://legacy.more-shadcn.noair.fun';
+
 export const docsConfig = [
 	{
 		title: 'Getting Started',

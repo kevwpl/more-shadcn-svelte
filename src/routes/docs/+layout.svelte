@@ -9,7 +9,7 @@
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/env';
 	import { ScrollArea } from '#lib/components/ui/scroll-area/index.js';
-	import { docsConfig } from '#lib/config/docs.js';
+	import { docsConfig, LEGACY_DOCS_URL } from '#lib/config/docs.js';
 
 	let { children } = $props();
 	let searchOpen = $state(false);
@@ -94,6 +94,9 @@
 					<Kbd.Group><Kbd.Root>⌘+K</Kbd.Root></Kbd.Group>
 				</Button>
 				<div class="flex items-center gap-2">
+					<Button variant="ghost" href={LEGACY_DOCS_URL} class="hidden sm:inline-flex">
+						SvelteKit 2 docs
+					</Button>
 					<LightSwitch variant="ghost" />
 					<Button
 						variant="ghost"
