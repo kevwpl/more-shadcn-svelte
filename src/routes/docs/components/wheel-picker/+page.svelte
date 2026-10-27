@@ -64,7 +64,7 @@
 			args={[
 				'shadcn-svelte@latest',
 				'add',
-				'https://more-shadcn.noair.fun/r/' + componentName + '.json'
+				'https://legacy.more-shadcn.noair.fun/r/' + componentName + '.json'
 			]}
 		/>
 

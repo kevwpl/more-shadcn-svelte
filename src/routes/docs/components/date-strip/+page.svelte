@@ -59,7 +59,7 @@
         <DocPage.Heading>Installation</DocPage.Heading>
         {@const componentName = "date-strip"}
         <DocPage.Text>Run the following command to install the `{componentName}` components:</DocPage.Text>
-        <DocPage.PM command="execute" args={["shadcn-svelte@latest", "add", "https://more-shadcn.noair.fun/r/" + componentName + ".json"]} />
+        <DocPage.PM command="execute" args={["shadcn-svelte@latest", "add", "https://legacy.more-shadcn.noair.fun/r/" + componentName + ".json"]} />
 
 
         <!-- 2. Disabled Days -->
@@ -128,7 +128,7 @@
         <!-- INSTALLATION -->
         <div class="space-y-4 pt-10">
             <h2 class="font-heading scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">Installation</h2>
-            <DocPage.PM command="execute" args={["shadcn-svelte@latest", "add", "https://more-shadcn.noair.fun/r/date-strip.json"]} />
+            <DocPage.PM command="execute" args={["shadcn-svelte@latest", "add", "https://legacy.more-shadcn.noair.fun/r/date-strip.json"]} />
         </div>
     </DocPage.Content>
 </DocPage.Root>

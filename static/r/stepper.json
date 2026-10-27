@@ -15,7 +15,7 @@
 	],
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { setStepperContext } from './ctx';\n\timport type { Snippet } from 'svelte';\n\n\tlet {\n\t\tvalue = $bindable(0),\n\t\torientation = 'horizontal',\n\t\tclass: className,\n\t\tchildren\n\t}: {\n\t\tvalue: number;\n\t\torientation?: 'horizontal' | 'vertical';\n\t\tclass?: string;\n\t\tchildren: Snippet;\n\t} = $props();\n\n\tsetStepperContext({\n\t\tactiveStep: () => value,\n\t\tsetStep: (s: number) => {\n\t\t\tvalue = s;\n\t\t},\n\t\torientation: () => orientation\n\t});\n</script>\n\n<div\n\tclass={cn(\n\t\t'flex w-full gap-4',\n\t\torientation === 'vertical' ? 'flex-col' : 'flex-row items-start justify-between',\n\t\tclassName\n\t)}\n>\n\t{@render children()}\n</div>\n",
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$';\r\n\timport { setStepperContext } from './ctx';\r\n\timport type { Snippet } from 'svelte';\r\n\r\n\tlet {\r\n\t\tvalue = $bindable(0),\r\n\t\torientation = 'horizontal',\r\n\t\tclass: className,\r\n\t\tchildren\r\n\t}: {\r\n\t\tvalue: number;\r\n\t\torientation?: 'horizontal' | 'vertical';\r\n\t\tclass?: string;\r\n\t\tchildren: Snippet;\r\n\t} = $props();\r\n\r\n\tsetStepperContext({\r\n\t\tactiveStep: () => value,\r\n\t\tsetStep: (s: number) => {\r\n\t\t\tvalue = s;\r\n\t\t},\r\n\t\torientation: () => orientation\r\n\t});\r\n</script>\r\n\r\n<div\r\n\tclass={cn(\r\n\t\t'flex w-full gap-4',\r\n\t\torientation === 'vertical' ? 'flex-col' : 'flex-row items-start justify-between',\r\n\t\tclassName\r\n\t)}\r\n>\r\n\t{@render children()}\r\n</div>\r\n",
 			"type": "registry:ui",
 			"target": "stepper/stepper.svelte"
 		},
@@ -35,7 +35,7 @@
 			"target": "stepper/stepper-indicator.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from '$UTILS$';\n\timport { getStepperContext } from './ctx';\n\n\tlet { class: className }: { class?: string } = $props();\n\tconst ctx = getStepperContext();\n\tlet isVertical = $derived(ctx.orientation() === 'vertical');\n</script>\n\n<div\n\tclass={cn(\n\t\t'bg-muted flex-1',\n\n\t\t!isVertical && 'h-[2px] -mt-8 ml-4 mr-4',\n\n\t\tisVertical && 'absolute left-[27px] top-14 -bottom-4 w-[2px]',\n\n\t\tclassName\n\t)}\n>\n\t<div\n\t\tclass={cn(\n\t\t\t'bg-primary transition-all duration-200 ease-in-out',\n\t\t\t!isVertical && 'h-full w-full scale-x-0 group-data-[state=completed]:scale-x-100 origin-left',\n\t\t\tisVertical && 'w-full h-full scale-y-0 group-data-[state=completed]:scale-y-100 origin-top'\n\t\t)}\n\t/>\n</div>\n",
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$';\r\n\timport { getStepperContext } from './ctx';\r\n\r\n\tlet { class: className }: { class?: string } = $props();\r\n\tconst ctx = getStepperContext();\r\n\tlet isVertical = $derived(ctx.orientation() === 'vertical');\r\n</script>\r\n\r\n<div\r\n\tclass={cn(\r\n\t\t'bg-muted flex-1',\r\n\r\n\t\t!isVertical && 'h-[2px] -mt-8 ml-4 mr-4',\r\n\r\n\t\tisVertical && 'absolute left-[27px] top-14 -bottom-4 w-[2px]',\r\n\r\n\t\tclassName\r\n\t)}\r\n>\r\n\t<div\r\n\t\tclass={cn(\r\n\t\t\t'bg-primary transition-all duration-200 ease-in-out',\r\n\t\t\t!isVertical && 'h-full w-full scale-x-0 group-data-[state=completed]:scale-x-100 origin-left',\r\n\t\t\tisVertical && 'w-full h-full scale-y-0 group-data-[state=completed]:scale-y-100 origin-top'\r\n\t\t)}\r\n\t/>\r\n</div>\r\n",
 			"type": "registry:ui",
 			"target": "stepper/stepper-separator.svelte"
 		},

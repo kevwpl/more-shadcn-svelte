@@ -56,7 +56,7 @@ For more info, check the [Official Docs](https://svelte.dev).`);
 			args={[
 				'shadcn-svelte@latest',
 				'add',
-				'https://more-shadcn.noair.fun/r/' + componentName + '.json'
+				'https://legacy.more-shadcn.noair.fun/r/' + componentName + '.json'
 			]}
 		/>
 	</DocPage.Content>

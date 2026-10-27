@@ -33,7 +33,7 @@
 		</DocPage.Text>
 		<DocPage.PM
 			command="execute"
-			args={['shadcn-svelte@latest', 'add', 'https://more-shadcn.noair.fun/r/[component].json']}
+			args={['shadcn-svelte@latest', 'add', 'https://legacy.more-shadcn.noair.fun/r/[component].json']}
 		/>
 		<DocPage.Text class="text-sm italic text-muted-foreground">
 			Replace <code>[component]</code> with the name of the component (e.g., <code>stepper</code>).

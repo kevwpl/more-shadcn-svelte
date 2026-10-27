@@ -53,7 +53,7 @@
         <DocPage.Heading>Installation</DocPage.Heading>
         {@const componentName = "image-zoom"}
         <DocPage.Text>Run the following command to install the `{componentName}` components:</DocPage.Text>
-        <DocPage.PM command="execute" args={["shadcn-svelte@latest", "add", "https://more-shadcn.noair.fun/r/" + componentName + ".json"]} />
+        <DocPage.PM command="execute" args={["shadcn-svelte@latest", "add", "https://legacy.more-shadcn.noair.fun/r/" + componentName + ".json"]} />
 
 
         <DocPage.Heading>Gallery View</DocPage.Heading>
